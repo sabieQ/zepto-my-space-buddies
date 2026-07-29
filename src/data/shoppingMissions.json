@@ -37,5 +37,18 @@
       "savings": 39
     },
     "surpriseForYou": "belgian-chocolates"
+  },
+  {
+    "id": "family-grocery",
+    "name": "Family Grocery",
+    "youMayAlsoNeed": ["butter", "spinach", "jam"],
+    "bestCombo": {
+      "title": "Home Essentials",
+      "subtitle": "Milk + Eggs + Bread Combo",
+      "productIds": ["milk", "eggs", "bread"],
+      "bundlePrice": 115,
+      "savings": 13
+    },
+    "surpriseForYou": "avocado"
   }
 ]

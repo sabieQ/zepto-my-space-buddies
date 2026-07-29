@@ -32,7 +32,7 @@
     "id": "family-grocery",
     "name": "Family Grocery",
     "type": "shared",
-    "missionId": null,
+    "missionId": "family-grocery",
     "productIds": ["milk", "eggs", "bread", "tomato"],
     "savings": 20,
     "itemCount": 12,
