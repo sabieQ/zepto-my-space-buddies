@@ -10,7 +10,7 @@
   },
   {
     "id": "gym-diet",
-    "name": "Gym Diet",
+    "name": "Gym List",
     "type": "personal",
     "missionId": "gym-diet",
     "productIds": ["oats", "greek-yogurt", "bananas", "wireless-earbuds"],
