@@ -6,7 +6,7 @@ import { ProductService } from '../services/ProductService'
 export function BuddiesPage() {
   const navigate = useNavigate()
   const buddies = BuddyService.getBuddies()
-  const popular = ProductService.getProductsByIds(['milk', 'bread'])
+  const popular = ProductService.getProductsByIds(['wireless-earbuds', 'daily-moisturizer'])
 
   return (
     <div className="min-h-full bg-neutral-gray-100 pb-24 text-on-surface">

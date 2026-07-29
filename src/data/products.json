@@ -219,5 +219,105 @@
     "category": "Vegetables",
     "image": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&h=400&fit=crop",
     "description": "Fresh spinach leaves."
+  },
+  {
+    "id": "wireless-earbuds",
+    "name": "Wireless Earbuds",
+    "price": 1999,
+    "mrp": 2999,
+    "unit": "1 pair",
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop",
+    "description": "Compact wireless earbuds with clear sound — perfect for workouts and commuting."
+  },
+  {
+    "id": "power-bank",
+    "name": "10000mAh Power Bank",
+    "price": 1299,
+    "mrp": 1799,
+    "unit": "1 pc",
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&h=400&fit=crop",
+    "description": "Fast-charging power bank to keep your phone alive all day."
+  },
+  {
+    "id": "type-c-charger",
+    "name": "USB-C Fast Charger",
+    "price": 499,
+    "mrp": 799,
+    "unit": "1 pc",
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400&h=400&fit=crop",
+    "description": "20W USB-C wall charger for phones and earbuds."
+  },
+  {
+    "id": "bluetooth-speaker",
+    "name": "Portable Bluetooth Speaker",
+    "price": 2499,
+    "mrp": 3499,
+    "unit": "1 pc",
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop",
+    "description": "Loud portable speaker for house parties and weekend hangouts."
+  },
+  {
+    "id": "nonstick-frying-pan",
+    "name": "Non-Stick Frying Pan",
+    "price": 699,
+    "mrp": 999,
+    "unit": "24 cm",
+    "category": "Kitchenware",
+    "image": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=400&fit=crop",
+    "description": "Durable non-stick pan for eggs, dosa, and everyday cooking."
+  },
+  {
+    "id": "food-storage-containers",
+    "name": "Food Storage Containers",
+    "price": 449,
+    "mrp": 599,
+    "unit": "4 pcs",
+    "category": "Kitchenware",
+    "image": "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=400&h=400&fit=crop",
+    "description": "Airtight containers to keep groceries and leftovers fresh."
+  },
+  {
+    "id": "silicone-spatula-set",
+    "name": "Silicone Spatula Set",
+    "price": 249,
+    "mrp": 399,
+    "unit": "3 pcs",
+    "category": "Kitchenware",
+    "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop",
+    "description": "Heat-resistant spatulas for mixing, flipping, and scraping."
+  },
+  {
+    "id": "gentle-face-wash",
+    "name": "Gentle Face Wash",
+    "price": 299,
+    "mrp": 399,
+    "unit": "100ml",
+    "category": "Beauty",
+    "image": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
+    "description": "Mild daily face wash for a fresh morning routine."
+  },
+  {
+    "id": "daily-moisturizer",
+    "name": "Daily Moisturizer",
+    "price": 449,
+    "mrp": 599,
+    "unit": "50ml",
+    "category": "Beauty",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
+    "description": "Lightweight moisturizer for soft, hydrated skin all day."
+  },
+  {
+    "id": "herbal-shampoo",
+    "name": "Herbal Shampoo",
+    "price": 349,
+    "mrp": 449,
+    "unit": "340ml",
+    "category": "Beauty",
+    "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&h=400&fit=crop",
+    "description": "Gentle herbal shampoo for everyday family use."
   }
 ]

@@ -5,7 +5,11 @@ import { ProductService } from '../services/ProductService'
 
 export function MySpacePage() {
   const personalCount = ListService.getPersonalLists().length
-  const suggested = ProductService.getProductsByIds(['milk', 'tomato', 'eggs'])
+  const suggested = ProductService.getProductsByIds([
+    'gentle-face-wash',
+    'food-storage-containers',
+    'type-c-charger',
+  ])
 
   return (
     <div className="min-h-full bg-neutral-gray-100 pb-28 font-body-md text-on-surface">

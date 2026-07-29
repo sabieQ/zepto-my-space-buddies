@@ -4,8 +4,8 @@ import { ProductService } from '../services/ProductService'
 
 export function SurprisePage() {
   const navigate = useNavigate()
-  const hero = ProductService.getProduct('belgian-chocolates')
-  const more = ProductService.getProductsByIds(['avocado', 'coffee'])
+  const hero = ProductService.getProduct('bluetooth-speaker')
+  const more = ProductService.getProductsByIds(['daily-moisturizer', 'food-storage-containers'])
 
   return (
     <div className="min-h-full bg-background pb-20 font-body-md text-on-surface">
@@ -23,9 +23,9 @@ export function SurprisePage() {
         {hero && (
           <section>
             <div className="mb-4">
-              <h2 className="font-display-lg text-display-lg text-primary">Your Weekend Treat</h2>
+              <h2 className="font-display-lg text-display-lg text-primary">Your Weekend Find</h2>
               <p className="mt-1 font-body-md text-text-secondary">
-                Curated just for you based on your favorites.
+                Discover something new beyond groceries — curated for you.
               </p>
             </div>
             <Link
@@ -50,7 +50,7 @@ export function SurprisePage() {
                       celebration
                     </span>
                     <span className="font-label-bold text-label-bold tracking-wider text-offer-green uppercase">
-                      A treat for your weekend!
+                      New category pick!
                     </span>
                   </div>
                   <h3 className="mb-2 font-display-lg text-display-lg leading-tight text-primary">
@@ -90,7 +90,7 @@ export function SurprisePage() {
                 <div className="flex flex-1 flex-col justify-between py-1">
                   <div>
                     <p className="font-label-subtext text-label-subtext font-bold text-offer-green uppercase">
-                      {i === 0 ? 'Refreshment Pick' : 'Morning Fuel'}
+                      {i === 0 ? 'Beauty Pick' : 'Kitchenware Pick'}
                     </p>
                     <h4 className="font-headline-sm text-headline-sm text-primary transition-colors group-hover:text-secondary">
                       {p.name}

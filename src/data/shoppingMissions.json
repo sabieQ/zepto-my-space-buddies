@@ -2,7 +2,7 @@
   {
     "id": "breakfast",
     "name": "Breakfast",
-    "youMayAlsoNeed": ["butter", "jam", "french-press"],
+    "youMayAlsoNeed": ["butter", "jam", "nonstick-frying-pan"],
     "bestCombo": {
       "title": "Morning Essentials",
       "subtitle": "Eggs + Bread + Milk Combo",
@@ -10,12 +10,12 @@
       "bundlePrice": 120,
       "savings": 15
     },
-    "surpriseForYou": "avocado"
+    "surpriseForYou": "gentle-face-wash"
   },
   {
     "id": "gym-diet",
     "name": "Gym Diet",
-    "youMayAlsoNeed": ["peanut-butter", "protein-shake", "bananas"],
+    "youMayAlsoNeed": ["peanut-butter", "protein-shake", "power-bank"],
     "bestCombo": {
       "title": "Protein Pack",
       "subtitle": "Oats + Yogurt + Banana Combo",
@@ -23,12 +23,12 @@
       "bundlePrice": 210,
       "savings": 30
     },
-    "surpriseForYou": "protein-shake"
+    "surpriseForYou": "daily-moisturizer"
   },
   {
     "id": "weekend-party",
     "name": "Weekend Party",
-    "youMayAlsoNeed": ["ice", "soft-drinks", "paper-cups"],
+    "youMayAlsoNeed": ["ice", "paper-cups", "type-c-charger"],
     "bestCombo": {
       "title": "Party Starter",
       "subtitle": "Chips + Soft Drinks + Cups",
@@ -36,12 +36,12 @@
       "bundlePrice": 450,
       "savings": 39
     },
-    "surpriseForYou": "belgian-chocolates"
+    "surpriseForYou": "power-bank"
   },
   {
     "id": "family-grocery",
     "name": "Family Grocery",
-    "youMayAlsoNeed": ["butter", "spinach", "jam"],
+    "youMayAlsoNeed": ["butter", "spinach", "nonstick-frying-pan"],
     "bestCombo": {
       "title": "Home Essentials",
       "subtitle": "Milk + Eggs + Bread Combo",
@@ -49,6 +49,6 @@
       "bundlePrice": 115,
       "savings": 13
     },
-    "surpriseForYou": "avocado"
+    "surpriseForYou": "type-c-charger"
   }
 ]

@@ -4,27 +4,27 @@
     "name": "Breakfast",
     "type": "personal",
     "missionId": "breakfast",
-    "productIds": ["eggs", "bread", "coffee"],
+    "productIds": ["eggs", "bread", "coffee", "silicone-spatula-set"],
     "savings": 46,
-    "itemCount": 3
+    "itemCount": 4
   },
   {
     "id": "gym-diet",
     "name": "Gym Diet",
     "type": "personal",
     "missionId": "gym-diet",
-    "productIds": ["oats", "greek-yogurt", "bananas"],
+    "productIds": ["oats", "greek-yogurt", "bananas", "wireless-earbuds"],
     "savings": 32,
-    "itemCount": 3
+    "itemCount": 4
   },
   {
     "id": "weekend-party",
     "name": "Weekend Party",
     "type": "shared",
     "missionId": "weekend-party",
-    "productIds": ["chips", "nachos", "soft-drinks"],
+    "productIds": ["chips", "nachos", "soft-drinks", "bluetooth-speaker"],
     "savings": 58,
-    "itemCount": 12,
+    "itemCount": 13,
     "members": ["Arindam", "Akanksha", "You", "Sameer"],
     "activity": "Akanksha checked out 3 items 2h ago"
   },
@@ -33,9 +33,9 @@
     "name": "Family Grocery",
     "type": "shared",
     "missionId": "family-grocery",
-    "productIds": ["milk", "eggs", "bread", "tomato"],
+    "productIds": ["milk", "eggs", "bread", "tomato", "food-storage-containers", "herbal-shampoo"],
     "savings": 20,
-    "itemCount": 12,
+    "itemCount": 14,
     "members": ["Mom", "Arindam", "You"],
     "activity": "Added by Arindam 5 mins ago"
   },

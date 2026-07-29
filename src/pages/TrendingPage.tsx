@@ -4,9 +4,17 @@ import { ProductService } from '../services/ProductService'
 
 export function TrendingPage() {
   const navigate = useNavigate()
-  const basedOnShopping = ProductService.getProductsByIds(['milk', 'butter', 'bananas'])
-  const amongBuddies = ProductService.getProductsByIds(['korean-ramen', 'bread', 'soft-drinks'])
-  const seasonal = ProductService.getProductsByIds(['avocado', 'spinach'])
+  const basedOnShopping = ProductService.getProductsByIds([
+    'gentle-face-wash',
+    'nonstick-frying-pan',
+    'type-c-charger',
+  ])
+  const amongBuddies = ProductService.getProductsByIds([
+    'bluetooth-speaker',
+    'wireless-earbuds',
+    'power-bank',
+  ])
+  const seasonal = ProductService.getProductsByIds(['herbal-shampoo', 'daily-moisturizer'])
 
   return (
     <div className="min-h-full bg-background pb-20 font-body-md text-on-surface">
