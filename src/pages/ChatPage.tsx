@@ -29,8 +29,8 @@ export function ChatPage() {
   }
 
   return (
-    <div className="relative min-h-full bg-neutral-gray-100 font-body-md text-on-surface">
-      <nav className="sticky top-0 z-50 flex items-center bg-surface-white px-4 py-3 shadow-sm">
+    <div className="flex h-full flex-col overflow-hidden bg-neutral-gray-100 font-body-md text-on-surface">
+      <nav className="z-50 flex shrink-0 items-center bg-surface-white px-4 py-3 shadow-sm">
         <button onClick={() => navigate('/buddies')} className="mr-3 text-on-surface">
           <span className="material-symbols-outlined">arrow_back</span>
         </button>
@@ -60,7 +60,7 @@ export function ChatPage() {
         </div>
       </nav>
 
-      <main className="mx-auto flex min-h-[calc(100%-8rem)] max-w-2xl flex-col gap-4 px-4 pt-4 pb-36">
+      <main className="mx-auto flex min-h-0 w-full max-w-2xl flex-1 flex-col gap-4 overflow-y-auto overscroll-contain px-4 pt-4 pb-4">
         {messages.map((msg) => {
           const isMe = msg.from === 'me'
           const label = senderLabel(msg, isGroup)
@@ -221,7 +221,7 @@ export function ChatPage() {
         })}
       </main>
 
-      <div className="absolute right-0 bottom-0 left-0 z-50 border-t border-neutral-gray-200 bg-surface-white px-4 pt-3 pb-6">
+      <div className="z-50 shrink-0 border-t border-neutral-gray-200 bg-surface-white px-4 pt-3 pb-6">
         <div className="mb-3 flex gap-2 overflow-x-auto pb-1 no-scrollbar">
           {['Share Products', 'Share Lists', 'Split Bill'].map((label, i) => (
             <button
