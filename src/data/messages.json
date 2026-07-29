@@ -1,32 +1,161 @@
 {
   "arindam": [
     {
-      "id": "m1",
+      "id": "a1",
       "type": "text",
       "from": "arindam",
       "text": "Check this out!",
       "time": "09:42 AM"
     },
     {
-      "id": "m2",
+      "id": "a2",
       "type": "product",
       "from": "arindam",
       "productId": "korean-ramen",
       "time": "09:42 AM"
     },
     {
-      "id": "m3",
+      "id": "a3",
       "type": "text",
       "from": "me",
       "text": "Added! Also check the list for tonight.",
       "time": "09:44 AM"
     },
     {
-      "id": "m4",
+      "id": "a4",
       "type": "list",
       "from": "me",
       "listId": "weekend-party",
       "time": "09:44 AM"
+    }
+  ],
+  "mom": [
+    {
+      "id": "mom1",
+      "type": "text",
+      "from": "mom",
+      "text": "Beta, can you reorder my medicines on Zepto? We're almost out.",
+      "time": "04:12 PM"
+    },
+    {
+      "id": "mom2",
+      "type": "text",
+      "from": "me",
+      "text": "Of course! Which ones do you need?",
+      "time": "04:13 PM"
+    },
+    {
+      "id": "mom3",
+      "type": "text",
+      "from": "mom",
+      "text": "My BP tablets and Vitamin D. Adding them here — please order tonight.",
+      "time": "04:14 PM"
+    },
+    {
+      "id": "mom4",
+      "type": "product",
+      "from": "mom",
+      "productId": "bp-tablets",
+      "time": "04:14 PM"
+    },
+    {
+      "id": "mom5",
+      "type": "product",
+      "from": "mom",
+      "productId": "vitamin-d",
+      "time": "04:14 PM"
+    },
+    {
+      "id": "mom6",
+      "type": "text",
+      "from": "me",
+      "text": "Got it. Adding both to cart and ordering now. Also grabbing Paracetamol for the kit.",
+      "time": "04:16 PM"
+    },
+    {
+      "id": "mom7",
+      "type": "product",
+      "from": "me",
+      "productId": "paracetamol",
+      "time": "04:16 PM"
+    },
+    {
+      "id": "mom8",
+      "type": "text",
+      "from": "mom",
+      "text": "Thank you beta ❤️ Don't forget next month's refill!",
+      "time": "04:17 PM"
+    }
+  ],
+  "weekend-crew": [
+    {
+      "id": "wc1",
+      "type": "text",
+      "from": "akanksha",
+      "fromName": "Akanksha",
+      "text": "Saturday party still on at my place?",
+      "time": "06:02 PM"
+    },
+    {
+      "id": "wc2",
+      "type": "text",
+      "from": "sameer",
+      "fromName": "Sameer",
+      "text": "Yes! I'll bring the speaker if we order snacks here.",
+      "time": "06:03 PM"
+    },
+    {
+      "id": "wc3",
+      "type": "text",
+      "from": "me",
+      "text": "Perfect. Making a shared list so nobody duplicates.",
+      "time": "06:05 PM"
+    },
+    {
+      "id": "wc4",
+      "type": "list",
+      "from": "me",
+      "listId": "weekend-party",
+      "time": "06:05 PM"
+    },
+    {
+      "id": "wc5",
+      "type": "text",
+      "from": "arindam",
+      "fromName": "Arindam",
+      "text": "Added chips and drinks. Someone grab ice and cups?",
+      "time": "06:08 PM"
+    },
+    {
+      "id": "wc6",
+      "type": "text",
+      "from": "akanksha",
+      "fromName": "Akanksha",
+      "text": "On it — check the list, I left notes on quantities.",
+      "time": "06:10 PM"
+    },
+    {
+      "id": "wc7",
+      "type": "text",
+      "from": "me",
+      "text": "List is updated. Open it and add anything else before Friday!",
+      "time": "06:12 PM"
+    },
+    {
+      "id": "wc8",
+      "type": "product",
+      "from": "sameer",
+      "fromName": "Sameer",
+      "productId": "chips",
+      "time": "06:13 PM"
+    },
+    {
+      "id": "wc9",
+      "type": "text",
+      "from": "sameer",
+      "fromName": "Sameer",
+      "text": "This flavour is fire — get 2 packs 🔥",
+      "time": "06:13 PM"
     }
   ]
 }

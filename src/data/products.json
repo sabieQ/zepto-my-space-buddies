@@ -319,5 +319,36 @@
     "category": "Beauty",
     "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&h=400&fit=crop",
     "description": "Gentle herbal shampoo for everyday family use."
+  },
+  {
+    "id": "bp-tablets",
+    "name": "BP Control Tablets",
+    "price": 185,
+    "mrp": 220,
+    "unit": "30 tablets",
+    "category": "Medicines",
+    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop",
+    "description": "Monthly blood pressure medication — reorder before it runs out.",
+    "badge": "Reorder"
+  },
+  {
+    "id": "vitamin-d",
+    "name": "Vitamin D3 Capsules",
+    "price": 299,
+    "mrp": 399,
+    "unit": "60 capsules",
+    "category": "Medicines",
+    "image": "https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+    "description": "Daily Vitamin D3 supplement for bone and immunity support."
+  },
+  {
+    "id": "paracetamol",
+    "name": "Paracetamol 650",
+    "price": 45,
+    "mrp": 55,
+    "unit": "15 tablets",
+    "category": "Medicines",
+    "image": "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&h=400&fit=crop",
+    "description": "Fever and pain relief tablets for the home medicine kit."
   }
 ]

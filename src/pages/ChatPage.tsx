@@ -2,12 +2,19 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BuddyService } from '../services/BuddyService'
 import { ListService } from '../services/ListService'
 import { ProductService } from '../services/ProductService'
+import type { Message } from '../types'
+
+function senderLabel(msg: Message, isGroup: boolean) {
+  if (!isGroup || msg.from === 'me') return null
+  return msg.fromName ?? msg.from
+}
 
 export function ChatPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const buddy = BuddyService.getBuddy(id ?? '')
   const messages = BuddyService.getMessages(id ?? '')
+  const isGroup = Boolean(buddy?.isGroup)
 
   if (!buddy) {
     return (
@@ -20,31 +27,10 @@ export function ChatPage() {
     )
   }
 
-  if (!buddy.functional) {
-    return (
-      <div className="flex min-h-full flex-col items-center justify-center gap-4 bg-neutral-gray-100 p-8 text-center">
-        <img src={buddy.avatar} alt={buddy.name} className="h-20 w-20 rounded-full object-cover" />
-        <h2 className="font-headline-md text-primary">{buddy.name}</h2>
-        <p className="font-body-md text-text-secondary">
-          Only Arindam chat is fully functional in this prototype.
-        </p>
-        <button
-          onClick={() => navigate('/chat/arindam')}
-          className="rounded-lg bg-secondary px-4 py-2 text-white"
-        >
-          Open Arindam Chat
-        </button>
-      </div>
-    )
-  }
-
   return (
     <div className="relative min-h-full bg-neutral-gray-100 font-body-md text-on-surface">
       <nav className="sticky top-0 z-50 flex items-center bg-surface-white px-4 py-3 shadow-sm">
-        <button
-          onClick={() => navigate('/buddies')}
-          className="mr-3 text-on-surface"
-        >
+        <button onClick={() => navigate('/buddies')} className="mr-3 text-on-surface">
           <span className="material-symbols-outlined">arrow_back</span>
         </button>
         <div className="flex flex-1 items-center">
@@ -53,7 +39,17 @@ export function ChatPage() {
           </div>
           <div>
             <h1 className="font-headline-sm text-headline-sm text-primary">{buddy.name}</h1>
-            <p className="font-label-subtext text-label-subtext text-success-green">Online</p>
+            <p
+              className={`font-label-subtext text-label-subtext ${
+                buddy.status === 'online' ? 'text-success-green' : 'text-on-surface-variant'
+              }`}
+            >
+              {isGroup
+                ? 'Akanksha, Sameer, Arindam, You'
+                : buddy.status === 'online'
+                  ? 'Online'
+                  : 'Offline'}
+            </p>
           </div>
         </div>
         <div className="flex gap-4">
@@ -65,6 +61,7 @@ export function ChatPage() {
       <main className="mx-auto flex min-h-[calc(100%-8rem)] max-w-2xl flex-col gap-4 px-4 pt-4 pb-36">
         {messages.map((msg) => {
           const isMe = msg.from === 'me'
+          const label = senderLabel(msg, isGroup)
 
           if (msg.type === 'text') {
             return (
@@ -72,6 +69,11 @@ export function ChatPage() {
                 key={msg.id}
                 className={`flex max-w-[85%] flex-col ${isMe ? 'items-end self-end' : 'items-start'}`}
               >
+                {label && (
+                  <span className="mb-1 ml-1 font-label-subtext text-label-subtext font-bold text-secondary">
+                    {label}
+                  </span>
+                )}
                 <div
                   className={`${
                     isMe
@@ -96,7 +98,15 @@ export function ChatPage() {
             const product = ProductService.getProduct(msg.productId)
             if (!product) return null
             return (
-              <div key={msg.id} className="flex max-w-[85%] flex-col items-start">
+              <div
+                key={msg.id}
+                className={`flex max-w-[85%] flex-col ${isMe ? 'items-end self-end' : 'items-start'}`}
+              >
+                {label && (
+                  <span className="mb-1 ml-1 font-label-subtext text-label-subtext font-bold text-secondary">
+                    {label}
+                  </span>
+                )}
                 <Link
                   to={`/product/${product.id}`}
                   className="w-full max-w-[280px] overflow-hidden rounded-xl border border-neutral-gray-200 bg-surface-white shadow-sm"
@@ -136,6 +146,13 @@ export function ChatPage() {
                     </div>
                   </div>
                 </Link>
+                <span
+                  className={`mt-1 font-label-subtext text-label-subtext text-on-surface-variant ${
+                    isMe ? 'mr-1' : 'ml-1'
+                  }`}
+                >
+                  {msg.time}
+                </span>
               </div>
             )
           }
@@ -143,15 +160,26 @@ export function ChatPage() {
           if (msg.type === 'list') {
             const list = ListService.getList(msg.listId)
             if (!list) return null
+            const listIcon = list.id === 'weekend-party' ? 'celebration' : 'checklist'
             return (
-              <div key={msg.id} className="flex w-full max-w-[85%] flex-col items-end self-end">
+              <div
+                key={msg.id}
+                className={`flex w-full max-w-[85%] flex-col ${
+                  isMe ? 'items-end self-end' : 'items-start'
+                }`}
+              >
+                {label && (
+                  <span className="mb-1 ml-1 font-label-subtext text-label-subtext font-bold text-secondary">
+                    {label}
+                  </span>
+                )}
                 <div className="w-full max-w-[280px] overflow-hidden rounded-xl border border-secondary-fixed-dim bg-surface-white shadow-sm">
                   <div className="bg-primary-fixed-dim/20 p-4">
                     <div className="mb-3 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-container">
                           <span className="material-symbols-outlined text-[20px] text-white">
-                            celebration
+                            {listIcon}
                           </span>
                         </div>
                         <h3 className="font-headline-sm text-headline-sm text-primary">
@@ -176,6 +204,13 @@ export function ChatPage() {
                     </Link>
                   </div>
                 </div>
+                <span
+                  className={`mt-1 font-label-subtext text-label-subtext text-on-surface-variant ${
+                    isMe ? 'mr-1' : 'ml-1'
+                  }`}
+                >
+                  {msg.time}
+                </span>
               </div>
             )
           }

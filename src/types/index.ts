@@ -51,9 +51,31 @@ export interface Buddy {
 }
 
 export type Message =
-  | { id: string; type: 'text'; from: string; text: string; time: string }
-  | { id: string; type: 'product'; from: string; productId: string; time: string }
-  | { id: string; type: 'list'; from: string; listId: string; time: string }
+  | {
+      id: string
+      type: 'text'
+      from: string
+      fromName?: string
+      text: string
+      time: string
+    }
+  | {
+      id: string
+      type: 'product'
+      from: string
+      fromName?: string
+      productId: string
+      time: string
+    }
+  | {
+      id: string
+      type: 'list'
+      from: string
+      fromName?: string
+      listId: string
+      time: string
+    }
+
 
 export interface Recommendations {
   youMayAlsoNeed: Product[]

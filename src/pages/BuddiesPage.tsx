@@ -58,14 +58,10 @@ export function BuddiesPage() {
             {buddies.map((b) => (
               <button
                 key={b.id}
-                onClick={() => b.functional && navigate(`/chat/${b.id}`)}
+                onClick={() => navigate(`/chat/${b.id}`)}
                 className="flex shrink-0 flex-col items-center gap-1"
               >
-                <div
-                  className={`h-14 w-14 overflow-hidden rounded-full border-2 p-0.5 ${
-                    b.functional ? 'border-secondary' : 'border-outline-variant'
-                  }`}
-                >
+                <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-secondary p-0.5">
                   <img
                     src={b.avatar}
                     alt={b.name}
@@ -90,10 +86,8 @@ export function BuddiesPage() {
             {buddies.map((buddy) => (
               <button
                 key={buddy.id}
-                onClick={() => buddy.functional && navigate(`/chat/${buddy.id}`)}
-                className={`flex w-full items-center gap-4 px-margin-page py-4 text-left transition-colors hover:bg-neutral-gray-100 ${
-                  buddy.functional ? 'cursor-pointer' : 'cursor-default opacity-90'
-                }`}
+                onClick={() => navigate(`/chat/${buddy.id}`)}
+                className="flex w-full cursor-pointer items-center gap-4 px-margin-page py-4 text-left transition-colors hover:bg-neutral-gray-100"
               >
                 <div className="relative">
                   <div className="h-14 w-14 overflow-hidden rounded-full bg-neutral-gray-100">
@@ -120,7 +114,11 @@ export function BuddiesPage() {
                   </div>
                   <div className="mt-1 flex items-center gap-1">
                     <span className="material-symbols-outlined text-[14px] text-on-surface-variant">
-                      restaurant
+                      {buddy.id === 'mom'
+                        ? 'medication'
+                        : buddy.id === 'weekend-crew'
+                          ? 'checklist'
+                          : 'restaurant'}
                     </span>
                     <p
                       className={`max-w-[180px] truncate font-body-sm text-body-sm text-on-surface-variant ${
