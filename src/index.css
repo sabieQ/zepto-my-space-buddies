@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neutral-gray-100: #F2F4F7;
+  --color-neutral-gray-200: #E4E7EC;
+  --color-secondary-fixed: #ffd9dd;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary: #220d00;
+  --color-primary-fixed: #f0dbff;
+  --color-outline: #7d7482;
+  --color-primary-fixed-dim: #ddb8ff;
+  --color-success-green: #259547;
+  --color-on-tertiary-fixed-variant: #663d1a;
+  --color-secondary: #b90043;
+  --color-surface-tint: #7747a7;
+  --color-surface-white: #FFFFFF;
+  --color-surface-container-lowest: #ffffff;
+  --color-primary-container: #3c006b;
+  --color-error-container: #ffdad6;
+  --color-on-background: #1e1a20;
+  --color-zepto-purple-light: #F3E8FF;
+  --color-surface-bright: #fff7fe;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-fixed-variant: #910033;
+  --color-inverse-on-surface: #f7eef7;
+  --color-surface-container-low: #faf1fa;
+  --color-background: #fff7fe;
+  --color-surface-container-high: #eee5ef;
+  --color-error: #ba1a1a;
+  --color-tertiary-fixed: #ffdcc4;
+  --color-on-primary-fixed-variant: #5e2e8d;
+  --color-secondary-container: #e31657;
+  --color-on-surface-variant: #4b4450;
+  --color-inverse-surface: #332f36;
+  --color-surface-variant: #e8e0e9;
+  --color-offer-green: #00833E;
+  --color-tertiary-fixed-dim: #f7ba8d;
+  --color-on-error: #ffffff;
+  --color-on-surface: #1e1a20;
+  --color-on-tertiary-container: #b88359;
+  --color-tertiary-container: #401e00;
+  --color-text-secondary: #667085;
+  --color-on-secondary-container: #fffbff;
+  --color-surface-container-highest: #e8e0e9;
+  --color-primary: #1f003c;
+  --color-text-primary: #1D2939;
+  --color-on-tertiary-fixed: #2f1500;
+  --color-on-primary: #ffffff;
+  --color-secondary-fixed-dim: #ffb2bb;
+  --color-surface: #fff7fe;
+  --color-surface-dim: #e0d7e0;
+  --color-on-error-container: #93000a;
+  --color-on-primary-fixed: #2c0051;
+  --color-surface-container: #f4ebf4;
+  --color-inverse-primary: #ddb8ff;
+  --color-on-primary-container: #aa78db;
+  --color-outline-variant: #cec3d2;
+  --color-on-secondary-fixed: #400012;
+  --color-zepto-pink: #FF3269;
+
+  --spacing-margin-page: 1rem;
+  --spacing-section-gap: 1.5rem;
+  --spacing-stack-lg: 1rem;
+  --spacing-gutter-grid: 0.75rem;
+  --spacing-stack-md: 0.5rem;
+  --spacing-stack-sm: 0.25rem;
+
+  --font-headline-sm: "Plus Jakarta Sans", sans-serif;
+  --font-headline-md: "Plus Jakarta Sans", sans-serif;
+  --font-body-sm: "Inter", sans-serif;
+  --font-display-lg: "Plus Jakarta Sans", sans-serif;
+  --font-label-bold: "Inter", sans-serif;
+  --font-label-subtext: "Inter", sans-serif;
+  --font-price-sm: "Plus Jakarta Sans", sans-serif;
+  --font-price-lg: "Plus Jakarta Sans", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+
+  --text-headline-sm: 16px;
+  --text-headline-sm--line-height: 20px;
+  --text-headline-sm--font-weight: 700;
+  --text-headline-md: 18px;
+  --text-headline-md--line-height: 24px;
+  --text-headline-md--font-weight: 700;
+  --text-body-sm: 12px;
+  --text-body-sm--line-height: 16px;
+  --text-display-lg: 24px;
+  --text-display-lg--line-height: 32px;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 800;
+  --text-label-bold: 12px;
+  --text-label-bold--line-height: 14px;
+  --text-label-bold--font-weight: 700;
+  --text-label-subtext: 10px;
+  --text-label-subtext--line-height: 12px;
+  --text-label-subtext--font-weight: 500;
+  --text-price-sm: 12px;
+  --text-price-sm--line-height: 14px;
+  --text-price-sm--font-weight: 700;
+  --text-price-lg: 16px;
+  --text-price-lg--line-height: 20px;
+  --text-price-lg--font-weight: 800;
+  --text-body-md: 14px;
+  --text-body-md--line-height: 20px;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: #e8e0e9;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.hide-scrollbar::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar,
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.chat-bubble-received {
+  border-radius: 12px 12px 12px 2px;
+}
+
+.chat-bubble-sent {
+  border-radius: 12px 12px 2px 12px;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.bento-item-large {
+  grid-column: span 2;
+}
+
+.product-card-active:active {
+  transform: scale(0.98);
+}
+
+.toggle-bg .toggle-dot {
+  transition: transform 0.2s ease;
+}
+
+peer:checked ~ .toggle-bg .toggle-dot,
+input:checked + .toggle-bg .toggle-dot {
+  transform: translateX(20px);
+}
+
+label:has(input:checked) .toggle-dot {
+  transform: translateX(20px);
+}
+
+label:has(input:checked) .toggle-bg {
+  background-color: #3c006b;
+}

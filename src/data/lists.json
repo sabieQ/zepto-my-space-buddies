@@ -1,0 +1,64 @@
+[
+  {
+    "id": "breakfast",
+    "name": "Breakfast",
+    "type": "personal",
+    "missionId": "breakfast",
+    "productIds": ["eggs", "bread", "coffee"],
+    "savings": 46,
+    "itemCount": 3
+  },
+  {
+    "id": "gym-diet",
+    "name": "Gym Diet",
+    "type": "personal",
+    "missionId": "gym-diet",
+    "productIds": ["oats", "greek-yogurt", "bananas"],
+    "savings": 32,
+    "itemCount": 3
+  },
+  {
+    "id": "weekend-party",
+    "name": "Weekend Party",
+    "type": "shared",
+    "missionId": "weekend-party",
+    "productIds": ["chips", "nachos", "soft-drinks"],
+    "savings": 58,
+    "itemCount": 12,
+    "members": ["Arindam", "Akanksha", "You", "Sameer"],
+    "activity": "Akanksha checked out 3 items 2h ago"
+  },
+  {
+    "id": "family-grocery",
+    "name": "Family Grocery",
+    "type": "shared",
+    "missionId": null,
+    "productIds": ["milk", "eggs", "bread", "tomato"],
+    "savings": 20,
+    "itemCount": 12,
+    "members": ["Mom", "Arindam", "You"],
+    "activity": "Added by Arindam 5 mins ago"
+  },
+  {
+    "id": "goa-trip",
+    "name": "Goa Trip",
+    "type": "shared",
+    "missionId": null,
+    "productIds": [],
+    "savings": 0,
+    "itemCount": 28,
+    "members": ["Sameer", "Akanksha"],
+    "activity": "Added by Sameer Yesterday"
+  },
+  {
+    "id": "office-pantry",
+    "name": "Office Pantry",
+    "type": "shared",
+    "missionId": null,
+    "productIds": [],
+    "savings": 0,
+    "itemCount": 15,
+    "members": ["Office"],
+    "activity": "No activity this week"
+  }
+]

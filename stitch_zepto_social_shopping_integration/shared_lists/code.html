@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shared Lists - My Space</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "surface-container": "#f4ebf4",
+                    "primary": "#1f003c",
+                    "neutral-gray-200": "#E4E7EC",
+                    "primary-container": "#3c006b",
+                    "on-tertiary-fixed-variant": "#663d1a",
+                    "outline": "#7d7482",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#b90043",
+                    "on-primary-container": "#aa78db",
+                    "background": "#fff7fe",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#ddb8ff",
+                    "secondary-container": "#e31657",
+                    "inverse-on-surface": "#f7eef7",
+                    "inverse-surface": "#332f36",
+                    "secondary-fixed": "#ffd9dd",
+                    "on-background": "#1e1a20",
+                    "surface-bright": "#fff7fe",
+                    "on-tertiary-fixed": "#2f1500",
+                    "neutral-gray-100": "#F2F4F7",
+                    "surface-white": "#FFFFFF",
+                    "on-secondary-fixed": "#400012",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1e1a20",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#7747a7",
+                    "outline-variant": "#cec3d2",
+                    "on-tertiary-container": "#b88359",
+                    "on-surface-variant": "#4b4450",
+                    "on-secondary-container": "#fffbff",
+                    "tertiary": "#220d00",
+                    "offer-green": "#00833E",
+                    "surface-container-high": "#eee5ef",
+                    "text-primary": "#1D2939",
+                    "on-primary-fixed": "#2c0051",
+                    "surface-container-highest": "#e8e0e9",
+                    "on-primary-fixed-variant": "#5e2e8d",
+                    "surface-dim": "#e0d7e0",
+                    "success-green": "#259547",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#f7ba8d",
+                    "primary-fixed-dim": "#ddb8ff",
+                    "tertiary-container": "#401e00",
+                    "zepto-purple-light": "#F3E8FF",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#910033",
+                    "text-secondary": "#667085",
+                    "tertiary-fixed": "#ffdcc4",
+                    "secondary-fixed-dim": "#ffb2bb",
+                    "surface": "#fff7fe",
+                    "surface-container-low": "#faf1fa",
+                    "primary-fixed": "#f0dbff",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e8e0e9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter-grid": "0.75rem",
+                    "stack-lg": "1rem",
+                    "margin-page": "1rem",
+                    "stack-md": "0.5rem",
+                    "section-gap": "1.5rem",
+                    "stack-sm": "0.25rem"
+            },
+            "fontFamily": {
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "price-sm": ["Plus Jakarta Sans"],
+                    "price-lg": ["Plus Jakarta Sans"],
+                    "label-subtext": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "price-sm": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                    "price-lg": ["16px", {"lineHeight": "20px", "fontWeight": "800"}],
+                    "label-subtext": ["10px", {"lineHeight": "12px", "fontWeight": "500"}],
+                    "label-bold": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                    "headline-sm": ["16px", {"lineHeight": "20px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .avatar-group {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        .avatar-group > div {
+            margin-right: -8px;
+            border: 2px solid white;
+        }
+        .glass-header {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 247, 254, 0.85);
+        }
+    </style>
+</head>
+<body class="bg-neutral-gray-100 font-body-md text-on-surface min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface border-b border-outline-variant flex items-center px-margin-page h-14 w-full glass-header">
+<button class="mr-4 p-1 rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Shared Lists</h1>
+</header>
+<main class="px-margin-page py-stack-lg space-y-gutter-grid">
+<!-- Search & Filter Area -->
+<div class="flex items-center gap-stack-md mb-6">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-white border border-neutral-gray-200 rounded-lg text-body-md focus:outline-none focus:ring-2 focus:ring-secondary/20" placeholder="Search shared lists..." type="text"/>
+</div>
+<button class="p-2 bg-surface-white border border-neutral-gray-200 rounded-lg text-primary hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+<!-- Create New List Card -->
+<button class="w-full p-4 bg-zepto-purple-light border-2 border-dashed border-primary/20 rounded-lg flex items-center justify-center gap-2 hover:bg-white transition-all active:scale-98">
+<span class="material-symbols-outlined text-primary" data-icon="add_circle">add_circle</span>
+<span class="font-headline-sm text-headline-sm text-primary">Create New Shared List</span>
+</button>
+<!-- List Section -->
+<div class="space-y-stack-lg">
+<!-- Card 1: Family Grocery -->
+<div class="bg-surface-white rounded-lg border border-neutral-gray-200 p-4 hover:shadow-sm transition-all group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-outline cursor-pointer" data-icon="more_vert">more_vert</span>
+</div>
+<div class="flex justify-between items-start mb-stack-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Family Grocery</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">12 items</p>
+</div>
+<div class="avatar-group">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a young Indian woman with dark hair, smiling warmly in soft natural lighting. She is wearing a modern casual top, and the background is a blurred domestic interior with soft cream tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoCiCLfgC0KsFtL9W8ibASl0q3wJEI3WAsNFmjmD5qWYHTP6PAKOxfgM_WiBG8nTFz-7FZJDa5tekEj-pASdfkTgYpyBN1Eoq4DqkM23eegU9zkcmAQ1jiwfbbWV1sU28rwwmGlAUJnQmMm0bqiyhZc8tdEkiyTU-3GXSMG-mviLJ2dBlxvRgD5RDDmVt1BhoARACWjTsQRim0elq2hgmcZ-XQrPUAkJe4XMWOp-fnBXeH9ueS34lkrw"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Candid headshot of a middle-aged man with short hair and a neatly trimmed beard, wearing a classic white shirt. He has a friendly expression and is looking slightly away from the camera. Bright, high-contrast studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuYev3BGKrdcs6xqZwzHhYrNDeivjqUTxFQwdxyY2HVALzCFwUG_UP_k_L60e4Q5sAWbfxrPstVc2Sz82eZ__xyBlEnVvXzdz8Rz40nLrQXVSp6t5jHALItF0Qp-TuhEHjGasb0Q7_Sfxxli2oKdbnu6AsMdN7z7zESRLELcaScsKHor-S4KX7nyTfPHceefYxhHa1rahI9XiB9eJen6TjytBwcGnDCNc0D5iG5lB8DPfvXkCzA-mECQ"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">+1</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-3 border-t border-neutral-gray-100">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="update" style="font-variation-settings: 'wght' 600;">update</span>
+<p class="font-label-subtext text-label-subtext text-text-secondary">Added by Rahul 5 mins ago</p>
+</div>
+</div>
+<!-- Card 2: Weekend Party -->
+<div class="bg-surface-white rounded-lg border border-neutral-gray-200 p-4 hover:shadow-sm transition-all group">
+<div class="flex justify-between items-start mb-stack-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Weekend Party</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">45 items</p>
+</div>
+<div class="avatar-group">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Profile photo of a stylish man with a trendy haircut and glasses, wearing a denim jacket. He is standing in a brightly lit modern office environment with a clean, professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmQcUg4kX9lUJtn4fYiiUPo8muNMap9bzBfc577b5SlZWPfI-mLxN-BmpNLg19NCGmH76sXW0TSwc59GS9NCi374CIZhK8d30qZ8-nS_17Va_Zma_vZ0C-tmixlVxXG5xZ5-XZAubUSotGP9b5GMb0PopQub1IFvEkPmCLk-PhrcDtzWN66zcUUgJfZ4ZgmWfGAFVAL8p5vvEmvCkDkYEA0HwdcoyJWR8HQoC1KUotijhB8iX-kq1b-w"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young woman with curly hair laughing, wearing a vibrant pink t-shirt. The background is a soft-focus urban setting with warm golden hour lighting that creates a friendly and energetic vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxo__UuISj_ajOHNUhL_Ijd18b3xALojnU3UszQw-WgeUx-zE47UxE95F18GRZ20frFyFkIPmbkC_J16W4RX3kUzumBlgwcHvjzf0tTFYoabmY5AmwEvnHfnyldWZa_FWQZ49P4KOfwkKJ92UgZ62aPn3HIxms_ogzT8agEJ-58e_qIUovLlbQonK_KjUkJU-57Opf3lh9r-XSVnwc2_snHyPr8jhqajkYeXq5czJgl3WAeGha_9nNDw"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of a friendly face, a man with a wide smile and short black hair. He is in a brightly lit kitchen environment, suggesting a domestic and helpful context. Modern, clean photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfUtO5-gWNrIsu9z2o15p8BzoZncJAIpL1yYn9KjfTHG-PrI6I31W1cR6uKCeQU6iiTQ53w8JUryua-ozUPgdiFwcSWQ7kQPeQctl_cdnCSZvDmYLaiAhDO_MQG75Zz29UKNeOahEa78tWSb_xHo--oi8VEYN_rJmePQucpnqkBrfArzfM2n8JHP91vZgPosyiy5TxO0g7aBGBzL2iMYvB-f-IzDS7OtM-E-ti6Pw6iFwyhp-W1gOZeg"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">+4</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-3 border-t border-neutral-gray-100">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="edit" style="font-variation-settings: 'wght' 600;">edit</span>
+<p class="font-label-subtext text-label-subtext text-text-secondary">Priya checked out 3 items 2h ago</p>
+</div>
+</div>
+<!-- Card 3: Goa Trip -->
+<div class="bg-surface-white rounded-lg border border-neutral-gray-200 p-4 hover:shadow-sm transition-all group">
+<div class="flex justify-between items-start mb-stack-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Goa Trip</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">28 items</p>
+</div>
+<div class="avatar-group">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a cheerful person with long wavy hair, wearing a sunhat and light linen clothing. The lighting is bright and summery, suggesting a vacation or travel theme. High-key and clean photographic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6gRtf6S2iWnE2e-PrZ68ctgK_bUNq61DJz6jNOow2UoM0s4EOp6V7JiZXz1kOL2OQZiM_zyBAWt5NR8jX3CVN_4qQ8AnQ8K9rgKDtm5QpX-9fpKT6T6MAYvIcvJRZf2fI9K00YKOkSmTZUc5rw4DaMqOcZdc-ZTmZetSOMFpRNKQ5x10EDo6u0aPLoKsM1Do88Ks08oXkYxLO9iq46RumKxXJNTViQjRs2BO-rxhFtLSXPgzRCuJVqA"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a young man with a playful expression, wearing sunglasses and a tropical shirt. Bright, saturated colors with heavy daylight and beach-like atmosphere in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-JG390g40wx1zLUMiKugoYhyJ9sP56Ork1RR-trUj3_t07typkjPYwFQediRMwaYTu1cWGMqX1-levxr_Q6VeZ47phnk72w7r_WJ7mKgpNUgvJVvN8AWQFubk_id431zbqZ9BQsorcPIUnubjfAV0_SrEO19eAiZAxdU9MPfuKe5iyjHpDDN8Lm8KhXhOgOXNTv3Qt0tkFJ8oWMTFC_wxvTPoMH57TQ-te9B9R9_NoJAIY0vebCEKDw"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-3 border-t border-neutral-gray-100">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="add_shopping_cart" style="font-variation-settings: 'wght' 600;">add_shopping_cart</span>
+<p class="font-label-subtext text-label-subtext text-text-secondary">Added by Sameer Yesterday</p>
+</div>
+</div>
+<!-- Card 4: Office Pantry -->
+<div class="bg-surface-white rounded-lg border border-neutral-gray-200 p-4 hover:shadow-sm transition-all group opacity-80">
+<div class="flex justify-between items-start mb-stack-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Office Pantry</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">15 items</p>
+</div>
+<div class="avatar-group">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a woman with a confident smile, wearing a navy blue blazer. The background is a minimalist corporate wall with subtle grey shadows and modern lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEmXqvAGTIS6rEIyMbvT2MpJHhBZSwC_lntTmTjv1EHYxGmIzUkQt_fOtbADjK2oQuDqT1RQJ__Cbg8ufRnpQXHkyrrcGk3qTvHQkTVQ2udS0jSO5WH5_EITU-MBVCWpjUf0I-u6rEVSFjlSRgBXADlci1-7tRv6GVsmnhEnd7oBtYolswnygj2z1G6IIs4FbtMSRCGScpvbdXLjzIy3Mac_BjXaaxKS0ewhC3xGOqi2JpeXi5x0ra6w"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">+12</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-3 border-t border-neutral-gray-100">
+<span class="material-symbols-outlined text-[16px] text-text-secondary" data-icon="history">history</span>
+<p class="font-label-subtext text-label-subtext text-text-secondary">No activity this week</p>
+</div>
+</div>
+</div>
+<!-- Secondary CTA -->
+<div class="mt-8 flex flex-col items-center justify-center text-center p-6 bg-surface-container-low rounded-xl border border-dashed border-outline-variant">
+<div class="w-12 h-12 rounded-full bg-zepto-purple-light flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-primary" data-icon="groups">groups</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary">Need a Buddy to shop with?</h4>
+<p class="font-body-sm text-body-sm text-text-secondary mt-2 max-w-[240px]">Invite friends to collaborate on lists and split bills effortlessly.</p>
+<button class="mt-4 px-6 py-2 bg-secondary text-white font-label-bold text-label-bold rounded-full active:scale-95 transition-transform">
+                Invite Buddies
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 h-16 border-t border-neutral-gray-200 bg-surface-white flex justify-around items-center px-2 shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-bold text-label-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-bold text-label-bold">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person_pin" style="font-variation-settings: 'FILL' 1;">person_pin</span>
+<span class="font-label-bold text-label-bold">My Space</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+<span class="font-label-bold text-label-bold">Fresh</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-bold text-label-bold">Buddies</span>
+</a>
+</nav>
+<!-- Micro-interactions Script -->
+<script>
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.add('scale-[0.98]');
+                setTimeout(() => {
+                    this.classList.remove('scale-[0.98]');
+                }, 100);
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+            searchInput.parentElement.classList.add('transition-transform');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    </script>
+</body></html>

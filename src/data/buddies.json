@@ -1,0 +1,33 @@
+[
+  {
+    "id": "arindam",
+    "name": "Arindam",
+    "status": "online",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
+    "lastMessage": "Shared Korean Ramen",
+    "lastMessageTime": "10 mins ago",
+    "unread": 1,
+    "functional": true
+  },
+  {
+    "id": "mom",
+    "name": "Mom",
+    "status": "offline",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop",
+    "lastMessage": "Shared Weekly Grocery list",
+    "lastMessageTime": "1 hour ago",
+    "unread": 0,
+    "functional": false
+  },
+  {
+    "id": "weekend-crew",
+    "name": "Weekend Crew",
+    "status": "offline",
+    "avatar": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=200&h=200&fit=crop",
+    "lastMessage": "Added 4 items to Party List",
+    "lastMessageTime": "3 hours ago",
+    "unread": 0,
+    "functional": false,
+    "isGroup": true
+  }
+]

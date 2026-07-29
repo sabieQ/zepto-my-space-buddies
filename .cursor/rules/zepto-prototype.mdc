@@ -1,0 +1,43 @@
+---
+description: Zepto high-fidelity prototype rules
+globs:
+alwaysApply: true
+---
+
+# Zepto Prototype Rules
+
+Use the existing Google Stitch-generated screens as the UI foundation.
+
+Do NOT recreate or redesign the UI.
+
+## Primary Objective
+
+Wire existing screens together and make them functional while preserving the original design.
+
+## Technical Rules
+
+- Use React + TypeScript
+- Use Tailwind CSS
+- Use React Router
+- Keep all demo data inside local JSON files
+- No backend, database, authentication, external APIs, or paid libraries
+- Preserve existing components whenever possible
+
+## UI Rules
+
+- Never redesign Zepto
+- Never generate replacement screens
+- Keep layouts, spacing, colors and components from Google Stitch
+- Only add interactions and navigation
+
+## Recommendation Rules
+
+- Recommendations come from shoppingMissions.json
+- Never generate random recommendations
+- Do not recommend products already present in the active shopping list
+
+## Prototype Flows
+
+1. My Space → Breakfast List → Recommendations → Product Page
+2. Buddies → Arindam Chat → Shared Product → Product Page
+3. Shared List → Weekend Party → Recommendations → Product Page

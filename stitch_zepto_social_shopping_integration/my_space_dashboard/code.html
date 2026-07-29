@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Space - Zepto</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "neutral-gray-100": "#F2F4F7",
+                    "secondary-fixed": "#ffd9dd",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#220d00",
+                    "primary-fixed": "#f0dbff",
+                    "outline": "#7d7482",
+                    "primary-fixed-dim": "#ddb8ff",
+                    "success-green": "#259547",
+                    "on-tertiary-fixed-variant": "#663d1a",
+                    "secondary": "#b90043",
+                    "surface-tint": "#7747a7",
+                    "surface-white": "#FFFFFF",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#3c006b",
+                    "error-container": "#ffdad6",
+                    "on-background": "#1e1a20",
+                    "zepto-purple-light": "#F3E8FF",
+                    "surface-bright": "#fff7fe",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#910033",
+                    "inverse-on-surface": "#f7eef7",
+                    "surface-container-low": "#faf1fa",
+                    "background": "#fff7fe",
+                    "surface-container-high": "#eee5ef",
+                    "neutral-gray-200": "#E4E7EC",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#ffdcc4",
+                    "on-primary-fixed-variant": "#5e2e8d",
+                    "secondary-container": "#e31657",
+                    "on-surface-variant": "#4b4450",
+                    "inverse-surface": "#332f36",
+                    "surface-variant": "#e8e0e9",
+                    "offer-green": "#00833E",
+                    "tertiary-fixed-dim": "#f7ba8d",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1e1a20",
+                    "on-tertiary-container": "#b88359",
+                    "tertiary-container": "#401e00",
+                    "text-secondary": "#667085",
+                    "on-secondary-container": "#fffbff",
+                    "surface-container-highest": "#e8e0e9",
+                    "primary": "#1f003c",
+                    "text-primary": "#1D2939",
+                    "on-tertiary-fixed": "#2f1500",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb2bb",
+                    "surface": "#fff7fe",
+                    "surface-dim": "#e0d7e0",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#2c0051",
+                    "surface-container": "#f4ebf4",
+                    "inverse-primary": "#ddb8ff",
+                    "on-primary-container": "#aa78db",
+                    "outline-variant": "#cec3d2",
+                    "on-secondary-fixed": "#400012"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-page": "1rem",
+                    "section-gap": "1.5rem",
+                    "stack-lg": "1rem",
+                    "gutter-grid": "0.75rem",
+                    "stack-md": "0.5rem",
+                    "stack-sm": "0.25rem"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-bold": ["Inter"],
+                    "label-subtext": ["Inter"],
+                    "price-sm": ["Plus Jakarta Sans"],
+                    "price-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["16px", {"lineHeight": "20px", "fontWeight": "700"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "display-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-bold": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                    "label-subtext": ["10px", {"lineHeight": "12px", "fontWeight": "500"}],
+                    "price-sm": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                    "price-lg": ["16px", {"lineHeight": "20px", "fontWeight": "800"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .bento-item-large {
+            grid-column: span 2;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-neutral-gray-100 font-body-md text-on-surface min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-surface sticky top-0 z-50 flex justify-between items-center px-margin-page py-stack-md w-full">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div class="flex flex-col truncate">
+<h1 class="text-headline-sm font-headline-sm text-primary truncate">Datta Nagar - 4, Pantnagar Lane...</h1>
+<span class="text-label-subtext font-label-subtext text-on-surface-variant">Fast Delivery in 14 mins</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center hover:opacity-80 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin-page pt-stack-lg">
+<!-- Welcome Section -->
+<section class="mb-section-gap">
+<h2 class="text-display-lg font-display-lg text-primary mb-1">My Space</h2>
+<p class="text-body-md font-body-md text-text-secondary">Your personal shopping companion</p>
+</section>
+<!-- Bento Features Grid -->
+<section class="bento-grid mb-section-gap">
+<!-- Personal Lists - Large -->
+<div class="bento-item-large relative overflow-hidden bg-surface-white border border-neutral-gray-200 rounded-xl p-5 flex flex-col justify-between h-44 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="z-10">
+<div class="w-12 h-12 bg-zepto-purple-light rounded-lg flex items-center justify-center mb-stack-md">
+<span class="material-symbols-outlined text-primary-container text-[28px]">checklist</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary">My Personal Lists</h3>
+<p class="text-body-sm font-body-sm text-text-secondary">Weekly groceries &amp; quick restocks</p>
+</div>
+<div class="flex items-center gap-2 z-10">
+<span class="text-label-bold font-label-bold text-secondary">3 active lists</span>
+<span class="material-symbols-outlined text-secondary text-sm">chevron_right</span>
+</div>
+<!-- Abstract background pattern -->
+<div class="absolute -bottom-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[120px] text-primary">shopping_bag</span>
+</div>
+</div>
+<!-- Shared Lists -->
+<div class="bg-surface-white border border-neutral-gray-200 rounded-xl p-4 flex flex-col gap-stack-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 bg-[#E0F2FE] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[#0369A1]">group</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Shared Lists</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mt-1">Shop with family</p>
+</div>
+</div>
+<!-- Trending For Me -->
+<div class="bg-surface-white border border-neutral-gray-200 rounded-xl p-4 flex flex-col gap-stack-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 bg-[#DCFCE7] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-offer-green">trending_up</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Trending For Me</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mt-1">Based on tastes</p>
+</div>
+</div>
+<!-- Surprise Me -->
+<div class="bg-surface-white border border-neutral-gray-200 rounded-xl p-4 flex flex-col gap-stack-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 bg-[#FFEDD5] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[#C2410C]">redeem</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Surprise Me</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mt-1">Hidden gems</p>
+</div>
+</div>
+<!-- Settings -->
+<div class="bg-surface-white border border-neutral-gray-200 rounded-xl p-4 flex flex-col gap-stack-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 bg-neutral-gray-100 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">settings</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Settings</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mt-1">Manage space</p>
+</div>
+</div>
+</section>
+<!-- Insights Banner (Asymmetric Layout) -->
+<section class="mb-section-gap">
+<div class="bg-primary p-5 rounded-2xl relative overflow-hidden flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="z-10">
+<span class="inline-block bg-secondary-container text-surface-white text-label-subtext font-label-subtext px-2 py-0.5 rounded-full mb-2">SAVINGS INSIGHT</span>
+<h2 class="text-headline-md font-headline-md text-surface-white leading-tight">You saved ₹430 last month!</h2>
+<p class="text-body-sm font-body-sm text-primary-fixed-dim mt-1">Your 'Essential' list had the best deals.</p>
+<button class="mt-4 bg-surface-white text-primary text-label-bold font-label-bold py-2 px-4 rounded-lg hover:opacity-90 transition-all">View Breakdown</button>
+</div>
+<div class="relative w-full h-32 md:w-1/3 z-10 flex justify-end">
+<div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-surface-white text-4xl">receipt_long</span>
+</div>
+</div>
+<!-- Decorative background elements -->
+<div class="absolute top-0 right-0 w-48 h-48 bg-primary-container rounded-full -mr-24 -mt-24 blur-3xl opacity-50"></div>
+</div>
+</section>
+<!-- Recommended Section (Horizontal Scroll) -->
+<section class="mb-section-gap">
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary">Suggested For Your Lists</h2>
+<p class="text-body-sm font-body-sm text-text-secondary">Items you usually buy around this time</p>
+</div>
+<button class="text-secondary font-label-bold text-label-bold hover:underline transition-all">See all</button>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+<!-- Product Card 1 -->
+<div class="min-w-[140px] bg-surface-white border border-neutral-gray-200 rounded-xl p-stack-md flex flex-col group shadow-sm">
+<div class="h-28 w-full bg-neutral-gray-100 rounded-lg mb-stack-md relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="A clean product shot of fresh organic whole milk in a glass bottle, lit with soft natural window light. The background is a minimalist, modern white kitchen tile. High quality photography consistent with premium quick-commerce aesthetics, utilizing a clean and crisp visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsXPV-MGuz4UUSonMfXTkogP4hRHPlvEkP6PfX4joqS4IbuOoo9N_DC4GhqtMNTKy2MzWMAqFb0bB6kwSLsuF4rkTakOgExOTVJjEibrjZ9X1E7Nr8bePb-Fi__jQN2OcI6ACeYbWODQF7MBZED2Lj8WuCbla_oN9NPPi9V0tOx0d7j2eLMn-H1OMzsLWfM6XOwzn3E6TuKR1y1_qRXVj1eSWJLTXApEvTQ1aBRD8-z-W2qio2CCOzPw"/>
+<button class="absolute bottom-2 right-2 w-8 h-8 bg-surface-white border border-secondary text-secondary rounded-lg flex items-center justify-center shadow-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+</div>
+<span class="text-price-sm font-price-sm text-primary">₹56</span>
+<h4 class="text-body-sm font-body-sm text-primary line-clamp-2 mt-0.5">Fresh Whole Milk (500ml)</h4>
+<span class="text-label-subtext font-label-subtext text-text-secondary mt-1">Daily Essential</span>
+</div>
+<!-- Product Card 2 -->
+<div class="min-w-[140px] bg-surface-white border border-neutral-gray-200 rounded-xl p-stack-md flex flex-col group shadow-sm">
+<div class="h-28 w-full bg-neutral-gray-100 rounded-lg mb-stack-md relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="Close up studio photography of ripe red tomatoes with green stems, presented in a minimalist ceramic bowl. The lighting is bright and airy, emphasizing the fresh texture of the produce. Corporate modern style for a premium grocery delivery app, with vibrant colors and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMDE7chNBhofQTodav0ZL-V7xiy1rXuOZ0G6kUJb-Cv6zBC86Ssi6o5wWfVKIc5s2HVhCYcHz-vpgswvtLd-qbnAOpmRqCzIe41n1GEmAe-fQVowlPVAIykoVPJ0XyUIB0iq5EMyv6XlHdf10GJXewQ3zkA7puSSAbhonC1rBoNmYTo3EexKS5rJkDW-5SHRqnhjEOstJhwuL7zZdN9miWCPFBei5jcD4GFXu_4fuRrx4korDmlyHAqA"/>
+<button class="absolute bottom-2 right-2 w-8 h-8 bg-surface-white border border-secondary text-secondary rounded-lg flex items-center justify-center shadow-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+</div>
+<div class="flex items-center gap-1">
+<span class="text-price-sm font-price-sm text-primary">₹42</span>
+<span class="text-label-subtext font-label-subtext text-text-secondary line-through">₹50</span>
+</div>
+<h4 class="text-body-sm font-body-sm text-primary line-clamp-2 mt-0.5">Hybrid Tomato (500g)</h4>
+<span class="text-label-subtext font-label-subtext text-offer-green mt-1">₹8 Off</span>
+</div>
+<!-- Product Card 3 -->
+<div class="min-w-[140px] bg-surface-white border border-neutral-gray-200 rounded-xl p-stack-md flex flex-col group shadow-sm">
+<div class="h-28 w-full bg-neutral-gray-100 rounded-lg mb-stack-md relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="A pack of premium brown eggs displayed in a sustainable cardboard carton on a light wood surface. The image is bright, professional, and captures the natural texture of the eggshells. Soft tactile influence with high-end product presentation for a modern utility-focused shopping interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWb_VQaL6cxX1mK24lHiKlt6OOcba99Wcd-ohTmK6i9czXT1zKdUsjDZAtKDvjFJArYNzfSeVZCegI7A5wKko-xx0Cclf2TGc1Dv7kBk6TttoNfo9quaXcVMoSopSnseZCb3hPfwyQzNG2PvnO7yOGZBEKpD4d9YWf_fpopnuFPidltL1p-h7Ct4UudFJWJJgzCObWsO9stu9WtwLIdSuzKwiE6TfzsAtWdoVlMfrVcACnjlTd26NzpA"/>
+<button class="absolute bottom-2 right-2 w-8 h-8 bg-surface-white border border-secondary text-secondary rounded-lg flex items-center justify-center shadow-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+</div>
+<span class="text-price-sm font-price-sm text-primary">₹85</span>
+<h4 class="text-body-sm font-body-sm text-primary line-clamp-2 mt-0.5">Organic Brown Eggs (6 pcs)</h4>
+<span class="text-label-subtext font-label-subtext text-text-secondary mt-1">Health Pick</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button - Dynamic -->
+<button class="fixed bottom-24 right-4 bg-secondary text-surface-white flex items-center gap-2 px-6 py-3 rounded-full shadow-lg hover:brightness-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined">add_task</span>
+<span class="text-label-bold font-label-bold">New List</span>
+</button>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-2 bg-surface-white border-t border-neutral-gray-200 shadow-lg z-50">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-neutral-gray-100 transition-all duration-150 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-subtext font-label-subtext">Home</span>
+</a>
+<!-- Categories -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-neutral-gray-100 transition-all duration-150 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-label-subtext font-label-subtext">Categories</span>
+</a>
+<!-- My Space (Active) -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold scale-90 transition-all duration-150 p-2 rounded-lg bg-secondary-fixed/30" href="#">
+<span class="material-symbols-outlined active-icon">space_dashboard</span>
+<span class="text-label-subtext font-label-subtext">My Space</span>
+</a>
+<!-- Fresh -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-neutral-gray-100 transition-all duration-150 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">eco</span>
+<span class="text-label-subtext font-label-subtext">Fresh</span>
+</a>
+<!-- Buddies -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-neutral-gray-100 transition-all duration-150 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-subtext font-label-subtext">Buddies</span>
+</a>
+</nav>
+<!-- Micro-interaction script -->
+<script>
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                ripple.classList.add('absolute', 'bg-white/20', 'rounded-full', 'animate-ping');
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.left = e.clientX - el.getBoundingClientRect().left - 10 + 'px';
+                ripple.style.top = e.clientY - el.getBoundingClientRect().top - 10 + 'px';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 400);
+            });
+        });
+    </script>
+</body></html>

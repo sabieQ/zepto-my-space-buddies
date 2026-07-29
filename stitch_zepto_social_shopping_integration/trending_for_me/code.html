@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trending For Me - My Space</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Plus+Jakarta+Sans:wght@700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .product-card {
+            transition: transform 0.15s ease-in-out;
+        }
+        .product-card:active {
+            transform: scale(0.98);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "surface-container": "#f4ebf4",
+                        "primary": "#1f003c",
+                        "neutral-gray-200": "#E4E7EC",
+                        "primary-container": "#3c006b",
+                        "on-tertiary-fixed-variant": "#663d1a",
+                        "outline": "#7d7482",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#b90043",
+                        "on-primary-container": "#aa78db",
+                        "background": "#fff7fe",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#ddb8ff",
+                        "secondary-container": "#e31657",
+                        "inverse-on-surface": "#f7eef7",
+                        "inverse-surface": "#332f36",
+                        "secondary-fixed": "#ffd9dd",
+                        "on-background": "#1e1a20",
+                        "surface-bright": "#fff7fe",
+                        "on-tertiary-fixed": "#2f1500",
+                        "neutral-gray-100": "#F2F4F7",
+                        "surface-white": "#FFFFFF",
+                        "on-secondary-fixed": "#400012",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1e1a20",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#7747a7",
+                        "outline-variant": "#cec3d2",
+                        "on-tertiary-container": "#b88359",
+                        "on-surface-variant": "#4b4450",
+                        "on-secondary-container": "#fffbff",
+                        "tertiary": "#220d00",
+                        "offer-green": "#00833E",
+                        "surface-container-high": "#eee5ef",
+                        "text-primary": "#1D2939",
+                        "on-primary-fixed": "#2c0051",
+                        "surface-container-highest": "#e8e0e9",
+                        "on-primary-fixed-variant": "#5e2e8d",
+                        "surface-dim": "#e0d7e0",
+                        "success-green": "#259547",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#f7ba8d",
+                        "primary-fixed-dim": "#ddb8ff",
+                        "tertiary-container": "#401e00",
+                        "zepto-purple-light": "#F3E8FF",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#910033",
+                        "text-secondary": "#667085",
+                        "tertiary-fixed": "#ffdcc4",
+                        "secondary-fixed-dim": "#ffb2bb",
+                        "surface": "#fff7fe",
+                        "surface-container-low": "#faf1fa",
+                        "primary-fixed": "#f0dbff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e8e0e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-grid": "0.75rem",
+                        "stack-lg": "1rem",
+                        "margin-page": "1rem",
+                        "stack-md": "0.5rem",
+                        "section-gap": "1.5rem",
+                        "stack-sm": "0.25rem"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "price-sm": ["Plus Jakarta Sans"],
+                        "price-lg": ["Plus Jakarta Sans"],
+                        "label-subtext": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "price-sm": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                        "price-lg": ["16px", {"lineHeight": "20px", "fontWeight": "800"}],
+                        "label-subtext": ["10px", {"lineHeight": "12px", "fontWeight": "500"}],
+                        "label-bold": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                        "headline-sm": ["16px", {"lineHeight": "20px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-surface min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface border-b border-outline-variant flex items-center px-margin-page h-14">
+<button class="mr-4 p-1 active:scale-95 duration-150 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Trending For Me</h1>
+</header>
+<main class="flex flex-col gap-section-gap py-margin-page">
+<!-- Section: Based on your shopping -->
+<section>
+<div class="px-margin-page flex justify-between items-center mb-stack-lg">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Based on your shopping</h2>
+<button class="text-secondary font-label-bold text-label-bold hover:underline">See all</button>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-stack-lg px-margin-page">
+<!-- Product Card 1 -->
+<div class="product-card flex-shrink-0 w-44 bg-surface-white rounded-lg border border-neutral-gray-200 p-stack-md flex flex-col">
+<div class="relative w-full aspect-square bg-neutral-gray-100 rounded-lg overflow-hidden mb-stack-md">
+<img class="w-full h-full object-cover" data-alt="High-quality close-up photography of a fresh bottle of premium full-fat milk with a clean, white label. The lighting is soft and natural, emphasizing the product's purity. The background is a soft, out-of-focus modern kitchen with subtle purple accents, maintaining the Zepto brand's fast-delivery and fresh grocery aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSqU2RUSl8V6tuHBhrRkIeo5osITK_SgUZ6tQay_t_M4sJgu84BQkl3cqPIh9IYJXhGkqwFvy_3T-ekPpsgIxLz7msTh4JSqQ_CaVOz-yMK6nA3Hno7-nwPLYJodNwhq2O6z2pxrQ7RCkUGQcwV_4gF2rMlJ2asdzn6vWa63ksz93nt-BEvUA_6RaRgeZmKWtGuyZFzNvtuX1qpbskGFu6iL_-ulT0u-S7Af2P1Zq1_DpUmMI7Pq_2dA"/>
+<div class="absolute top-2 left-2 bg-offer-green text-surface-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">15% OFF</div>
+</div>
+<div class="flex flex-col flex-grow">
+<p class="text-on-surface font-label-bold text-[13px] line-clamp-2 leading-tight">Heritage Total Curd</p>
+<p class="text-text-secondary font-body-sm text-body-sm mt-0.5">200g</p>
+<div class="mt-auto pt-stack-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-price-lg text-price-lg">₹32</span>
+<span class="text-text-secondary font-price-sm text-price-sm line-through decoration-1">₹38</span>
+</div>
+<button class="border border-secondary text-secondary rounded-lg px-3 py-1 font-label-bold text-label-bold hover:bg-secondary hover:text-white transition-colors">ADD</button>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-neutral-gray-100">
+<p class="text-secondary font-label-subtext text-label-subtext italic">Pairs well with your usual milk</p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="product-card flex-shrink-0 w-44 bg-surface-white rounded-lg border border-neutral-gray-200 p-stack-md flex flex-col">
+<div class="relative w-full aspect-square bg-neutral-gray-100 rounded-lg overflow-hidden mb-stack-md">
+<img class="w-full h-full object-cover" data-alt="A professional product shot of organic high-fiber granola in a minimalist transparent pouch. The scene is brightly lit with high-key studio lights, casting soft shadows. The overall aesthetic is clean, corporate-modern, and friendly, with a vibrant color palette that includes soft purple and pink brand signals in the background environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASNyHcCjII6HXyN6fDcYu1eFw2RjIZ11VzUMFFh867Wu2_3j4WYlQxh2qfn9lIVbzvpkFgjFzh36nALugC3ihgjVgy-2EvU3070lTxOa62O-8x0-jOB6ANBoFD35lHDaGau-_ZXatQZ2SlnT3PE_DEB4Agsejqhup8ohKTNP2sh9tRKLPHi-XYeg_MXO06JjILz-Y1f6KTE-bdWZAg9L52Rzhya-DSnGgcDcIHYoJMLFaTC1CpsD38lg"/>
+</div>
+<div class="flex flex-col flex-grow">
+<p class="text-on-surface font-label-bold text-[13px] line-clamp-2 leading-tight">Yogabar Muesli</p>
+<p class="text-text-secondary font-body-sm text-body-sm mt-0.5">400g</p>
+<div class="mt-auto pt-stack-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-price-lg text-price-lg">₹245</span>
+<span class="text-text-secondary font-price-sm text-price-sm line-through decoration-1">₹299</span>
+</div>
+<button class="border border-secondary text-secondary rounded-lg px-3 py-1 font-label-bold text-label-bold hover:bg-secondary hover:text-white transition-colors">ADD</button>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-neutral-gray-100">
+<p class="text-secondary font-label-subtext text-label-subtext italic">Usually bought on Mondays</p>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="product-card flex-shrink-0 w-44 bg-surface-white rounded-lg border border-neutral-gray-200 p-stack-md flex flex-col">
+<div class="relative w-full aspect-square bg-neutral-gray-100 rounded-lg overflow-hidden mb-stack-md">
+<img class="w-full h-full object-cover" data-alt="A macro shot of vibrant, ripe green grapes in a sustainable paper tray. The lighting is crisp and highlights the fresh water droplets on the grapes, conveying immediate freshness and quality. The setting is clean and brightly illuminated, following a minimalist and product-first layout philosophy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPEMgBWL6eseCv9WI60gZgDYbfwaK93kqgQHxzOMcem3WJ-gckYLLIg5XqMM7aadRLn-9Xiew6OuDegGPWoSgjbGTf4JeA7BBRqWJkINCAjW-T1trH0BQ-8qo-FTiHBuI9kvpsu-yESeLGo_0MzpmhMWcrcTO17oCpfO_h0iP-EOjlkAaMAeIKwUq0iBvlcmzNZaZktioOKSvRZcQkOw0CreE0JQ6kpHDdEtqZz56aO2rriUydrP707g"/>
+</div>
+<div class="flex flex-col flex-grow">
+<p class="text-on-surface font-label-bold text-[13px] line-clamp-2 leading-tight">Seedless Green Grapes</p>
+<p class="text-text-secondary font-body-sm text-body-sm mt-0.5">500g</p>
+<div class="mt-auto pt-stack-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-price-lg text-price-lg">₹110</span>
+<span class="text-text-secondary font-price-sm text-price-sm line-through decoration-1">₹140</span>
+</div>
+<button class="border border-secondary text-secondary rounded-lg px-3 py-1 font-label-bold text-label-bold hover:bg-secondary hover:text-white transition-colors">ADD</button>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-neutral-gray-100">
+<p class="text-secondary font-label-subtext text-label-subtext italic">Fresh batch just arrived</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Popular among your Buddies -->
+<section class="bg-surface-container-low py-stack-lg">
+<div class="px-margin-page flex justify-between items-center mb-stack-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">group</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Popular among your Buddies</h2>
+</div>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-stack-lg px-margin-page">
+<!-- Product Card 4 -->
+<div class="product-card flex-shrink-0 w-44 bg-surface-white rounded-lg border border-neutral-gray-200 p-stack-md flex flex-col">
+<div class="relative w-full aspect-square bg-neutral-gray-100 rounded-lg overflow-hidden mb-stack-md">
+<img class="w-full h-full object-cover" data-alt="A stylish, studio-lit photo of a artisanal sourdough loaf on a minimalist wooden cutting board. The bread has a crisp, golden-brown crust. The lighting is high-contrast and warm, creating a premium feel. The background is a clean white surface, keeping the focus entirely on the product quality and texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5rR74G3GgkbkCBC7w-2oh29B-V1P16hizYKr3X6NzKtPODwh4ZcPRgylTfwcyZyl2tCxId7Of51Htdv_4gcF9i0yBja5lOZo0WJP51-M6CWauXHUWjga1ZHaoLeDgKfhkJWA6PLTmiIkgwwp-1vroUyxGrgAqqRxnoyeL6OBcqkzpLNA8qkh5H8tr6dLcSUQ_H_NcXQd9CF2gcHr-YgjmTWOqsoGHxUls8OWSu253Hs6TFT6k5yKoZA"/>
+</div>
+<div class="flex flex-col flex-grow">
+<p class="text-on-surface font-label-bold text-[13px] line-clamp-2 leading-tight">Whole Wheat Sourdough</p>
+<p class="text-text-secondary font-body-sm text-body-sm mt-0.5">400g</p>
+<div class="mt-auto pt-stack-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-price-lg text-price-lg">₹120</span>
+</div>
+<button class="border border-secondary text-secondary rounded-lg px-3 py-1 font-label-bold text-label-bold hover:bg-secondary hover:text-white transition-colors">ADD</button>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-neutral-gray-100 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">thumb_up</span>
+<p class="text-secondary font-label-subtext text-label-subtext italic">3 friends bought this recently</p>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="product-card flex-shrink-0 w-44 bg-surface-white rounded-lg border border-neutral-gray-200 p-stack-md flex flex-col">
+<div class="relative w-full aspect-square bg-neutral-gray-100 rounded-lg overflow-hidden mb-stack-md">
+<img class="w-full h-full object-cover" data-alt="A vibrant product shot of premium dark chocolate bars with elegant, textured wrapping. The lighting is soft and artistic, highlighting the rich colors and clean typography of the packaging. The scene is set in a modern, well-lit environment that aligns with a high-growth quick-commerce platform's premium branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUHk0BB9GXhTsp9lgkRFGqdJbZ9Xx5lkvCTCqYwaBTbBoGg2uthER9Nz1lkk7MKA3aL4KtUs4VXhfi-jMPqzL_29XJrs6vD1Tc0eQclgOBz6JklnOw11VcJV6YPr7VP6782z4tDLtvZq10BGN_aRTqWsLWYYdSHO3K8FPLP5nfgmY_d3xKss9W-PXtzJed_6ZfatqhzPnFA8cPMSMr_qasRh6tfsnFJ3VS7BmF1a0dqzyv7zOFk6pw6w"/>
+</div>
+<div class="flex flex-col flex-grow">
+<p class="text-on-surface font-label-bold text-[13px] line-clamp-2 leading-tight">Dark Chocolate 70% Coco</p>
+<p class="text-text-secondary font-body-sm text-body-sm mt-0.5">80g</p>
+<div class="mt-auto pt-stack-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-price-lg text-price-lg">₹185</span>
+</div>
+<button class="border border-secondary text-secondary rounded-lg px-3 py-1 font-label-bold text-label-bold hover:bg-secondary hover:text-white transition-colors">ADD</button>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-neutral-gray-100 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">favorite</span>
+<p class="text-secondary font-label-subtext text-label-subtext italic">Ankit & 2 others love this</p>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="product-card flex-shrink-0 w-44 bg-surface-white rounded-lg border border-neutral-gray-200 p-stack-md flex flex-col">
+<div class="relative w-full aspect-square bg-neutral-gray-100 rounded-lg overflow-hidden mb-stack-md">
+<img class="w-full h-full object-cover" data-alt="A close-up of a premium, sparkling beverage in a sleek glass bottle with a minimalist label. The lighting creates a fresh and effervescent feel, with visible bubbles and condensation on the glass. The background is a clean, neutral tone with soft highlights that emphasize the refreshing nature of the drink." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyUMTq7XlXLE0iiX7nHnsvPtPsq_JzCRsdCm7lyUb54xR_kaetEW3_SX2E7pbbbKxEPaRBFAZnGsuxC9S8ib2kshSkmYxwOIyDl-td2_Lq2XBtuwAXe5aKa2rgVA6UiIYJhbJY_h0P7vWjfK7TOFDXFTIUHMSQeqfgTCLowYuAAcZcDq2iIGYOD244mJozpHzYGZA6TPyGzRZYdYXb4eYlzwkh9QuOQDTi4cRiIvEhBjOGFEvKCE3MJA"/>
+</div>
+<div class="flex flex-col flex-grow">
+<p class="text-on-surface font-label-bold text-[13px] line-clamp-2 leading-tight">Sparkling Lemonade</p>
+<p class="text-text-secondary font-body-sm text-body-sm mt-0.5">330ml</p>
+<div class="mt-auto pt-stack-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-price-lg text-price-lg">₹95</span>
+</div>
+<button class="border border-secondary text-secondary rounded-lg px-3 py-1 font-label-bold text-label-bold hover:bg-secondary hover:text-white transition-colors">ADD</button>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-neutral-gray-100 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">chat</span>
+<p class="text-secondary font-label-subtext text-label-subtext italic">Recommended in 'Office Group'</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Seasonal Picks -->
+<section>
+<div class="px-margin-page flex items-center gap-2 mb-stack-lg">
+<span class="material-symbols-outlined text-offer-green">eco</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Seasonal Picks</h2>
+</div>
+<div class="px-margin-page grid grid-cols-2 gap-stack-lg">
+<!-- Grid Card 1 -->
+<div class="product-card bg-surface-white rounded-lg border border-neutral-gray-200 p-stack-md flex flex-col">
+<div class="relative w-full aspect-square bg-neutral-gray-100 rounded-lg overflow-hidden mb-stack-md">
+<img class="w-full h-full object-cover" data-alt="A beautiful studio photography shot of ripe Alphonso mangoes, perfectly arranged on a white marble surface. The lighting is warm and golden, accentuating the vibrant yellow-orange color of the fruit. The style is modern, product-focused, and highly appealing, suggesting high-quality seasonal produce for a premium grocery service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy6s_6wFDAKUmhTtNl12bGRmw8XLCQEeN0neRhD-wqIH9n9GJf7KSmLT8Mwm4mONPAfbqGfo7l2At2WOWRxP7wCXzAqcMTKcCewE4Fd-xXkhjr7wCOtpiUYbDt8V-BmpdZ128w0fnaQvTKabMP1DFoBGwWI6f3xNdkaPO6i4X_LPdWuVtleDHwM5X_qeDwBZM_y07JEM_F3w-BkYPb_ig_OjiEg77bvKVAT0QL8gihkNkk6mPVwlmdoA"/>
+<div class="absolute top-0 right-0 p-1">
+<div class="bg-primary/80 backdrop-blur-sm text-white px-2 py-0.5 rounded-bl-lg font-label-subtext text-[10px]">IN SEASON</div>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<p class="text-on-surface font-label-bold text-[13px] line-clamp-1 leading-tight">Premium Alphonso Mango</p>
+<p class="text-text-secondary font-body-sm text-body-sm mt-0.5">2 pcs</p>
+<div class="mt-auto pt-stack-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-price-lg text-price-lg">₹399</span>
+</div>
+<button class="border border-secondary text-secondary rounded-lg px-3 py-1 font-label-bold text-label-bold hover:bg-secondary hover:text-white transition-colors">ADD</button>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-neutral-gray-100">
+<p class="text-secondary font-label-subtext text-label-subtext italic">The season's first harvest!</p>
+</div>
+</div>
+<!-- Grid Card 2 -->
+<div class="product-card bg-surface-white rounded-lg border border-neutral-gray-200 p-stack-md flex flex-col">
+<div class="relative w-full aspect-square bg-neutral-gray-100 rounded-lg overflow-hidden mb-stack-md">
+<img class="w-full h-full object-cover" data-alt="A refreshing lifestyle shot of a tall glass of iced coconut water with a slice of lime, set against a bright, airy sun-drenched background. The lighting is high-key and summery, evoking a feeling of hydration and freshness. The scene is clean, modern, and aligned with a fast-delivery grocery service's focus on healthy, fresh options." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBikjXTOkT3FT-4oElHRNOtplCJMqxkg6IxPWPi1AvCwzQzT0NpvmG6kSg4YGQSga0-OMrOG9NXSxnrpnGvM7yXDUU9GGNg1xVB_rvC4oE6qzxI5nehXmveZGlxqpUmrSciCsMLqDP3g4A3uYKg9GVPfIbzv65qCx4lNr0vTpn1vk3tzp1CHuGAXdtMDk0pIHAeeGOTNiLdiVYnlvZEO9VTg_38nYxHf5612TyuGCApD3xYe4MiJOfjlw"/>
+</div>
+<div class="flex flex-col flex-grow">
+<p class="text-on-surface font-label-bold text-[13px] line-clamp-1 leading-tight">Fresh Tender Coconut</p>
+<p class="text-text-secondary font-body-sm text-body-sm mt-0.5">1 pc</p>
+<div class="mt-auto pt-stack-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-price-lg text-price-lg">₹65</span>
+</div>
+<button class="border border-secondary text-secondary rounded-lg px-3 py-1 font-label-bold text-label-bold hover:bg-secondary hover:text-white transition-colors">ADD</button>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-neutral-gray-100">
+<p class="text-secondary font-label-subtext text-label-subtext italic">Trending this summer</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Bento Banner -->
+<section class="px-margin-page">
+<div class="relative bg-primary-container rounded-xl p-6 overflow-hidden flex flex-col gap-2 min-h-[140px] justify-center">
+<!-- Abstract Glassmorphism Element -->
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-on-primary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute -right-4 -bottom-10 w-24 h-24 bg-secondary/30 rounded-full blur-2xl"></div>
+<h3 class="text-on-primary-container font-display-lg text-display-lg leading-tight relative z-10">Discover More <br/>with Buddies</h3>
+<p class="text-primary-fixed font-body-md text-body-md relative z-10">Join groups to see what's trending in your neighborhood.</p>
+<button class="mt-2 bg-secondary text-white font-label-bold text-label-bold px-4 py-2 rounded-full w-fit relative z-10 shadow-lg active:scale-95 transition-transform">Explore Buddies</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 h-16 border-t border-neutral-gray-200 bg-surface-white shadow-sm flex justify-around items-center px-2">
+<!-- Home -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-all hover:bg-surface-container-low cursor-pointer px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-bold text-label-bold">Home</span>
+</div>
+<!-- Categories -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-all hover:bg-surface-container-low cursor-pointer px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-bold text-label-bold">Categories</span>
+</div>
+<!-- My Space (Active) -->
+<div class="flex flex-col items-center justify-center text-secondary font-bold transition-all hover:bg-surface-container-low cursor-pointer px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_pin</span>
+<span class="font-label-bold text-label-bold">My Space</span>
+</div>
+<!-- Fresh -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-all hover:bg-surface-container-low cursor-pointer px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined">eco</span>
+<span class="font-label-bold text-label-bold">Fresh</span>
+</div>
+<!-- Buddies -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-all hover:bg-surface-container-low cursor-pointer px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-bold text-label-bold">Buddies</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for the "ADD" buttons
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent === 'ADD') {
+                button.addEventListener('click', function() {
+                    const originalText = this.textContent;
+                    this.textContent = 'ADDED';
+                    this.classList.remove('text-secondary', 'border-secondary');
+                    this.classList.add('bg-success-green', 'text-white', 'border-success-green');
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.classList.remove('bg-success-green', 'text-white', 'border-success-green');
+                        this.classList.add('text-secondary', 'border-secondary');
+                    }, 1500);
+                });
+            }
+        });
+
+        // Sticky header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-sm');
+            } else {
+                header.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body></html>

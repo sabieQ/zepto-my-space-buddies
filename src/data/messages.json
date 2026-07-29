@@ -1,0 +1,32 @@
+{
+  "arindam": [
+    {
+      "id": "m1",
+      "type": "text",
+      "from": "arindam",
+      "text": "Check this out!",
+      "time": "09:42 AM"
+    },
+    {
+      "id": "m2",
+      "type": "product",
+      "from": "arindam",
+      "productId": "korean-ramen",
+      "time": "09:42 AM"
+    },
+    {
+      "id": "m3",
+      "type": "text",
+      "from": "me",
+      "text": "Added! Also check the list for tonight.",
+      "time": "09:44 AM"
+    },
+    {
+      "id": "m4",
+      "type": "list",
+      "from": "me",
+      "listId": "weekend-party",
+      "time": "09:44 AM"
+    }
+  ]
+}

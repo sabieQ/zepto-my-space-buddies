@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Surprise Me - Zepto My Space</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "surface-container": "#f4ebf4",
+                        "primary": "#1f003c",
+                        "neutral-gray-200": "#E4E7EC",
+                        "primary-container": "#3c006b",
+                        "on-tertiary-fixed-variant": "#663d1a",
+                        "outline": "#7d7482",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#b90043",
+                        "on-primary-container": "#aa78db",
+                        "background": "#fff7fe",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#ddb8ff",
+                        "secondary-container": "#e31657",
+                        "inverse-on-surface": "#f7eef7",
+                        "inverse-surface": "#332f36",
+                        "secondary-fixed": "#ffd9dd",
+                        "on-background": "#1e1a20",
+                        "surface-bright": "#fff7fe",
+                        "on-tertiary-fixed": "#2f1500",
+                        "neutral-gray-100": "#F2F4F7",
+                        "surface-white": "#FFFFFF",
+                        "on-secondary-fixed": "#400012",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1e1a20",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#7747a7",
+                        "outline-variant": "#cec3d2",
+                        "on-tertiary-container": "#b88359",
+                        "on-surface-variant": "#4b4450",
+                        "on-secondary-container": "#fffbff",
+                        "tertiary": "#220d00",
+                        "offer-green": "#00833E",
+                        "surface-container-high": "#eee5ef",
+                        "text-primary": "#1D2939",
+                        "on-primary-fixed": "#2c0051",
+                        "surface-container-highest": "#e8e0e9",
+                        "on-primary-fixed-variant": "#5e2e8d",
+                        "surface-dim": "#e0d7e0",
+                        "success-green": "#259547",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#f7ba8d",
+                        "primary-fixed-dim": "#ddb8ff",
+                        "tertiary-container": "#401e00",
+                        "zepto-purple-light": "#F3E8FF",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#910033",
+                        "text-secondary": "#667085",
+                        "tertiary-fixed": "#ffdcc4",
+                        "secondary-fixed-dim": "#ffb2bb",
+                        "surface": "#fff7fe",
+                        "surface-container-low": "#faf1fa",
+                        "primary-fixed": "#f0dbff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e8e0e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-grid": "0.75rem",
+                        "stack-lg": "1rem",
+                        "margin-page": "1rem",
+                        "stack-md": "0.5rem",
+                        "section-gap": "1.5rem",
+                        "stack-sm": "0.25rem"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "price-sm": ["Plus Jakarta Sans"],
+                        "price-lg": ["Plus Jakarta Sans"],
+                        "label-subtext": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "price-sm": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                        "price-lg": ["16px", {"lineHeight": "20px", "fontWeight": "800"}],
+                        "label-subtext": ["10px", {"lineHeight": "12px", "fontWeight": "500"}],
+                        "label-bold": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                        "headline-sm": ["16px", {"lineHeight": "20px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-glow::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,50,105,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim z-50 border-b border-outline-variant dark:border-outline flex items-center px-margin-page h-14 w-full">
+<button class="mr-4 active:scale-95 duration-150 p-1 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Surprise Me</h1>
+</header>
+<main class="px-margin-page py-6 space-y-section-gap">
+<!-- Animated Hero Background Section -->
+<section class="relative">
+<div class="mb-4">
+<h2 class="font-display-lg text-display-lg text-primary">Your Weekend Treat</h2>
+<p class="font-body-md text-text-secondary mt-1">Curated just for you based on your favorites.</p>
+</div>
+<!-- Hero Recommendation Card -->
+<div class="relative bg-surface-white border border-neutral-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row h-auto md:h-80 group">
+<div class="relative w-full md:w-1/2 h-64 md:h-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A luxurious close-up of artisanal Belgian chocolates arranged on a white marble surface. The lighting is soft and warm, highlighting the smooth cocoa texture and elegant gold foil wrappings. The aesthetic is premium and modern, using a clean light-mode palette with subtle purple accents in the background shadows to match a high-end food delivery app's visual identity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMraHkcH5ItmycQ9fVi7h_XCQVtz5RjWxz2IzT8cr1zC-HdWbuwk3XeTCRO2LtfjyzDSI4A8MK1rAoyvCYowUL1zuThMvo3fsRBGzWBn5SNNsHRa0L7IVbv1RiAEb74cyK8NdPb9cBrJtx9kPcD5V3e6lsmB9njUvY79O6i5dYxq-jyL9UcvFXuGH7u7VSVTnGbX0MEak4bc3_0jLM0Lo6ViSPUeWlVvPbDsbm1wPpZoD0oPwiBq1ZZA')"></div>
+<div class="absolute top-3 left-3 bg-secondary text-on-secondary px-3 py-1 rounded-full font-label-bold text-label-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">local_offer</span>
+                        50% OFF
+                    </div>
+</div>
+<div class="p-6 flex flex-col justify-between flex-1 bg-surface-white">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-offer-green text-[18px]">celebration</span>
+<span class="text-offer-green font-label-bold text-label-bold uppercase tracking-wider">A treat for your weekend!</span>
+</div>
+<h3 class="font-display-lg text-display-lg text-primary mb-2 leading-tight">Premium Belgian Chocolates</h3>
+<p class="font-body-md text-on-surface-variant">Handcrafted dark and milk chocolate assortments with silky hazelnut praline filling. Perfectly paired with your evening coffee.</p>
+<div class="mt-4 flex items-center gap-3">
+<span class="font-price-lg text-price-lg text-primary">₹599</span>
+<span class="text-on-surface-variant line-through font-body-sm text-body-sm">₹1199</span>
+</div>
+</div>
+<button class="mt-6 w-full bg-secondary hover:bg-secondary-container text-on-secondary font-headline-sm text-headline-sm py-4 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined">shopping_bag</span>
+                        Add to Cart
+                    </button>
+</div>
+</div>
+</section>
+<!-- Recommendations Grid -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-md text-headline-md text-primary">More to Love</h2>
+<button class="text-secondary font-label-bold text-label-bold flex items-center">
+                    See All <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Sub Card 1 -->
+<div class="bg-surface-white border border-neutral-gray-200 rounded-xl p-3 flex gap-4 hover:border-secondary transition-colors group cursor-pointer">
+<div class="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-gray-100">
+<div class="w-full h-full bg-cover bg-center" data-alt="A vibrant arrangement of exotic fruits including sliced dragon fruit, kiwi, and mango in a minimalist white ceramic bowl. The lighting is bright and natural, creating a fresh and energetic atmosphere. The style is professional product photography for a high-quality grocery app, with clean lines and high color saturation." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAUrED1mNtscprNJD0kffHorVo185zv3g1dZTvX1YHEQ65IFBAt7e4AQi2MQsOI94TWxt5TcCseALLygpLqz_gVG2V5lvuOngQSMmeAvfq6csZ9NuGtrcjz-LjJMZIvWJeeXSkEvzXbuGOnZCaHXJjrL6GsxY8QPP_9giucYMZ-Id6BInVs0v6P6yLaub_4NnwfltDHMY8CwGg_hkRr-5DyoTZIj1p5-68B_3CAs-0ooniuhRtaAFr4oA')"></div>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<p class="text-offer-green font-label-subtext text-label-subtext uppercase font-bold">Refreshment Pick</p>
+<h4 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">Exotic Fruit Platter</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Freshly cut seasonal fruits.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="font-price-lg text-price-lg text-primary">₹249</span>
+<button class="h-8 w-8 rounded-full border-2 border-secondary flex items-center justify-center text-secondary active:bg-secondary active:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sub Card 2 -->
+<div class="bg-surface-white border border-neutral-gray-200 rounded-xl p-3 flex gap-4 hover:border-secondary transition-colors group cursor-pointer">
+<div class="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-gray-100">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up of a freshly brewed cup of premium single-origin coffee with a light foam, sitting next to a bag of roasted coffee beans on a rustic wooden table. Atmospheric morning light streams in from the side, creating soft shadows. The visual style is cozy, warm, and inviting, suitable for a premium grocery service." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1XlkuhAmjP4SPs5-1QFxWyR6b5TEDzE2lT6DqHxNUrKbRKRdsi-XBAIg63-nlFW_Iuqoz8N4Kk3I9uc4w_wK4uzkxueWDSi3Y-YUI3_sS188LD_Q6h18ycsZrSCxxUQ9hGB_xQiQSvwwo5dXc_pG2rwExprzXZhXWLLiIrujJDhfMX-eaCPRUqKTUaoteSuwBpcJmWgGdzTwyKj4PwwLDhTFGAdz70i_tq3wIMSHETe5O4LDa4gxZbQ')"></div>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<p class="text-offer-green font-label-subtext text-label-subtext uppercase font-bold">Morning Fuel</p>
+<h4 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">Roasted Arabica Beans</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">250g | Medium Roast</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="font-price-lg text-price-lg text-primary">₹450</span>
+<button class="h-8 w-8 rounded-full border-2 border-secondary flex items-center justify-center text-secondary active:bg-secondary active:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Discovery Banner -->
+<section class="bg-zepto-purple-light rounded-2xl p-6 flex items-center justify-between">
+<div class="max-w-[70%]">
+<h3 class="font-headline-md text-headline-md text-primary">Not what you wanted?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Shake your phone for a new set of surprises!</p>
+</div>
+<div class="bg-primary-container h-12 w-12 rounded-full flex items-center justify-center animate-bounce">
+<span class="material-symbols-outlined text-white">vibration</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 h-16 border-t border-neutral-gray-200 dark:border-outline-variant shadow-sm flex justify-around items-center w-full bg-surface-white dark:bg-surface-container px-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-bold text-label-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-bold text-label-bold">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-container font-bold hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_pin</span>
+<span class="font-label-bold text-label-bold">My Space</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">eco</span>
+<span class="font-label-bold text-label-bold">Fresh</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-bold text-label-bold">Buddies</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for shake effect simulation
+        let shakeBanner = document.querySelector('.bg-zepto-purple-light');
+        if(shakeBanner) {
+            shakeBanner.addEventListener('click', () => {
+                shakeBanner.classList.add('animate-ping');
+                setTimeout(() => {
+                    shakeBanner.classList.remove('animate-ping');
+                }, 400);
+            });
+        }
+    </script>
+</body></html>

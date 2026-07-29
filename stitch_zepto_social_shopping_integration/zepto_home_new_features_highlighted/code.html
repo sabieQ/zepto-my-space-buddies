@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zepto - Quick Commerce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#7747a7",
+                        "primary-fixed": "#f0dbff",
+                        "on-primary": "#ffffff",
+                        "background": "#fff7fe",
+                        "primary-fixed-dim": "#ddb8ff",
+                        "on-error-container": "#93000a",
+                        "neutral-gray-200": "#E4E7EC",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#faf1fa",
+                        "on-secondary-fixed-variant": "#910033",
+                        "surface-dim": "#e0d7e0",
+                        "secondary": "#b90043",
+                        "on-tertiary-container": "#b88359",
+                        "surface-container-high": "#eee5ef",
+                        "text-primary": "#1D2939",
+                        "tertiary-container": "#401e00",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fff7fe",
+                        "surface-white": "#FFFFFF",
+                        "tertiary": "#220d00",
+                        "secondary-container": "#e31657",
+                        "on-surface": "#1e1a20",
+                        "on-background": "#1e1a20",
+                        "surface-container-highest": "#e8e0e9",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdcc4",
+                        "on-secondary-fixed": "#400012",
+                        "on-primary-fixed-variant": "#5e2e8d",
+                        "on-secondary-container": "#fffbff",
+                        "zepto-purple-light": "#F3E8FF",
+                        "success-green": "#259547",
+                        "outline": "#7d7482",
+                        "inverse-primary": "#ddb8ff",
+                        "secondary-fixed": "#ffd9dd",
+                        "inverse-surface": "#332f36",
+                        "on-tertiary-fixed-variant": "#663d1a",
+                        "offer-green": "#00833E",
+                        "text-secondary": "#667085",
+                        "neutral-gray-100": "#F2F4F7",
+                        "surface-bright": "#fff7fe",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e8e0e9",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-surface-variant": "#4b4450",
+                        "secondary-fixed-dim": "#ffb2bb",
+                        "on-primary-container": "#aa78db",
+                        "surface-container": "#f4ebf4",
+                        "on-primary-fixed": "#2c0051",
+                        "primary-container": "#3c006b",
+                        "outline-variant": "#cec3d2",
+                        "inverse-on-surface": "#f7eef7",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#f7ba8d",
+                        "primary": "#1f003c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.25rem",
+                        "gutter-grid": "0.75rem",
+                        "stack-lg": "1rem",
+                        "section-gap": "1.5rem",
+                        "stack-md": "0.5rem",
+                        "margin-page": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-subtext": ["Inter"],
+                        "price-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "price-sm": ["Plus Jakarta Sans"],
+                        "label-bold": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["16px", {"lineHeight": "20px", "fontWeight": "700"}],
+                        "display-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-subtext": ["10px", {"lineHeight": "12px", "fontWeight": "500"}],
+                        "price-lg": ["16px", {"lineHeight": "20px", "fontWeight": "800"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "price-sm": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .active-nav-indicator { position: relative; }
+        .active-nav-indicator::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: currentColor;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-surface sticky top-0 z-50 flex justify-between items-center px-4 py-3 w-full">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-display-lg text-lg">14 minutes</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="text-label-subtext font-label-subtext truncate max-w-[200px]">Datta Nagar - 4, Pantnagar Lane...</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a young person with a friendly smile, used as a profile avatar. The lighting is soft and flattering, emphasizing a clean and approachable professional look. The background is a solid, neutral pastel color that matches a modern app interface aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWnTX6Jh2xOm4GPqLHnatO5MfU0mcQnIB7alxsgGb7vi7B-9xDLA_4_koiENmgnrpM8PfyXprW5OUH6AUvy-zR8mO-B8sOIxY6Fy1tk9vAchqhyH7-4WQ1K_M8K9ftt58ucfAzjJDVJ4po016v5L2ukaW2RZ2OGmi5itMqZweAsUXN096vpRomvGa5Y7NfNri8dBXUVJU4LZ0x2P_ovseHssg9MhZD-z_0E7xW-XmlKGxj3hJaOq6nLg"/>
+</div>
+</header>
+<!-- Search Bar Section -->
+<div class="px-4 mb-4">
+<div class="relative flex items-center">
+<div class="absolute left-4 text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-12 pl-12 pr-4 rounded-xl border-none bg-surface-white shadow-sm font-body-md text-on-surface-variant focus:ring-2 focus:ring-primary-fixed transition-all" placeholder='Search for "Milk"' type="text"/>
+<div class="absolute right-3 flex items-center gap-2">
+<div class="h-8 w-[1px] bg-neutral-gray-200"></div>
+<div class="flex flex-col items-center justify-center pr-1">
+<img class="h-8 w-8 object-contain" data-alt="A small promotional graphic for a beauty product, featuring a high-end lipstick with rich color texture and elegant gold packaging. The style is chic and modern, aimed at a youthful consumer interested in daily makeup essentials." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRipxQCq2K0fFHDC7mbt4IykKb4vIe1cndwI4YzeHry5XdDgeIHLqw_FUQlLhFef5fk-lv2hudyYcO9Hzq1ahxEumfE2o71liDGfsQSJnPw_LFhksnGA9BgCRpORPvW49tortmsCrvRRvQCkQ5xShIdBdoBDUEOSF_Ol3r5SGuiV0dXtgO_M-u-QX6FWNu_FEj2BsQn0-dIQYoi4Cu_XADTPt6OP42plhO_A9iiCTDWURp9ixRwJ2wNA"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Navigation Tabs (Top) -->
+<div class="px-4 mb-6 overflow-x-auto no-scrollbar flex gap-3">
+<button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-xl font-headline-sm flex-shrink-0 transition-transform active:scale-95">zepto</button>
+<button class="bg-surface-white border border-neutral-gray-200 text-primary-fixed-dim px-6 py-3 rounded-xl font-headline-sm flex-shrink-0 transition-transform active:scale-95">MONSOON STORE</button>
+<button class="bg-surface-white border border-neutral-gray-200 text-success-green px-6 py-3 rounded-xl font-headline-sm flex-shrink-0 transition-transform active:scale-95">Frėsh</button>
+</div>
+<!-- Category Grid -->
+<div class="px-4 mb-6">
+<div class="grid grid-cols-5 gap-y-6">
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-surface-white shadow-sm flex items-center justify-center">
+<img class="w-8 h-8 object-contain" data-alt="A small 3D icon of a brown grocery bag filled with fresh colorful vegetables and a baguette, styled in a cute tactile claymorphism aesthetic for a mobile app category." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwLjeOh1pVEZipbX_qBep2YssLz8bHcVpcWCg9rI-ThQhD_rEa20iYu1vCDvL-oBsRNwBu-LeI55-dsQZQWumLSKEGlBKnhylDav_ZnTKDKjaq11V6jux6A42iDRsGEx_Y4KCE1TKfTOUMlHzq6-5RPdfRSeRwqNJuIyLhMoxouzCZp-Ho2H4XenRtkcz_Y3mnid4BoAIo7DA6ddNuiwKFD1Z7mQYuaP1e_sW9O7SogpsyyiyWO0Ym1A"/>
+</div>
+<span class="text-label-subtext font-label-bold">All</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-surface-white shadow-sm flex items-center justify-center">
+<img class="w-8 h-8 object-contain" data-alt="A cute 3D illustration of a white fluffy rain cloud with blue raindrops falling, representing rainy weather shopping categories in a modern app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO7KHwLjgwagrd6Jj-wAcp4vct079S30UuNEBcQLkb02ywuW5K9MnR2nvWHVfc7eZ5UpMIBxaQKhnUs65ccZFoNTpmO0XFTGPW3mze7GgOD2BX3ArMFkFsSdGtNdxVJ-hKVaMEpaBYuoKMhsmq5Zt_i4kppl74X0buqyHzZk5NNJgITdOJ34lFt6ewqA7Y62hDFLm0ln_DW4rkG26jwDJO8Z1NROfOTF4TEXxikFZNIy39wvklM1JxSg"/>
+</div>
+<span class="text-label-subtext font-label-subtext text-center leading-tight">It's Raining</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-surface-white shadow-sm flex items-center justify-center">
+<img class="w-8 h-8 object-contain" data-alt="A detailed 3D render of a traditional Pooja thali with marigold flowers and a small oil lamp, reflecting Indian cultural traditions in a bright digital illustration style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALlvpo4hCpROZFDWTiMolY8F8spvFjDsvKCJe5Ff9IUhGgjkB0HNdmKmeCtv72lmpX0lHT_MkMx2O8bMaXqcGDzvgRrzY4VMrTRbIUTOo7qaB2LZ2u9J1luUmojcVU35hanixrPNlOQeJ0yiCtUO-oq-NQe9c7hSky-TvlDaWGQo2xbCM9sza1Jpb4x_0IX1fTb7sd46m33UBRqbacOgrlydzwFciJpcjiaoDBsqvY35Zszf1FkMCJGQ"/>
+</div>
+<span class="text-label-subtext font-label-subtext">Pooja</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-surface-white shadow-sm flex items-center justify-center">
+<img class="w-8 h-8 object-contain" data-alt="A 3D icon of a chocolate ice cream bar with a bite taken out, set against a warm lighting tone to signify night-time snack cravings in a friendly mobile UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgJZ-8Ef-2TsXqikUzaCkF5rBl2ZPTi97sl3h82UkH6CS39nnkbQX7RFk87l_EpMTx0cukG7a_fSMFrE7MRy_DmVf4XBqYl9yJZBdpyNgHqKO3zoT5VUAkCqMpDtrrPQIzLcJuVduK86zV7k3RxNiCuMuB9ATCv8hOHGNtF78BaqMFK5znh1Ug0GXX6EMGXsCYxeXLOLYPO61PkkpQdKr_h4pf0WdYBq6DhX6tVUWIS3aqv4a8kmWhWA"/>
+</div>
+<span class="text-label-subtext font-label-subtext text-center leading-tight">Night Store</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-surface-white shadow-sm flex items-center justify-center">
+<img class="w-8 h-8 object-contain" data-alt="A high-resolution 3D icon of a sliced watermelon with vibrant red pulp and green rind, looking fresh and juicy, designed for a fresh grocery category button." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOnsF6JIFHscRWpRuQdYCWYsyfIjlMD2PnztnulskXTbb67V_Jz4RgjJlmBTvy0VZG9dJ_Ffn-Cz4C-1IkqtVtJVW_DMtkdJk6x1UhW17KrjhOfqqBLl0Weh5M2hyfqoZM-3VpkQKrWme-ttFpAiChMaTIE7kiTYN3MoOwYUSteXFlu65r8hWdZnfPYkll88cl0q0IpaF365Pd5XLwYnoOqSDwT9g91sFWETCEnJpJRgBKQrgjComogw"/>
+</div>
+<span class="text-label-subtext font-label-subtext">Fresh</span>
+</div>
+</div>
+</div>
+<!-- Promotional Banners -->
+<div class="px-4 mb-6 grid grid-cols-2 gap-3">
+<div class="bg-primary-fixed rounded-2xl p-4 flex flex-col items-center relative overflow-hidden h-32 justify-center shadow-sm border border-white/20">
+<div class="flex items-center gap-2">
+<div class="bg-white/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+</div>
+<span class="text-primary font-display-lg text-2xl tracking-tighter">₹0 FEES</span>
+</div>
+<div class="mt-2 flex gap-1 items-center">
+<span class="material-symbols-outlined text-success-green text-[10px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[8px] font-bold text-on-surface-variant uppercase">0 Handling Fee</span>
+</div>
+</div>
+<div class="bg-surface-white rounded-2xl p-4 flex flex-col items-center relative overflow-hidden h-32 justify-center border border-neutral-gray-200 shadow-sm">
+<div class="flex items-center gap-2">
+<div class="bg-primary-fixed-dim/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-primary-fixed-variant text-3xl" style="font-variation-settings: 'FILL' 1;">trending_down</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-primary-fixed-variant font-headline-sm leading-none">EVERYDAY</span>
+<span class="text-on-primary-fixed-variant font-display-lg text-xl leading-none">LOW PRICES</span>
+</div>
+</div>
+<div class="mt-2 flex gap-1 items-center">
+<span class="material-symbols-outlined text-success-green text-[10px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[8px] font-bold text-on-surface-variant uppercase">0 Rain Surge Fee</span>
+</div>
+</div>
+</div>
+<!-- Referral Banner -->
+<div class="px-4 mb-8">
+<div class="bg-purple-50 rounded-2xl p-5 relative overflow-hidden flex justify-between border border-primary-fixed/30 shadow-sm">
+<div class="z-10 flex flex-col justify-between max-w-[60%]">
+<div>
+<h3 class="text-primary font-headline-md leading-tight">Got a referral code?</h3>
+<p class="text-secondary font-display-lg text-xl mb-3">Claim your FREE Gift!</p>
+</div>
+<button class="bg-white text-on-surface font-headline-sm px-4 py-2 rounded-lg w-fit flex items-center gap-1 shadow-sm border border-neutral-gray-100 transition-transform active:scale-95">
+                    Enter Code <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="absolute right-2 bottom-2 w-32 h-24">
+<img class="w-full h-full object-contain" data-alt="A high-quality studio product arrangement featuring a jar of premium instant coffee, a bar of dark chocolate, and a packet of traditional flour, all presented as a welcoming gift set on a soft pastel background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO1NpGSqJ47FjSIGN5V-9VDEwqEkWH0wY5h51qMJmzzxB56DMqNlC0MQBKD-3AO0GsUwkbel7oxPJ26B8ez-xogXsdfYDiC44DzOXUg2TAkJpdfS-qE1_CIJLet7kfDJ-8gy22CPnAdey9ah-jGvPQJbLX7M6IpqmlyQFf-od6kaXjTN8QpjtKRgs4F72bS92GQeYCqu30AP_qriYHV96dX3GvUCfCVyYxZE6I2ZYClmBkTq4dV9puNw"/>
+</div>
+</div>
+</div>
+<!-- Section Header: FRESH @ ₹1 -->
+<div class="px-4 mb-4">
+<div class="flex items-end gap-2">
+<h2 class="text-success-green font-display-lg text-3xl tracking-tight italic">FRESH</h2>
+<div class="bg-yellow-400 px-2 py-0.5 rounded flex items-center gap-1 mb-1">
+<span class="text-primary font-extrabold text-xl">@₹1</span>
+</div>
+</div>
+<p class="text-text-secondary font-body-sm">Handpicked daily essentials</p>
+</div>
+<!-- Horizontal Product Scroll -->
+<div class="flex gap-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+<!-- Product 1 -->
+<div class="flex-shrink-0 w-36 bg-surface-white rounded-2xl p-3 border border-neutral-gray-200 shadow-sm relative group">
+<div class="absolute top-2 left-2 bg-secondary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full z-10">₹1</div>
+<div class="aspect-square mb-2 overflow-hidden flex items-center justify-center">
+<img class="w-24 h-24 object-contain" data-alt="A high-quality product photo of fresh, bright red tomatoes with green stems, looking organic and farm-fresh, isolated on a white background with soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK0lEmW9gWJTk9zSbuc-WiKEoO4DdlTOZaZkpVH3KLpA-aGUU7-cw1amdgi8-8IwCEbKPgko80F6ooORFFDDbph7cA7RlvxJ1OEFshzXlKFJFpzGXNYtj1Ld8PPXGifVsBL5ew7lgJ0Nx-kcn5Az3BBuqhKjVx32_djrg-ovzbL63qPhV40IIQpFY5t0MbsvSOQ5kAYHMbJg5oLp5oVvNapuwNu6oFX_hTUX9AUG_aWBJRnJGOqHUXqw"/>
+</div>
+<h4 class="text-on-surface font-headline-sm text-sm line-clamp-1">Tomato (Local)</h4>
+<p class="text-text-secondary text-label-subtext mb-2">500 g</p>
+<button class="w-full py-1.5 border border-secondary text-secondary rounded-lg font-headline-sm text-sm hover:bg-secondary/5 transition-colors">ADD</button>
+</div>
+<!-- Product 2 -->
+<div class="flex-shrink-0 w-36 bg-surface-white rounded-2xl p-3 border border-neutral-gray-200 shadow-sm relative group">
+<div class="absolute top-2 left-2 bg-secondary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full z-10">₹1</div>
+<div class="aspect-square mb-2 overflow-hidden flex items-center justify-center">
+<img class="w-24 h-24 object-contain" data-alt="A clean product shot of fresh organic green vegetables, such as spinach or leafy greens, presented neatly for a grocery shopping app, isolated on white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE_kWxjQrE4vm5A0_31x3KQbe2pWuIOL_94wJROdX086ltpov3uoJuvpPWOmSjsAY9xBYT0JR26gQQuUNWa1Fg1WMNTKNPfmIAtH5M7gHQ7UN0v93qbK4bkop3kdPofuXHm-9rRt0JIlbN9DG55VnLF5PcFeHwqB6O64Sm8VZMltevE-gBset8-sBk5I-xP5Xg7fXdikU_xTGr5DwqdxFTLYNOORDUyt0eJ-a_e_I0HwX998wUoDKWdA"/>
+</div>
+<h4 class="text-on-surface font-headline-sm text-sm line-clamp-1">Spinach Bunch</h4>
+<p class="text-text-secondary text-label-subtext mb-2">250 g</p>
+<button class="w-full py-1.5 border border-secondary text-secondary rounded-lg font-headline-sm text-sm hover:bg-secondary/5 transition-colors">ADD</button>
+</div>
+<!-- Product 3 -->
+<div class="flex-shrink-0 w-36 bg-surface-white rounded-2xl p-3 border border-neutral-gray-200 shadow-sm relative group">
+<div class="absolute top-2 left-2 bg-secondary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full z-10">₹1</div>
+<div class="aspect-square mb-2 overflow-hidden flex items-center justify-center">
+<img class="w-24 h-24 object-contain" data-alt="Two vibrant, fresh oranges with bright textured peels and a green leaf attached, looking succulent and juicy, shot professionally on white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJwF7Qcj3bIZIy0rzcNtfXckifIv6ar9UBPuYAZh9fCQUrg8GIgB37mCAK4W7eyAY94UV6g3ZRprDH2P7-hW-K5HV1nG_ech8Yr2sGMqoPIwU5jCWzWGZyecxsZ965qn66U6C8BuzuL9l8HW7wBN3igdvw7v60buS8S_l_T975U0nVm_XD05DsF__Ri41dW6YMap57vJRVDD0PcRy66ro7c1Aryfe7bRqcxXrBr9VHdep3AdRn7dHNKg"/>
+</div>
+<h4 class="text-on-surface font-headline-sm text-sm line-clamp-1">Orange (Nagpur)</h4>
+<p class="text-text-secondary text-label-subtext mb-2">2 pcs</p>
+<button class="w-full py-1.5 border border-secondary text-secondary rounded-lg font-headline-sm text-sm hover:bg-secondary/5 transition-colors">ADD</button>
+</div>
+<!-- Product 4 -->
+<div class="flex-shrink-0 w-36 bg-surface-white rounded-2xl p-3 border border-neutral-gray-200 shadow-sm relative group">
+<div class="absolute top-2 left-2 bg-secondary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full z-10">₹1</div>
+<div class="aspect-square mb-2 overflow-hidden flex items-center justify-center">
+<img class="w-24 h-24 object-contain" data-alt="A cluster of fresh green pears with organic imperfections, signifying high-quality farm produce in a studio light setting on white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB5JjaYwZTBFo8ajCBuP7koWB_PxYBgRwVLb5lLx34QWOYhit15LAEjtDVwGaeP2WZrNOendiRomkZQQ0DHz67U63aY7dQJjeZgZX2a0tdjIra-XHRSQ7BYU8vLcc0UigxS1qBLZyj7FNFPl0phkBKr_IlyEJYVRqzH85MYlyWY0xC6Q9fIMVQBnBvUHm6UROkO8osvA4-EvYF1KOaIikGr6O28e4lfmMdv2y1LFBuiE5I9nFxc2_UvQ"/>
+</div>
+<h4 class="text-on-surface font-headline-sm text-sm line-clamp-1">Green Pears</h4>
+<p class="text-text-secondary text-label-subtext mb-2">2 pcs</p>
+<button class="w-full py-1.5 border border-secondary text-secondary rounded-lg font-headline-sm text-sm hover:bg-secondary/5 transition-colors">ADD</button>
+</div>
+</div>
+<!-- Floating Cart Bar -->
+<div class="fixed bottom-24 left-4 right-4 z-[60] flex items-center gap-3">
+<div class="flex-1 bg-primary text-white p-3 rounded-2xl shadow-xl flex items-center justify-between border border-white/10 backdrop-blur-md bg-opacity-90">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined">delivery_dining</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold uppercase tracking-wider opacity-80">Free delivery unlock</span>
+<span class="text-sm font-headline-sm">Shop for ₹48 more</span>
+</div>
+</div>
+</div>
+<div class="bg-secondary-container text-white px-4 py-2 rounded-2xl shadow-xl flex items-center gap-3 transition-transform active:scale-95 border border-white/20">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-white/20 p-1">
+<img class="w-full h-full object-cover rounded" data-alt="A small thumbnail of a product in the cart, like a snack or household item, showing the current item added for checkout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsv3_JCpRONEyvqLjkcrpuVPDyXTbBmI2k7lr781WG6yiZK88Wo8-t8M2UsQGD9A1gxHOjcQiMb6tpkzICk2LRUKpVBZsmRdBVvBwo5I8XQvreKCG045dOIj6SCofVkYHcTo7o3viI_dT_lFuBazxmuTlmFBnc8XLjMGX6P0pNMrIaQr1n-90W3JjAwgJ6IpQMERRArSxL-rkPpvs5UGcEqseGq_fGbibsYHEit-WpUTuqS77mjBMA-g"/>
+</div>
+<div class="flex flex-col pr-2">
+<span class="text-xs font-bold">Cart</span>
+<span class="text-xs">1 item</span>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full bg-surface-white border-t border-neutral-gray-200 z-50 flex justify-around items-center pt-2 pb-6 px-2 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center gap-1 text-secondary active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-subtext font-label-bold">Home</span>
+<div class="w-1 h-1 bg-secondary rounded-full"></div>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-secondary transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">grid_view</span>
+<span class="text-label-subtext font-label-subtext">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant relative group" href="#">
+<div class="absolute -top-2 -right-2 bg-secondary text-white text-[8px] font-bold px-1 rounded-full animate-pulse">NEW</div>
+<div class="w-10 h-10 rounded-full bg-zepto-purple-light flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">space_dashboard</span>
+</div>
+<span class="text-label-subtext font-label-subtext">My Space</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-secondary transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">eco</span>
+<span class="text-label-subtext font-label-subtext">Fresh</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant relative group" href="#">
+<div class="absolute -top-2 -right-2 bg-secondary text-white text-[8px] font-bold px-1 rounded-full animate-pulse">NEW</div>
+<div class="w-10 h-10 rounded-full bg-zepto-purple-light flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-2xl">group</span>
+</div>
+<span class="text-label-subtext font-label-subtext">Buddies</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('click', () => {
+                // Subtle haptic feel on click
+                elem.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    elem.style.transform = '';
+                }, 100);
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

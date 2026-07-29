@@ -1,0 +1,41 @@
+[
+  {
+    "id": "breakfast",
+    "name": "Breakfast",
+    "youMayAlsoNeed": ["butter", "jam", "french-press"],
+    "bestCombo": {
+      "title": "Morning Essentials",
+      "subtitle": "Eggs + Bread + Milk Combo",
+      "productIds": ["eggs", "bread", "milk"],
+      "bundlePrice": 120,
+      "savings": 15
+    },
+    "surpriseForYou": "avocado"
+  },
+  {
+    "id": "gym-diet",
+    "name": "Gym Diet",
+    "youMayAlsoNeed": ["peanut-butter", "protein-shake", "bananas"],
+    "bestCombo": {
+      "title": "Protein Pack",
+      "subtitle": "Oats + Yogurt + Banana Combo",
+      "productIds": ["oats", "greek-yogurt", "bananas"],
+      "bundlePrice": 210,
+      "savings": 30
+    },
+    "surpriseForYou": "protein-shake"
+  },
+  {
+    "id": "weekend-party",
+    "name": "Weekend Party",
+    "youMayAlsoNeed": ["ice", "soft-drinks", "paper-cups"],
+    "bestCombo": {
+      "title": "Party Starter",
+      "subtitle": "Chips + Soft Drinks + Cups",
+      "productIds": ["chips", "soft-drinks", "paper-cups"],
+      "bundlePrice": 450,
+      "savings": 39
+    },
+    "surpriseForYou": "belgian-chocolates"
+  }
+]

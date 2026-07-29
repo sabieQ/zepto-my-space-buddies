@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zepto My Space - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#e31657",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#aa78db",
+                    "surface-container-high": "#eee5ef",
+                    "outline": "#7d7482",
+                    "on-tertiary-fixed": "#2f1500",
+                    "on-primary-fixed": "#2c0051",
+                    "inverse-primary": "#ddb8ff",
+                    "outline-variant": "#cec3d2",
+                    "inverse-surface": "#332f36",
+                    "on-surface-variant": "#4b4450",
+                    "secondary-fixed": "#ffd9dd",
+                    "primary-container": "#3c006b",
+                    "error-container": "#ffdad6",
+                    "text-secondary": "#667085",
+                    "tertiary-container": "#401e00",
+                    "surface": "#fff7fe",
+                    "neutral-gray-200": "#E4E7EC",
+                    "offer-green": "#00833E",
+                    "primary-fixed": "#f0dbff",
+                    "on-surface": "#1e1a20",
+                    "secondary": "#b90043",
+                    "tertiary": "#220d00",
+                    "text-primary": "#1D2939",
+                    "on-secondary-fixed": "#400012",
+                    "secondary-fixed-dim": "#ffb2bb",
+                    "on-tertiary-fixed-variant": "#663d1a",
+                    "on-secondary": "#ffffff",
+                    "success-green": "#259547",
+                    "neutral-gray-100": "#F2F4F7",
+                    "surface-bright": "#fff7fe",
+                    "surface-dim": "#e0d7e0",
+                    "on-tertiary-container": "#b88359",
+                    "tertiary-fixed": "#ffdcc4",
+                    "on-error-container": "#93000a",
+                    "surface-white": "#FFFFFF",
+                    "inverse-on-surface": "#f7eef7",
+                    "on-primary-fixed-variant": "#5e2e8d",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#f7ba8d",
+                    "surface-container-low": "#faf1fa",
+                    "surface-tint": "#7747a7",
+                    "primary": "#1f003c",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#fffbff",
+                    "surface-container-highest": "#e8e0e9",
+                    "surface-container": "#f4ebf4",
+                    "error": "#ba1a1a",
+                    "background": "#fff7fe",
+                    "on-background": "#1e1a20",
+                    "primary-fixed-dim": "#ddb8ff",
+                    "zepto-purple-light": "#F3E8FF",
+                    "surface-variant": "#e8e0e9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-page": "1rem",
+                    "gutter-grid": "0.75rem",
+                    "stack-md": "0.5rem",
+                    "stack-lg": "1rem",
+                    "section-gap": "1.5rem",
+                    "stack-sm": "0.25rem"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "price-sm": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "price-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-subtext": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["16px", {"lineHeight": "20px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-bold": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                    "price-sm": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                    "display-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "price-lg": ["16px", {"lineHeight": "20px", "fontWeight": "800"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "label-subtext": ["10px", {"lineHeight": "12px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fff7fe;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .toggle-dot {
+            transition: transform 0.2s ease-in-out;
+        }
+        input:checked + .toggle-bg .toggle-dot {
+            transform: translateX(1.25rem);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 bg-surface flex justify-between items-center px-margin-page py-stack-md w-full">
+<div class="flex items-center gap-3">
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-neutral-gray-100 transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="text-headline-md font-headline-md text-primary">Settings</h1>
+<p class="text-label-subtext font-label-subtext text-on-surface-variant">Manage space and preferences</p>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional high-quality studio portrait of a friendly young man with a warm smile, wearing a minimalist white shirt. The background is a soft, solid pastel purple tone that aligns with a clean and modern corporate UI aesthetic. The lighting is bright and even, highlighting clear facial details without harsh shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi5bzIs0sLP8wmyieRT7VLqsryGO-6ekYgmgejYuHZkI84CabOFwULqCnm3_ZcXOafqTgxYM-eLaFUcEAI_7oZSwrM69kxcxzmFbcra0yVHevwsxg_QsBl1XHbFSCc83Hw0Whbo8q1klYiafmY-adzqZxw2BYfiP3bg5T9WW2spTCn7HdSMOVBp84FzNgmJrfPvcuQrCNmdQEzIzfzeKPCq1QQc7y6g8Ed46rDLj0EdQUOdjKflay8OQ"/>
+</div>
+</header>
+<main class="max-w-xl mx-auto px-margin-page pb-32 pt-4">
+<!-- Personalization Settings -->
+<section class="mb-section-gap">
+<h2 class="text-label-bold font-label-bold text-on-surface-variant uppercase tracking-wider mb-stack-lg ml-1">Personalization Settings</h2>
+<div class="bg-surface-white rounded-xl border border-neutral-gray-200 overflow-hidden shadow-sm">
+<!-- Row 1: AI Recommendations -->
+<div class="flex items-center justify-between p-stack-lg border-b border-neutral-gray-100">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-zepto-purple-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h3 class="text-body-md font-label-bold">AI Recommendations</h3>
+<p class="text-body-sm text-text-secondary">Enable smart product suggestions</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="toggle-bg w-10 h-5 bg-neutral-gray-200 rounded-full peer-checked:bg-primary-container transition-colors relative">
+<div class="toggle-dot absolute top-[2px] left-[2px] bg-white w-4 h-4 rounded-full shadow-sm"></div>
+</div>
+</label>
+</div>
+<!-- Row 2: Habits Analysis -->
+<div class="flex items-center justify-between p-stack-lg border-b border-neutral-gray-100">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-zepto-purple-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<div>
+<h3 class="text-body-md font-label-bold">Shopping Habits Analysis</h3>
+<p class="text-body-sm text-text-secondary">Improve lists based on usage</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="toggle-bg w-10 h-5 bg-neutral-gray-200 rounded-full peer-checked:bg-primary-container transition-colors relative">
+<div class="toggle-dot absolute top-[2px] left-[2px] bg-white w-4 h-4 rounded-full shadow-sm"></div>
+</div>
+</label>
+</div>
+<!-- Row 3: Preferred Categories -->
+<button class="w-full flex items-center justify-between p-stack-lg active:bg-neutral-gray-100 transition-colors">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-zepto-purple-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+</div>
+<div class="text-left">
+<h3 class="text-body-md font-label-bold">Preferred Categories</h3>
+<p class="text-body-sm text-text-secondary">Daily Staples, Fresh Fruits</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Shared List Preferences -->
+<section class="mb-section-gap">
+<h2 class="text-label-bold font-label-bold text-on-surface-variant uppercase tracking-wider mb-stack-lg ml-1">Shared List Preferences</h2>
+<div class="bg-surface-white rounded-xl border border-neutral-gray-200 overflow-hidden shadow-sm">
+<!-- Row 1: Buddy Notifications -->
+<div class="flex items-center justify-between p-stack-lg border-b border-neutral-gray-100">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-zepto-purple-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</div>
+<div>
+<h3 class="text-body-md font-label-bold">Buddy Notifications</h3>
+<p class="text-body-sm text-text-secondary">Alerts when friends add items</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="toggle-bg w-10 h-5 bg-neutral-gray-200 rounded-full peer-checked:bg-primary-container transition-colors relative">
+<div class="toggle-dot absolute top-[2px] left-[2px] bg-white w-4 h-4 rounded-full shadow-sm"></div>
+</div>
+</label>
+</div>
+<!-- Row 2: Auto-join -->
+<div class="flex items-center justify-between p-stack-lg border-b border-neutral-gray-100">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-zepto-purple-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="group_add">group_add</span>
+</div>
+<div>
+<h3 class="text-body-md font-label-bold">Auto-join Shared Lists</h3>
+<p class="text-body-sm text-text-secondary">Accept invites automatically</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="toggle-bg w-10 h-5 bg-neutral-gray-200 rounded-full peer-checked:bg-primary-container transition-colors relative">
+<div class="toggle-dot absolute top-[2px] left-[2px] bg-white w-4 h-4 rounded-full shadow-sm"></div>
+</div>
+</label>
+</div>
+<!-- Row 3: Activity Privacy -->
+<button class="w-full flex items-center justify-between p-stack-lg active:bg-neutral-gray-100 transition-colors">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-zepto-purple-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</div>
+<div class="text-left">
+<h3 class="text-body-md font-label-bold">Activity Privacy</h3>
+<p class="text-body-sm text-text-secondary">Everyone in My Space</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- App Preferences -->
+<section class="mb-section-gap">
+<h2 class="text-label-bold font-label-bold text-on-surface-variant uppercase tracking-wider mb-stack-lg ml-1">App Preferences</h2>
+<div class="bg-surface-white rounded-xl border border-neutral-gray-200 overflow-hidden shadow-sm">
+<!-- Dark Mode -->
+<button class="w-full flex items-center justify-between p-stack-lg border-b border-neutral-gray-100 active:bg-neutral-gray-100 transition-colors">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-neutral-gray-100 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</div>
+<div class="text-left">
+<h3 class="text-body-md font-label-bold">Dark Mode</h3>
+<p class="text-body-sm text-text-secondary">Follow System</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="unfold_more">unfold_more</span>
+</button>
+<!-- Language -->
+<button class="w-full flex items-center justify-between p-stack-lg active:bg-neutral-gray-100 transition-colors">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-neutral-gray-100 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</div>
+<div class="text-left">
+<h3 class="text-body-md font-label-bold">Language</h3>
+<p class="text-body-sm text-text-secondary">English</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Data & Privacy -->
+<section class="mb-section-gap">
+<h2 class="text-label-bold font-label-bold text-on-surface-variant uppercase tracking-wider mb-stack-lg ml-1">Data &amp; Privacy</h2>
+<div class="bg-surface-white rounded-xl border border-neutral-gray-200 overflow-hidden shadow-sm">
+<!-- Clear History -->
+<button class="w-full flex items-center justify-between p-stack-lg border-b border-neutral-gray-100 active:bg-neutral-gray-100 transition-colors">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-neutral-gray-100 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<div class="text-left">
+<h3 class="text-body-md font-label-bold">Clear Shopping History</h3>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="delete_outline">delete_outline</span>
+</button>
+<!-- Download Data -->
+<button class="w-full flex items-center justify-between p-stack-lg border-b border-neutral-gray-100 active:bg-neutral-gray-100 transition-colors">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-neutral-gray-100 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</div>
+<div class="text-left">
+<h3 class="text-body-md font-label-bold">Download My Data</h3>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Delete My Space -->
+<button class="w-full flex items-center justify-between p-stack-lg active:bg-red-50 transition-colors">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="person_off">person_off</span>
+</div>
+<div class="text-left">
+<h3 class="text-body-md font-label-bold text-error">Delete My Space Data</h3>
+<p class="text-body-sm text-red-400">This action is permanent</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</button>
+</div>
+</section>
+<!-- Version Info -->
+<div class="text-center py-stack-lg">
+<p class="text-label-subtext text-text-secondary">Zepto My Space v2.4.1</p>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-2 bg-surface-white border-t border-neutral-gray-200 shadow-lg z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-neutral-gray-100 px-3 py-1 rounded-lg transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-subtext font-label-subtext">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-neutral-gray-100 px-3 py-1 rounded-lg transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-label-subtext font-label-subtext">Categories</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="space_dashboard" style="font-variation-settings: 'FILL' 1;">space_dashboard</span>
+<span class="text-label-subtext font-label-subtext">My Space</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-neutral-gray-100 px-3 py-1 rounded-lg transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+<span class="text-label-subtext font-label-subtext">Fresh</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-neutral-gray-100 px-3 py-1 rounded-lg transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-subtext font-label-subtext">Buddies</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for toggles
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const bg = this.nextElementSibling;
+                if (this.checked) {
+                    bg.classList.add('bg-primary-container');
+                    bg.classList.remove('bg-neutral-gray-200');
+                } else {
+                    bg.classList.remove('bg-primary-container');
+                    bg.classList.add('bg-neutral-gray-200');
+                }
+            });
+        });
+
+        // Add touch scale effect for rows
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.style.transform = 'scale(0.98)';
+                btn.style.transition = 'transform 0.1s';
+            });
+            btn.addEventListener('touchend', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

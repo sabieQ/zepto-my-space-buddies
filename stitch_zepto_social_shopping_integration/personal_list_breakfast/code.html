@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Breakfast List - Zepto</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "neutral-gray-100": "#F2F4F7",
+                    "secondary-fixed": "#ffd9dd",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#220d00",
+                    "primary-fixed": "#f0dbff",
+                    "outline": "#7d7482",
+                    "primary-fixed-dim": "#ddb8ff",
+                    "success-green": "#259547",
+                    "on-tertiary-fixed-variant": "#663d1a",
+                    "secondary": "#b90043",
+                    "surface-tint": "#7747a7",
+                    "surface-white": "#FFFFFF",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#3c006b",
+                    "error-container": "#ffdad6",
+                    "on-background": "#1e1a20",
+                    "zepto-purple-light": "#F3E8FF",
+                    "surface-bright": "#fff7fe",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#910033",
+                    "inverse-on-surface": "#f7eef7",
+                    "surface-container-low": "#faf1fa",
+                    "background": "#fff7fe",
+                    "surface-container-high": "#eee5ef",
+                    "neutral-gray-200": "#E4E7EC",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#ffdcc4",
+                    "on-primary-fixed-variant": "#5e2e8d",
+                    "secondary-container": "#e31657",
+                    "on-surface-variant": "#4b4450",
+                    "inverse-surface": "#332f36",
+                    "surface-variant": "#e8e0e9",
+                    "offer-green": "#00833E",
+                    "tertiary-fixed-dim": "#f7ba8d",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1e1a20",
+                    "on-tertiary-container": "#b88359",
+                    "tertiary-container": "#401e00",
+                    "text-secondary": "#667085",
+                    "on-secondary-container": "#fffbff",
+                    "surface-container-highest": "#e8e0e9",
+                    "primary": "#1f003c",
+                    "text-primary": "#1D2939",
+                    "on-tertiary-fixed": "#2f1500",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb2bb",
+                    "surface": "#fff7fe",
+                    "surface-dim": "#e0d7e0",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#2c0051",
+                    "surface-container": "#f4ebf4",
+                    "inverse-primary": "#ddb8ff",
+                    "on-primary-container": "#aa78db",
+                    "outline-variant": "#cec3d2",
+                    "on-secondary-fixed": "#400012",
+                    "zepto-pink": "#FF3269"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-page": "1rem",
+                    "section-gap": "1.5rem",
+                    "stack-lg": "1rem",
+                    "gutter-grid": "0.75rem",
+                    "stack-md": "0.5rem",
+                    "stack-sm": "0.25rem"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-bold": ["Inter"],
+                    "label-subtext": ["Inter"],
+                    "price-sm": ["Plus Jakarta Sans"],
+                    "price-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["16px", {"lineHeight": "20px", "fontWeight": "700"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "display-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-bold": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                    "label-subtext": ["10px", {"lineHeight": "12px", "fontWeight": "500"}],
+                    "price-sm": ["12px", {"lineHeight": "14px", "fontWeight": "700"}],
+                    "price-lg": ["16px", {"lineHeight": "20px", "fontWeight": "800"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .bento-inner-shadow {
+            box-shadow: inset 0 0 40px rgba(255, 50, 105, 0.03);
+        }
+        .product-card-active:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="bg-neutral-gray-100 font-body-md text-on-surface antialiased">
+<!-- Top AppBar (from JSON guidance) -->
+<header class="fixed top-0 w-full z-50 bg-surface-white flex justify-between items-center px-margin-page py-stack-md transition-all duration-150">
+<div class="flex items-center gap-stack-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-gray-100 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-surface">arrow_back_ios_new</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Breakfast</h1>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-gray-100 hover:opacity-80 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface" data-icon="share">share</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-gray-100 hover:opacity-80 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface" data-icon="edit">edit</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-32">
+<!-- Saving Banner -->
+<div class="px-margin-page mb-stack-lg">
+<div class="bg-offer-green/10 border border-offer-green/20 rounded-lg py-stack-md px-margin-page flex items-center justify-between">
+<span class="text-offer-green font-label-bold text-label-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">eco</span>
+                    Yay! You saved ₹46 on this list
+                </span>
+<span class="material-symbols-outlined text-offer-green text-sm">keyboard_arrow_down</span>
+</div>
+</div>
+<!-- Current Items List -->
+<section class="px-margin-page mb-section-gap">
+<div class="flex items-center justify-between mb-stack-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">Items in List</h2>
+<span class="text-label-subtext font-label-subtext text-text-secondary">3 ITEMS</span>
+</div>
+<div class="grid grid-cols-2 gap-gutter-grid">
+<!-- Eggs Card -->
+<div class="bg-surface-white border border-neutral-gray-200 rounded-xl p-stack-md relative product-card-active transition-transform">
+<div class="aspect-square mb-stack-md rounded-lg overflow-hidden bg-neutral-gray-100">
+<img class="w-full h-full object-cover" data-alt="A macro studio photograph of a carton of ten fresh white eggs resting on a minimalist marble kitchen counter. The lighting is soft and bright, reflecting a premium grocery shopping app aesthetic. The background is a clean, out-of-focus modern kitchen with subtle purple accents, maintaining the Zepto brand feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8ogw9rjFSZBL8CxzbWjO6_pjoYzPn9WvsGc_4S2JPHjc5RtKl_sYhhKDgklp6aq0WvEWgaXwJEgkbk5IufK92mH43U6FiVf4YC_DkVTaazGac6nfQt-1Fqs675kyimUWFM4Wl904BzAZ13i1rapECzGvImkei5PYOslx9qZfYf9gIE9jBCBiWt_AG08fYdetTvI78ehPZecrKTTIJDmIzoVn5LmzC9grxkQP1TKfmtd9LmjIXeJhnvQ"/>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<div class="bg-offer-green text-surface-white text-[10px] font-bold px-1.5 py-0.5 rounded w-fit">₹55</div>
+<h3 class="font-headline-sm text-body-md line-clamp-1">Farm Fresh Eggs</h3>
+<p class="font-label-subtext text-label-subtext text-text-secondary">10 pack</p>
+<button class="absolute bottom-2 right-2 w-8 h-8 rounded-lg bg-surface-white border border-secondary text-secondary flex items-center justify-center font-bold shadow-sm active:bg-secondary active:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Bread Card -->
+<div class="bg-surface-white border border-neutral-gray-200 rounded-xl p-stack-md relative product-card-active transition-transform">
+<div class="aspect-square mb-stack-md rounded-lg overflow-hidden bg-neutral-gray-100">
+<img class="w-full h-full object-cover" data-alt="A professionally staged product shot of a loaf of sliced white bread in clear, minimalist packaging with a clean modern label. The loaf is positioned at a slight angle on a light wood surface under warm, bright daylight. The scene is airy and fresh, adhering to a high-end quick-commerce visual style with soft shadows and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_pz465lzVviZBT4yTnGuis4uCvQNcg12BJmw1mPhkCPJavqeisiD0ljzyD18H-woSkR_GysIwVbus9sThetma45zcdV5ZLfrzMqETIqg3r9HWLPW6DfJ_1uAcUWtm-bdnVxNs0DhDT2lZSUtalrIczKBKycbr0T8r7MITMafyJiIzmjGRoaUfj3RTFg3DVldqDRNNtDZPRLDYBrjBaKxlF9SYUSYiKRaroxmCoJQ8Ed_cgwshXn9ypQ"/>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<div class="bg-offer-green text-surface-white text-[10px] font-bold px-1.5 py-0.5 rounded w-fit">₹40</div>
+<h3 class="font-headline-sm text-body-md line-clamp-1">Premium White Bread</h3>
+<p class="font-label-subtext text-label-subtext text-text-secondary">400g</p>
+<button class="absolute bottom-2 right-2 w-8 h-8 rounded-lg bg-surface-white border border-secondary text-secondary flex items-center justify-center font-bold shadow-sm">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Coffee Card (Full Width Span) -->
+<div class="col-span-2 bg-surface-white border border-neutral-gray-200 rounded-xl p-stack-md flex gap-stack-lg relative product-card-active transition-transform">
+<div class="w-24 h-24 rounded-lg overflow-hidden bg-neutral-gray-100 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A luxury product photograph of a premium glass jar filled with rich, dark roasted instant coffee granules. The jar features a minimalist black and gold label and is set against a clean, softly lit studio background with subtle reflections. The image captures a sense of morning freshness and high-quality utility common in modern shopping apps." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUh0Bkf49OcahPbl3V8GetMBe0JzpBJCvEaTm2LmKdTjSbx1tVH68b8u9x4jkCIj4HrHX9cqEUVYX2Gw7h-3ApCYWIT0nHCsauyzzFytkciP0cihLT7hagEb6qUO789Yns9BqVgQQtBIjREHRlX-LcsScP80-HpK0pTQOS92OXIbPygPe6zpaPs1cWxyriSo4OEdZ6EldDPkzSradkzFrwyhLSVBvhG597AjnDoJ35UK-fd6dkQaQipg"/>
+</div>
+<div class="flex flex-col justify-center gap-stack-sm">
+<div class="bg-offer-green text-surface-white text-[10px] font-bold px-1.5 py-0.5 rounded w-fit">₹249</div>
+<h3 class="font-headline-sm text-headline-sm">Rich Roast Instant Coffee</h3>
+<p class="font-label-subtext text-label-subtext text-text-secondary">100g</p>
+</div>
+<button class="absolute bottom-4 right-4 w-12 h-10 rounded-lg bg-surface-white border border-secondary text-secondary flex items-center justify-center font-bold shadow-sm">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+</div>
+</div>
+</section>
+<!-- AI Section 1: You May Also Need -->
+<section class="mb-section-gap">
+<div class="px-margin-page mb-stack-md flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">You May Also Need</h2>
+</div>
+<p class="font-label-subtext text-label-subtext text-text-secondary">Pairs well with your breakfast items</p>
+</div>
+<div class="flex overflow-x-auto gap-stack-md px-margin-page pb-2 snap-x">
+<!-- Butter -->
+<div class="min-w-[140px] snap-start bg-surface-white border border-neutral-gray-200 rounded-xl p-stack-md shadow-sm">
+<div class="aspect-square mb-stack-md rounded-lg overflow-hidden bg-neutral-gray-100">
+<img class="w-full h-full object-cover" data-alt="Close-up of a premium block of salted yellow butter on a small ceramic dish, with a wooden spreader knife nearby. The lighting is soft morning sunlight, emphasizing texture and freshness. The scene is styled for a clean, modern lifestyle aesthetic with a bright and inviting light-mode color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtH9TYBrJZjDzcDXKgPCQssnbkibv6u77Rn_1u0hOm8mByYxSgt1Ooe6d_-b7pKIgW_w5liK4SVC3P7SnQmxcgHITNsXWI9cst6CtCR71D4GH5QxZVtw4dKSbWDRii-t_yl2wj7GdcaVyQn1OFIx0xFtBW0h_pHXNb7_i41_zyPMAg7vrRucoSfhX1i1iOh4A2oIp2XGYa6JH0CTtIwZ2vcY0wa9MwqZ2dx5siqIAX4PRkCwGA2Hej3Q"/>
+</div>
+<h4 class="font-label-bold text-body-sm line-clamp-1 mb-1">Salted Butter</h4>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-sm text-primary">₹52</span>
+<button class="w-6 h-6 rounded-md bg-secondary text-surface-white flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">add</span>
+</button>
+</div>
+</div>
+<!-- Jam -->
+<div class="min-w-[140px] snap-start bg-surface-white border border-neutral-gray-200 rounded-xl p-stack-md shadow-sm">
+<div class="aspect-square mb-stack-md rounded-lg overflow-hidden bg-neutral-gray-100">
+<img class="w-full h-full object-cover" data-alt="A jar of vibrant red strawberry jam with whole fruit pieces visible, set against a pristine white background. The jar has a simple, elegant label. The lighting is high-key and professional, highlighting the glossy texture of the jam and the clean glass, fitting a premium grocery application style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASD-HdKUMZHEYNGm6L9LuxKygQAQOKJVknw-MpfLtF5jtsCyosziG7lvUgic4SFsPV1wi50w2wb-E_DTuKLS86S3-9NMJGkD0OmwXebdIAc9bpEW5fZzNOiAwFzonMIoY1xFrDvLzmZFU7hlSktamIG_B9ShPZB8_5bAcaT0rL6LZ26rqY5IFfNunOhRQ1aLZ3LyazcJC4i2KJBrz_haCUSQukx_reCTvcTv-OOY8-Bzg_13Afgynjxw"/>
+</div>
+<h4 class="font-label-bold text-body-sm line-clamp-1 mb-1">Strawberry Jam</h4>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-sm text-primary">₹85</span>
+<button class="w-6 h-6 rounded-md bg-secondary text-surface-white flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">add</span>
+</button>
+</div>
+</div>
+<!-- Milk -->
+<div class="min-w-[140px] snap-start bg-surface-white border border-neutral-gray-200 rounded-xl p-stack-md shadow-sm">
+<div class="aspect-square mb-stack-md rounded-lg overflow-hidden bg-neutral-gray-100">
+<img class="w-full h-full object-cover" data-alt="A chilled glass bottle of fresh organic milk with condensation droplets on the surface. The bottle is set on a minimalist light gray stone countertop with a blurred background of a modern bright kitchen. The aesthetic is extremely clean and healthy, using a sophisticated cool-toned palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA_MuRPhw_NdqKVi2qEnH1Lx4cLGnmaVnmsI0SLVSrED_hWMCpTGYpSKrArZAZRjl831ofpKsTudWm22_rrP_gPslpBI9lHXsB6eNf0FfmG36GaZHqRSJG5X8qgZgc18h5Qmt3kdTq0-b95cUqYSpc1QBOd81Bpu86ZYY1IpGc5GW1bX6VkuetyylwicIdatUwa2i_UnImFtQTjsAAyE-7mgSxR90e8CYEMqXXtZLo3gq2XGUJB_T-7w"/>
+</div>
+<h4 class="font-label-bold text-body-sm line-clamp-1 mb-1">Full Cream Milk</h4>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-sm text-primary">₹33</span>
+<button class="w-6 h-6 rounded-md bg-secondary text-surface-white flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Section 2: Best Combo Bento -->
+<section class="px-margin-page mb-section-gap">
+<div class="bg-surface-white rounded-2xl border border-neutral-gray-200 overflow-hidden shadow-sm">
+<div class="bg-zepto-purple-light p-margin-page">
+<div class="flex items-center justify-between mb-stack-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Morning Essentials</h2>
+<p class="font-label-subtext text-label-subtext text-on-primary-container/80">Eggs + Bread + Milk Combo</p>
+</div>
+<div class="bg-secondary-container text-surface-white text-[12px] font-bold px-2 py-1 rounded-full animate-pulse">Save ₹15</div>
+</div>
+<div class="flex items-center gap-2 mb-stack-lg">
+<div class="flex -space-x-4">
+<div class="w-16 h-16 rounded-full border-4 border-zepto-purple-light overflow-hidden bg-white shadow-md">
+<img class="w-full h-full object-cover" data-alt="Product icon of a fresh white egg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeQHbEoPuskBdYAS78e6JSbDPhO-BXch_Tqz_3pF2XhTN1Wl9mS8EtI6uQmG6hakn1yaPBbVc2a7hgMcPFKNRjh5YCmMYgtp5kcJg_aFaMYZXPTRKEJip0fyZrvd13y8aZVxmgvTh-wQcHK8WeSYRW7cILZXC2ttQ7Cum4_mHFibKtU7wvTePBaIIi8Ig8jz4WCj6mIkPT8Me05tb6kQycVNLuCS801kJvdJqrMf9mTHix3aPe4XwheQ"/>
+</div>
+<div class="w-16 h-16 rounded-full border-4 border-zepto-purple-light overflow-hidden bg-white shadow-md">
+<img class="w-full h-full object-cover" data-alt="Product icon of a bread slice" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACE-jySsf0pDAmR4v5qaY8QR4VW7aMwAmJpZxfVRaFmbNrnZXEVa4NoAa_PW76vOw3vM6IUXp0zMeuHk7PcyqqCjVvvqqM6XE7QZNC0F95F1GrDKrORWucUpERamtzol5I5ux9520f8uIPTtiv_jwwO3Sj4zIUuM0FMd5vRGvf4xSFhjjcnSKKpsYLuxL4B64UF3Efjtl_CSdZPo9Lpokqp_jSd1nN8QQIvAkzgKrPYdhpjLc465smig"/>
+</div>
+<div class="w-16 h-16 rounded-full border-4 border-zepto-purple-light overflow-hidden bg-white shadow-md">
+<img class="w-full h-full object-cover" data-alt="Product icon of a milk carton" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwoBPab-tGk8JQ3iDHOIfiGO-jvleHVa34wNURG3ga7A-diRs9pA462Osom-_X7Ng7oYYC3jIzQdf_3JMYK1raS9k_louQLW7fMA95NPZAvdMJ1IM9Wg4OqJ2Zd5clESiSt8APY8r-dvqSg8FAkC3HWjnjuzBPMzFdHfJm8Je6SgIe_vhB0e9BW_kg3KFildszoncxzpXAeMyKKl8mVhkqG7xgYRfdf3IM9Zi_QiH6PeqxmdukwcxuJw"/>
+</div>
+</div>
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-white/50">
+<span class="material-symbols-outlined text-primary text-sm">add</span>
+</div>
+</div>
+<button class="w-full bg-secondary text-surface-white py-3 rounded-xl font-headline-sm flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span>Add Bundle for ₹120</span>
+<span class="material-symbols-outlined">shopping_cart_checkout</span>
+</button>
+</div>
+</div>
+</section>
+<!-- AI Section 3: Surprise For You -->
+<section class="px-margin-page mb-stack-lg">
+<div class="relative rounded-2xl p-margin-page overflow-hidden bg-gradient-to-br from-[#2D0B5A] to-[#1F003C] text-surface-white">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary opacity-20 blur-3xl rounded-full"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+<h2 class="font-headline-sm text-headline-sm">Surprise For You</h2>
+</div>
+<div class="flex gap-stack-lg items-center">
+<div class="w-24 h-24 bg-white/10 backdrop-blur-md rounded-xl p-1 relative">
+<img class="w-full h-full object-contain rounded-lg" data-alt="A perfect, ripe Hass avocado cut in half, revealing the smooth green flesh and pit. The avocado is styled in a high-fashion food photography manner with crisp shadows and extreme detail. The background is a sophisticated deep purple, aligning with the Zepto premium visual language and providing high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhA3c9micj7zE2xh3YpiWzwy581puBroFPQXftcXVHCZNSO6rOc7VSKcygGJox3UUDOiNDGkb-s_8eOSIY6k228b3Xh90vc7ygXdvxw9wKdKsWJCzEzeIM34s9UYdoLGq39QfNa0Y6xJ1GdKHkjhQT1Xs_wk_YVR5XPn5Njr8y8mqbBML5XrM6jFzDQ6UQnLAeCHG2s76al5wLIacXQDyc4ezDaZFgeGqNnt7cZ4m01snyzBst1ycViw"/>
+<span class="absolute -top-2 -right-2 bg-secondary text-[8px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-tighter shadow-lg">New for you</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-sm text-body-md text-primary-fixed">Organic Avocados</h3>
+<p class="text-[10px] text-primary-fixed-dim mt-1 font-medium leading-tight">Based on your shopping habits. Perfect for your toast!</p>
+<div class="flex items-center gap-stack-md mt-stack-md">
+<span class="font-price-lg text-secondary-fixed">₹99</span>
+<span class="text-[10px] line-through text-outline">₹149</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (Fixed Bottom) -->
+<div class="fixed bottom-0 w-full z-50 bg-surface-white border-t border-neutral-gray-200">
+<!-- Floating Primary Action -->
+<div class="px-margin-page -mt-8 mb-stack-md">
+<button class="w-full h-14 bg-zepto-pink text-surface-white rounded-xl font-headline-sm text-headline-sm shadow-xl flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+                Add 3 Items to Cart • ₹344
+                <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<nav class="flex justify-around items-center py-2 bg-surface-white">
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-subtext font-label-subtext">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-label-subtext font-label-subtext">Categories</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary font-bold">
+<span class="material-symbols-outlined" data-icon="space_dashboard" style="font-variation-settings: 'FILL' 1;">space_dashboard</span>
+<span class="text-label-subtext font-label-subtext">My Space</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+<span class="text-label-subtext font-label-subtext">Fresh</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-subtext font-label-subtext">Buddies</span>
+</div>
+</nav>
+</div>
+<script>
+        // Simple scroll interaction for header transparency
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+        
+        // Micro-interaction for add buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'absolute inset-0 bg-white/20 rounded-inherit opacity-0';
+                btn.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 200);
+            });
+        });
+    </script>
+</body></html>
