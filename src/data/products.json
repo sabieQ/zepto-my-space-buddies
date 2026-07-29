@@ -76,8 +76,7 @@
     "mrp": 220,
     "unit": "340g",
     "category": "Spreads",
-    "image": "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&h=400&fit=crop",
-    "description": "Creamy peanut butter packed with protein for gym days."
+    "image": "/products/peanut-butter.png",
   },
   {
     "id": "protein-shake",
