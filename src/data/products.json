@@ -6,7 +6,7 @@
     "mrp": 65,
     "unit": "10 pack",
     "category": "Dairy & Eggs",
-    "image": "https://images.unsplash.com/photo-1582722871137-c3962cf0fe2b?w=400&h=400&fit=crop",
+    "image": "/products/eggs.png",
     "description": "Farm-fresh white eggs, perfect for breakfast and baking."
   },
   {
@@ -46,7 +46,7 @@
     "mrp": 99,
     "unit": "200g",
     "category": "Spreads",
-    "image": "https://images.unsplash.com/photo-1471943311421-6480c4804d86?w=400&h=400&fit=crop",
+    "image": "/products/jam.png",
     "description": "Sweet strawberry jam with real fruit pieces."
   },
   {
@@ -126,7 +126,7 @@
     "mrp": 50,
     "unit": "2kg",
     "category": "Party",
-    "image": "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=400&h=400&fit=crop",
+    "image": "/products/ice.png",
     "description": "Crystal-clear ice cubes for drinks and chillers."
   },
   {
@@ -146,7 +146,7 @@
     "mrp": 120,
     "unit": "50 pcs",
     "category": "Party Supplies",
-    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop",
+    "image": "/products/paper-cups.png",
     "description": "Disposable paper cups — essential for hosting."
   },
   {
@@ -156,7 +156,7 @@
     "mrp": 180,
     "unit": "3 pack",
     "category": "Snacks",
-    "image": "https://images.unsplash.com/photo-1566478989037-eec16276debb?w=400&h=400&fit=crop",
+    "image": "/products/chips.png",
     "description": "Crispy chips assortment for party snacking."
   },
   {
