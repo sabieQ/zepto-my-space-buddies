@@ -1,4 +1,5 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { BrandLogo } from '../components/BrandLogo'
 import { ProductService } from '../services/ProductService'
 
 export function ProductPage() {
@@ -30,7 +31,10 @@ export function ProductPage() {
         >
           <span className="material-symbols-outlined">arrow_back</span>
         </button>
-        <h1 className="font-headline-md text-headline-md text-primary">Product</h1>
+        <div className="flex items-center gap-2">
+          <BrandLogo variant="mark" className="h-7 w-7 rounded-md object-cover" />
+          <h1 className="font-headline-md text-headline-md text-primary">Product</h1>
+        </div>
         <button className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-gray-100">
           <span className="material-symbols-outlined">share</span>
         </button>

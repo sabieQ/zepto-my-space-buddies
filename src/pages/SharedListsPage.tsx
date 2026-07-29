@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { BottomNav } from '../components/BottomNav'
+import { BrandLogo } from '../components/BrandLogo'
 import { ListService } from '../services/ListService'
 
 const AVATARS = [
@@ -17,10 +18,11 @@ export function SharedListsPage() {
       <header className="sticky top-0 z-40 flex h-14 w-full items-center border-b border-outline-variant bg-surface px-margin-page">
         <button
           onClick={() => navigate(-1)}
-          className="mr-4 rounded-full p-1 hover:bg-surface-container-high"
+          className="mr-3 rounded-full p-1 hover:bg-surface-container-high"
         >
           <span className="material-symbols-outlined text-primary">arrow_back</span>
         </button>
+        <BrandLogo variant="mark" className="mr-2 h-8 w-8 rounded-lg object-cover" />
         <h1 className="font-headline-md text-headline-md text-primary">Shared Lists</h1>
       </header>
 

@@ -1,4 +1,5 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { BrandLogo } from '../components/BrandLogo'
 import { BuddyService } from '../services/BuddyService'
 import { ListService } from '../services/ListService'
 import { ProductService } from '../services/ProductService'
@@ -52,7 +53,8 @@ export function ChatPage() {
             </p>
           </div>
         </div>
-        <div className="flex gap-4">
+        <BrandLogo variant="mark" className="mr-2 h-8 w-8 rounded-lg object-cover" />
+        <div className="flex gap-3">
           <span className="material-symbols-outlined text-on-surface-variant">call</span>
           <span className="material-symbols-outlined text-on-surface-variant">more_vert</span>
         </div>

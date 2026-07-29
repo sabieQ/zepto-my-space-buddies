@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { BottomNav } from '../components/BottomNav'
+import { BrandLogo } from '../components/BrandLogo'
 import { useState } from 'react'
 
 function Toggle({ defaultOn = false }: { defaultOn?: boolean }) {
@@ -36,6 +37,7 @@ export function SettingsPage() {
           >
             <span className="material-symbols-outlined text-primary">arrow_back</span>
           </button>
+          <BrandLogo variant="mark" className="h-8 w-8 rounded-lg object-cover" />
           <div>
             <h1 className="font-headline-md text-headline-md text-primary">Settings</h1>
             <p className="font-label-subtext text-label-subtext text-on-surface-variant">

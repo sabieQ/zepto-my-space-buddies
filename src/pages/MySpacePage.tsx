@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { BottomNav } from '../components/BottomNav'
+import { BrandLogo } from '../components/BrandLogo'
 import { ListService } from '../services/ListService'
 import { ProductService } from '../services/ProductService'
 
@@ -15,7 +16,7 @@ export function MySpacePage() {
     <div className="min-h-full bg-neutral-gray-100 pb-28 font-body-md text-on-surface">
       <header className="sticky top-0 z-40 flex w-full items-center justify-between bg-surface px-margin-page py-stack-md">
         <div className="flex items-center gap-2 overflow-hidden">
-          <span className="material-symbols-outlined filled text-primary">location_on</span>
+          <BrandLogo variant="mark" className="h-9 w-9 flex-shrink-0 rounded-lg object-cover" />
           <div className="flex flex-col truncate">
             <h1 className="truncate font-headline-sm text-headline-sm text-primary">
               Datta Nagar - 4, Pantnagar Lane...
@@ -32,7 +33,10 @@ export function MySpacePage() {
 
       <main className="px-margin-page pt-stack-lg">
         <section className="mb-section-gap">
-          <h2 className="mb-1 font-display-lg text-display-lg text-primary">My Space</h2>
+          <div className="mb-1 flex items-center gap-2">
+            <BrandLogo variant="mark" className="h-8 w-8 rounded-lg object-cover" />
+            <h2 className="font-display-lg text-display-lg text-primary">My Space</h2>
+          </div>
           <p className="font-body-md text-body-md text-text-secondary">
             Your personal shopping companion
           </p>
@@ -123,9 +127,15 @@ export function MySpacePage() {
         <section className="mb-section-gap">
           <div className="relative flex flex-col items-center justify-between gap-4 overflow-hidden rounded-2xl bg-primary p-5">
             <div className="z-10 w-full">
-              <span className="mb-2 inline-block rounded-full bg-secondary-container px-2 py-0.5 font-label-subtext text-label-subtext text-surface-white">
-                SAVINGS INSIGHT
-              </span>
+              <div className="mb-2 flex items-center gap-2">
+                <BrandLogo
+                  variant="wordmark-light"
+                  className="h-8 w-auto max-w-[100px] rounded object-cover"
+                />
+                <span className="inline-block rounded-full bg-secondary-container px-2 py-0.5 font-label-subtext text-label-subtext text-surface-white">
+                  SAVINGS INSIGHT
+                </span>
+              </div>
               <h2 className="font-headline-md text-headline-md leading-tight text-surface-white">
                 You saved ₹430 last month!
               </h2>
@@ -136,6 +146,10 @@ export function MySpacePage() {
                 View Breakdown
               </button>
             </div>
+            <BrandLogo
+              variant="mark"
+              className="absolute right-3 bottom-3 h-16 w-16 rounded-2xl object-cover opacity-30"
+            />
             <div className="absolute top-0 right-0 -mt-24 -mr-24 h-48 w-48 rounded-full bg-primary-container opacity-50 blur-3xl" />
           </div>
         </section>

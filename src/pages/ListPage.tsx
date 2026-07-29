@@ -1,5 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BottomNav } from '../components/BottomNav'
+import { BrandLogo } from '../components/BrandLogo'
 import { ListService } from '../services/ListService'
 import { RecommendationService } from '../services/RecommendationService'
 
@@ -38,6 +39,7 @@ export function ListPage() {
           >
             <span className="material-symbols-outlined text-on-surface">arrow_back_ios_new</span>
           </button>
+          <BrandLogo variant="mark" className="h-8 w-8 rounded-lg object-cover" />
           <h1 className="font-headline-md text-headline-md text-primary">{list.name}</h1>
         </div>
         <div className="flex items-center gap-stack-md">

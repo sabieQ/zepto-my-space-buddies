@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { BottomNav } from '../components/BottomNav'
+import { BrandLogo } from '../components/BrandLogo'
 import { BuddyService } from '../services/BuddyService'
 import { ProductService } from '../services/ProductService'
 
@@ -11,7 +12,10 @@ export function BuddiesPage() {
   return (
     <div className="min-h-full bg-neutral-gray-100 pb-24 text-on-surface">
       <header className="sticky top-0 z-40 flex w-full items-center justify-between border-b border-neutral-gray-200 bg-surface px-margin-page py-stack-md">
-        <h1 className="font-display-lg text-headline-md text-primary">Buddies</h1>
+        <div className="flex items-center gap-2">
+          <BrandLogo variant="mark" className="h-9 w-9 rounded-lg object-cover" />
+          <h1 className="font-display-lg text-headline-md text-primary">Buddies</h1>
+        </div>
         <div className="flex items-center gap-stack-lg">
           <span className="material-symbols-outlined text-on-surface-variant">search</span>
           <span className="material-symbols-outlined text-on-surface-variant">person_add</span>
@@ -29,9 +33,12 @@ export function BuddiesPage() {
         <section className="px-margin-page pt-4">
           <div className="relative flex items-center justify-between overflow-hidden rounded-xl bg-primary-container p-4 text-on-primary-container">
             <div className="z-10">
-              <p className="font-label-bold text-label-bold tracking-wider uppercase opacity-80">
-                Buddies Exclusive
-              </p>
+              <div className="mb-1 flex items-center gap-2">
+                <BrandLogo variant="mark" className="h-7 w-7 rounded-md object-cover" />
+                <p className="font-label-bold text-label-bold tracking-wider uppercase opacity-80">
+                  Buddies Exclusive
+                </p>
+              </div>
               <h2 className="mt-1 font-headline-md text-headline-md">
                 Split grocery bills effortlessly
               </h2>
@@ -39,9 +46,10 @@ export function BuddiesPage() {
                 Learn More
               </button>
             </div>
-            <div className="absolute top-0 right-[-10px] h-full rotate-12 opacity-20">
-              <span className="material-symbols-outlined filled text-[80px]">group</span>
-            </div>
+            <BrandLogo
+              variant="mark"
+              className="absolute top-2 right-2 h-16 w-16 rounded-2xl object-cover opacity-25"
+            />
           </div>
         </section>
 
