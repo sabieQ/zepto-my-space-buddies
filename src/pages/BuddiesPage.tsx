@@ -40,7 +40,7 @@ export function BuddiesPage() {
                 </p>
               </div>
               <h2 className="mt-1 font-headline-md text-headline-md">
-                Split grocery bills effortlessly
+                Share, List, Chat with those who matter 🙂
               </h2>
               <button className="mt-3 rounded-full bg-white px-4 py-2 font-label-bold text-label-bold text-primary">
                 Learn More
