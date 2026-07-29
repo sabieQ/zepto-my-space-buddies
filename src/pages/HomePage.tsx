@@ -18,7 +18,7 @@ export function HomePage() {
             </div>
             <div className="flex items-center gap-1 text-on-surface-variant">
               <span className="max-w-[180px] truncate font-label-subtext text-label-subtext">
-                Datta Nagar - 4, Pantnagar Lane...
+                221B, Baker's Street
               </span>
               <span className="material-symbols-outlined text-sm">keyboard_arrow_down</span>
             </div>

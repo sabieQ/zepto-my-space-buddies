@@ -19,7 +19,7 @@ export function MySpacePage() {
           <BrandLogo variant="mark" className="h-9 w-9 flex-shrink-0 rounded-lg object-cover" />
           <div className="flex flex-col truncate">
             <h1 className="truncate font-headline-sm text-headline-sm text-primary">
-              Datta Nagar - 4, Pantnagar Lane...
+              221B, Baker's Street
             </h1>
             <span className="font-label-subtext text-label-subtext text-on-surface-variant">
               Fast Delivery in 14 mins

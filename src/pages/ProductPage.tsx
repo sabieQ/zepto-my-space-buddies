@@ -82,7 +82,7 @@ export function ProductPage() {
           <div className="mt-4 flex items-center gap-2 rounded-lg bg-zepto-purple-light px-3 py-2">
             <span className="material-symbols-outlined filled text-sm text-secondary">bolt</span>
             <span className="font-label-bold text-label-bold text-primary">
-              Delivery in 14 mins to Datta Nagar
+              Delivery in 14 mins to 221B, Baker's Street
             </span>
           </div>
         </div>
