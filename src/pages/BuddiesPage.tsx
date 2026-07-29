@@ -183,8 +183,9 @@ export function BuddiesPage() {
       </main>
 
       <button
-        onClick={() => navigate('/chat/arindam')}
+        type="button"
         className="absolute right-4 bottom-24 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-secondary text-white shadow-lg"
+        aria-label="New chat"
       >
         <span className="material-symbols-outlined filled text-[28px]">chat_bubble</span>
       </button>
