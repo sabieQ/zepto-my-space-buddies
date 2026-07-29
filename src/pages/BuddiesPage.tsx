@@ -123,7 +123,9 @@ export function BuddiesPage() {
                         ? 'medication'
                         : buddy.id === 'weekend-crew'
                           ? 'checklist'
-                          : 'restaurant'}
+                          : buddy.id === 'wifey'
+                            ? 'kitchen'
+                            : 'restaurant'}
                     </span>
                     <p
                       className={`max-w-[180px] truncate font-body-sm text-body-sm text-on-surface-variant ${

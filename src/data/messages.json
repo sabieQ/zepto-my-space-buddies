@@ -87,6 +87,36 @@
       "time": "04:17 PM"
     }
   ],
+  "wifey": [
+    {
+      "id": "w1",
+      "type": "text",
+      "from": "wifey",
+      "text": "Babe, can you get this new kitchen set I liked? Perfect for storage 😍",
+      "time": "08:10 PM"
+    },
+    {
+      "id": "w2",
+      "type": "product",
+      "from": "wifey",
+      "productId": "food-storage-containers",
+      "time": "08:10 PM"
+    },
+    {
+      "id": "w3",
+      "type": "text",
+      "from": "wifey",
+      "text": "It'll be really useful for leftovers and pantry stuff. Please order tonight?",
+      "time": "08:11 PM"
+    },
+    {
+      "id": "w4",
+      "type": "text",
+      "from": "me",
+      "text": "Looks good! Adding to cart now 🛒",
+      "time": "08:12 PM"
+    }
+  ],
   "weekend-crew": [
     {
       "id": "wc1",
