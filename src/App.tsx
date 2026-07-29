@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { PhoneShell } from './components/PhoneShell'
 import { HomePage } from './pages/HomePage'
 import { MySpacePage } from './pages/MySpacePage'
+import { PersonalListsPage } from './pages/PersonalListsPage'
 import { SharedListsPage } from './pages/SharedListsPage'
 import { TrendingPage } from './pages/TrendingPage'
 import { SurprisePage } from './pages/SurprisePage'
@@ -19,6 +20,7 @@ export default function App() {
         <Route element={<PhoneShell />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/my-space" element={<MySpacePage />} />
+          <Route path="/my-space/lists" element={<PersonalListsPage />} />
           <Route path="/my-space/shared" element={<SharedListsPage />} />
           <Route path="/my-space/trending" element={<TrendingPage />} />
           <Route path="/my-space/surprise" element={<SurprisePage />} />

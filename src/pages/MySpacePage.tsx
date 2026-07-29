@@ -36,7 +36,7 @@ export function MySpacePage() {
 
         <section className="bento-grid mb-section-gap">
           <Link
-            to="/list/breakfast"
+            to="/my-space/lists"
             className="bento-item-large group relative flex h-44 cursor-pointer flex-col justify-between overflow-hidden rounded-xl border border-neutral-gray-200 bg-surface-white p-5 transition-colors hover:bg-surface-container-low"
           >
             <div className="z-10">
@@ -161,30 +161,6 @@ export function MySpacePage() {
                 <h4 className="mt-0.5 line-clamp-2 font-body-sm text-body-sm text-primary">
                   {p.name}
                 </h4>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Personal lists quick links */}
-        <section className="mb-section-gap">
-          <h2 className="mb-stack-md font-headline-md text-headline-md text-primary">
-            Your Lists
-          </h2>
-          <div className="space-y-2">
-            {ListService.getPersonalLists().map((list) => (
-              <Link
-                key={list.id}
-                to={`/list/${list.id}`}
-                className="flex items-center justify-between rounded-xl border border-neutral-gray-200 bg-surface-white px-4 py-3"
-              >
-                <div>
-                  <h3 className="font-headline-sm text-headline-sm text-primary">{list.name}</h3>
-                  <p className="font-body-sm text-body-sm text-text-secondary">
-                    {list.itemCount} items
-                  </p>
-                </div>
-                <span className="material-symbols-outlined text-secondary">chevron_right</span>
               </Link>
             ))}
           </div>

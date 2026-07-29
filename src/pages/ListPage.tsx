@@ -211,39 +211,53 @@ export function ListPage() {
         )}
 
         {recs?.surpriseForYou && (
-          <section className="mb-stack-lg px-margin-page">
-            <Link
-              to={`/product/${recs.surpriseForYou.id}`}
-              className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#2D0B5A] to-[#1F003C] p-margin-page text-surface-white"
+          <section className="mb-stack-lg px-margin-page pb-8">
+            <div
+              className="relative overflow-hidden rounded-2xl p-4 text-surface-white"
+              style={{
+                background: 'linear-gradient(to bottom right, #2D0B5A, #1F003C)',
+              }}
             >
-              <div className="absolute top-0 right-0 h-32 w-32 rounded-full bg-secondary opacity-20 blur-3xl" />
+              <div
+                className="pointer-events-none absolute top-0 right-0 h-32 w-32 rounded-full opacity-20 blur-3xl"
+                style={{ backgroundColor: '#b90043' }}
+              />
               <div className="relative z-10">
-                <div className="mb-stack-md flex items-center gap-2">
-                  <span className="material-symbols-outlined filled text-sm text-secondary-fixed">
+                <div className="mb-3 flex items-center gap-2">
+                  <span
+                    className="material-symbols-outlined filled text-sm"
+                    style={{ color: '#ffd9dd' }}
+                  >
                     stars
                   </span>
-                  <h2 className="font-headline-sm text-headline-sm">Surprise For You</h2>
+                  <h2 className="font-headline-sm text-headline-sm text-white">Surprise For You</h2>
                 </div>
-                <div className="flex items-center gap-stack-lg">
-                  <div className="relative h-24 w-24 rounded-xl bg-white/10 p-1 backdrop-blur-md">
+                <Link
+                  to={`/product/${recs.surpriseForYou.id}`}
+                  className="flex items-center gap-3"
+                >
+                  <div className="relative h-24 w-24 flex-shrink-0 rounded-xl bg-white/10 p-1 backdrop-blur-md">
                     <img
                       src={recs.surpriseForYou.image}
                       alt={recs.surpriseForYou.name}
                       className="h-full w-full rounded-lg object-cover"
                     />
-                    <span className="absolute -top-2 -right-2 rounded-full bg-secondary px-1.5 py-0.5 text-[8px] font-bold tracking-tighter uppercase shadow-lg">
+                    <span className="absolute -top-2 -right-2 whitespace-nowrap rounded-full bg-secondary px-1.5 py-0.5 text-[8px] font-bold tracking-tighter text-white uppercase shadow-lg">
                       New for you
                     </span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-headline-sm text-body-md text-primary-fixed">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-headline-sm text-body-md" style={{ color: '#f0dbff' }}>
                       {recs.surpriseForYou.name}
                     </h3>
-                    <p className="mt-1 text-[10px] leading-tight font-medium text-primary-fixed-dim">
-                      {recs.surpriseForYou.description}
+                    <p
+                      className="mt-1 line-clamp-2 text-[10px] leading-tight font-medium"
+                      style={{ color: '#ddb8ff' }}
+                    >
+                      Based on your shopping habits. {recs.surpriseForYou.description}
                     </p>
-                    <div className="mt-stack-md flex items-center gap-stack-md">
-                      <span className="font-price-lg text-secondary-fixed">
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="font-price-lg" style={{ color: '#ffd9dd' }}>
                         ₹{recs.surpriseForYou.price}
                       </span>
                       <span className="text-[10px] text-outline line-through">
@@ -251,9 +265,12 @@ export function ListPage() {
                       </span>
                     </div>
                   </div>
-                </div>
+                  <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white shadow-lg">
+                    <span className="material-symbols-outlined">add</span>
+                  </span>
+                </Link>
               </div>
-            </Link>
+            </div>
           </section>
         )}
       </main>
