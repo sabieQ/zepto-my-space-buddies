@@ -12,7 +12,7 @@ export function BuddiesPage() {
 
   useEffect(() => {
     if (buddiesBannerDismissed) return
-    const timer = window.setTimeout(() => setBannerExiting(true), 5000)
+    const timer = window.setTimeout(() => setBannerExiting(true), 3000)
     return () => window.clearTimeout(timer)
   }, [buddiesBannerDismissed])
 
