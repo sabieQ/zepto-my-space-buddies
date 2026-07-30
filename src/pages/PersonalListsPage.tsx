@@ -43,7 +43,11 @@ export function PersonalListsPage() {
           Your lists for everyday shopping and restocks
         </p>
 
-        <button className="mb-6 flex w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-primary/20 bg-zepto-purple-light p-4">
+        <button
+          type="button"
+          onClick={() => navigate('/my-space/lists/create')}
+          className="mb-6 flex w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-primary/20 bg-zepto-purple-light p-4"
+        >
           <span className="material-symbols-outlined text-primary">add_circle</span>
           <span className="font-headline-sm text-headline-sm text-primary">Create New List</span>
         </button>

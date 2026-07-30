@@ -4,6 +4,7 @@ import { DemoStoreProvider } from './context/DemoStore'
 import { HomePage } from './pages/HomePage'
 import { MySpacePage } from './pages/MySpacePage'
 import { PersonalListsPage } from './pages/PersonalListsPage'
+import { CreateListPage } from './pages/CreateListPage'
 import { SharedListsPage } from './pages/SharedListsPage'
 import { TrendingPage } from './pages/TrendingPage'
 import { SurprisePage } from './pages/SurprisePage'
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/my-space" element={<MySpacePage />} />
             <Route path="/my-space/lists" element={<PersonalListsPage />} />
+            <Route path="/my-space/lists/create" element={<CreateListPage />} />
             <Route path="/my-space/shared" element={<SharedListsPage />} />
             <Route path="/my-space/trending" element={<TrendingPage />} />
             <Route path="/my-space/surprise" element={<SurprisePage />} />

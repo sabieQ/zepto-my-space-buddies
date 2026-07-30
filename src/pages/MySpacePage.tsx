@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
 import { useDemoStore } from '../context/DemoStore'
 import { ProductService } from '../services/ProductService'
 
 export function MySpacePage() {
+  const navigate = useNavigate()
   const { getPersonalLists } = useDemoStore()
   const personalCount = getPersonalLists().length
   const suggested = ProductService.getProductsByIds([
@@ -185,7 +186,11 @@ export function MySpacePage() {
         </section>
       </main>
 
-      <button className="absolute right-4 bottom-24 z-40 flex items-center gap-2 rounded-full bg-secondary px-6 py-3 text-surface-white shadow-lg">
+      <button
+        type="button"
+        onClick={() => navigate('/my-space/lists/create')}
+        className="absolute right-4 bottom-24 z-40 flex items-center gap-2 rounded-full bg-secondary px-6 py-3 text-surface-white shadow-lg"
+      >
         <span className="material-symbols-outlined">add_task</span>
         <span className="font-label-bold text-label-bold">New List</span>
       </button>

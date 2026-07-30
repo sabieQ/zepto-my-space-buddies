@@ -25,6 +25,7 @@ type DemoStoreValue = {
   getSharedLists: () => ShoppingList[]
   getListProducts: (id: string) => ReturnType<typeof ProductService.getProductsByIds>
   addProductToList: (listId: string, productId: string) => AddResult
+  createPersonalList: (name: string, productIds: string[]) => ShoppingList | null
 }
 
 const DemoStoreContext = createContext<DemoStoreValue | null>(null)
@@ -151,6 +152,40 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
     return result
   }, [])
 
+  const createPersonalList = useCallback((name: string, productIds: string[]) => {
+    const trimmed = name.trim()
+    if (!trimmed) return null
+
+    const uniqueIds = [...new Set(productIds)].filter((id) =>
+      Boolean(ProductService.getProduct(id)),
+    )
+
+    const newList: ShoppingList = {
+      id: `personal-${Date.now()}`,
+      name: trimmed,
+      type: 'personal',
+      missionId: null,
+      productIds: uniqueIds,
+      savings: 0,
+      itemCount: uniqueIds.length,
+    }
+
+    setLists((prev) => {
+      let insertAt = prev.length
+      for (let i = prev.length - 1; i >= 0; i--) {
+        if (prev[i].type === 'personal') {
+          insertAt = i + 1
+          break
+        }
+      }
+      const next = [...prev]
+      next.splice(insertAt, 0, newList)
+      return next
+    })
+
+    return newList
+  }, [])
+
   const value = useMemo<DemoStoreValue>(
     () => ({
       buddies,
@@ -163,6 +198,7 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       getSharedLists,
       getListProducts,
       addProductToList,
+      createPersonalList,
     }),
     [
       buddies,
@@ -175,6 +211,7 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       getSharedLists,
       getListProducts,
       addProductToList,
+      createPersonalList,
     ],
   )
 
