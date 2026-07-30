@@ -14,6 +14,7 @@ export function ProductPage() {
     getShareableBuddies,
     shareProduct,
     getPersonalLists,
+    getSharedLists,
     addProductToList,
   } = useDemoStore()
 
@@ -40,6 +41,7 @@ export function ProductPage() {
 
   const buddies = getShareableBuddies()
   const personalLists = getPersonalLists()
+  const sharedLists = getSharedLists()
 
   const handleShare = (buddyId: string) => {
     const buddy = buddies.find((b) => b.id === buddyId)
@@ -49,7 +51,9 @@ export function ProductPage() {
   }
 
   const handleAddToList = (listId: string) => {
-    const list = personalLists.find((l) => l.id === listId)
+    const list =
+      personalLists.find((l) => l.id === listId) ??
+      sharedLists.find((l) => l.id === listId)
     const result = addProductToList(listId, product.id)
     setListOpen(false)
     if (result.ok) {
@@ -211,7 +215,14 @@ export function ProductPage() {
                 <span className="material-symbols-outlined text-on-surface-variant">close</span>
               </button>
             </div>
-            <ul className="overflow-y-auto px-2 py-2">
+            <ul className="max-h-[45vh] overflow-y-auto px-2 py-2">
+              {personalLists.length > 0 && (
+                <li className="px-3 py-2">
+                  <p className="font-label-bold text-label-bold tracking-wide text-on-surface-variant uppercase">
+                    Personal Lists
+                  </p>
+                </li>
+              )}
               {personalLists.map((list) => (
                 <li key={list.id}>
                   <button
@@ -226,6 +237,35 @@ export function ProductPage() {
                       <p className="font-label-bold text-body-md text-primary">{list.name}</p>
                       <p className="font-label-subtext text-label-subtext text-on-surface-variant">
                         {list.itemCount} items
+                      </p>
+                    </div>
+                  </button>
+                </li>
+              ))}
+              {sharedLists.length > 0 && (
+                <li className="px-3 pt-3 pb-2">
+                  <p className="font-label-bold text-label-bold tracking-wide text-on-surface-variant uppercase">
+                    Shared Lists
+                  </p>
+                </li>
+              )}
+              {sharedLists.map((list) => (
+                <li key={list.id}>
+                  <button
+                    type="button"
+                    onClick={() => handleAddToList(list.id)}
+                    className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left hover:bg-neutral-gray-100"
+                  >
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E0F2FE] text-[#0369A1]">
+                      <span className="material-symbols-outlined">group</span>
+                    </div>
+                    <div>
+                      <p className="font-label-bold text-body-md text-primary">{list.name}</p>
+                      <p className="font-label-subtext text-label-subtext text-on-surface-variant">
+                        {list.itemCount} items
+                        {list.members?.length
+                          ? ` · ${list.members.length} members`
+                          : ''}
                       </p>
                     </div>
                   </button>

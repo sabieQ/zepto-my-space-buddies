@@ -176,7 +176,7 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
     let result: AddResult = { ok: false, reason: 'not_found' }
     setLists((prev) => {
       const list = prev.find((l) => l.id === listId)
-      if (!list || list.type !== 'personal') {
+      if (!list) {
         result = { ok: false, reason: 'not_found' }
         return prev
       }
