@@ -27,6 +27,8 @@ type DemoStoreValue = {
   getListProducts: (id: string) => ReturnType<typeof ProductService.getProductsByIds>
   addProductToList: (listId: string, productId: string) => AddResult
   createPersonalList: (name: string, productIds: string[]) => ShoppingList | null
+  buddiesBannerDismissed: boolean
+  dismissBuddiesBanner: () => void
 }
 
 const DemoStoreContext = createContext<DemoStoreValue | null>(null)
@@ -49,6 +51,12 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
   const [lists, setLists] = useState<ShoppingList[]>(() =>
     structuredClone(listsData as ShoppingList[]),
   )
+
+  const [buddiesBannerDismissed, setBuddiesBannerDismissed] = useState(false)
+
+  const dismissBuddiesBanner = useCallback(() => {
+    setBuddiesBannerDismissed(true)
+  }, [])
 
   const getBuddy = useCallback(
     (id: string) => buddies.find((b) => b.id === id),
@@ -238,6 +246,8 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       getListProducts,
       addProductToList,
       createPersonalList,
+      buddiesBannerDismissed,
+      dismissBuddiesBanner,
     }),
     [
       buddies,
@@ -252,6 +262,8 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       getListProducts,
       addProductToList,
       createPersonalList,
+      buddiesBannerDismissed,
+      dismissBuddiesBanner,
     ],
   )
 

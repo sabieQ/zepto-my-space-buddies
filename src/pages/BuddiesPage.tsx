@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
 import { useDemoStore } from '../context/DemoStore'
@@ -5,8 +6,15 @@ import { ProductService } from '../services/ProductService'
 
 export function BuddiesPage() {
   const navigate = useNavigate()
-  const { buddies } = useDemoStore()
+  const { buddies, buddiesBannerDismissed, dismissBuddiesBanner } = useDemoStore()
   const popular = ProductService.getProductsByIds(['wireless-earbuds', 'daily-moisturizer'])
+  const [bannerExiting, setBannerExiting] = useState(false)
+
+  useEffect(() => {
+    if (buddiesBannerDismissed) return
+    const timer = window.setTimeout(() => setBannerExiting(true), 5000)
+    return () => window.clearTimeout(timer)
+  }, [buddiesBannerDismissed])
 
   return (
     <div className="min-h-full bg-neutral-gray-100 pb-24 text-on-surface">
@@ -29,27 +37,42 @@ export function BuddiesPage() {
       </header>
 
       <main>
-        <section className="px-margin-page pt-4">
-          <div className="relative flex items-center justify-between overflow-hidden rounded-xl bg-primary-container p-4 text-on-primary-container">
-            <div className="z-10">
-              <div className="mb-1 flex items-center gap-2">
-                <BrandLogo variant="mark" className="h-7 w-7 rounded-md object-cover" />
-                <p className="font-label-bold text-label-bold tracking-wider uppercase opacity-80">
-                  Buddies Exclusive
-                </p>
+        {!buddiesBannerDismissed && (
+          <section
+            aria-hidden={bannerExiting}
+            className={`overflow-hidden transition-all duration-500 ease-out ${
+              bannerExiting
+                ? 'max-h-0 -translate-y-3 opacity-0'
+                : 'max-h-40 translate-y-0 opacity-100'
+            }`}
+            onTransitionEnd={(e) => {
+              if (e.target !== e.currentTarget) return
+              if (bannerExiting) dismissBuddiesBanner()
+            }}
+          >
+            <div className="px-margin-page pt-4">
+              <div className="relative flex items-center justify-between overflow-hidden rounded-xl bg-primary-container p-4 text-on-primary-container">
+                <div className="z-10">
+                  <div className="mb-1 flex items-center gap-2">
+                    <BrandLogo variant="mark" className="h-7 w-7 rounded-md object-cover" />
+                    <p className="font-label-bold text-label-bold tracking-wider uppercase opacity-80">
+                      Buddies Exclusive
+                    </p>
+                  </div>
+                  <h2 className="mt-1 font-headline-md text-headline-md">
+                    Share, List, Chat with those who matter 🙂
+                  </h2>
+                </div>
+                <BrandLogo
+                  variant="mark"
+                  className="absolute top-2 right-2 h-16 w-16 rounded-2xl object-cover opacity-25"
+                />
               </div>
-              <h2 className="mt-1 font-headline-md text-headline-md">
-                Share, List, Chat with those who matter 🙂
-              </h2>
             </div>
-            <BrandLogo
-              variant="mark"
-              className="absolute top-2 right-2 h-16 w-16 rounded-2xl object-cover opacity-25"
-            />
-          </div>
-        </section>
+          </section>
+        )}
 
-        <section className="mt-stack-lg">
+        <section className={`mt-stack-lg ${buddiesBannerDismissed ? 'pt-4' : ''}`}>
           <div className="flex gap-4 overflow-x-auto px-margin-page no-scrollbar">
             <div className="flex shrink-0 flex-col items-center gap-1">
               <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-primary bg-surface-white text-primary">
