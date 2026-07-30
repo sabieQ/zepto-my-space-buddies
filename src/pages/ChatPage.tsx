@@ -1,5 +1,4 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { BottomNav } from '../components/BottomNav'
 import { BrandLogo } from '../components/BrandLogo'
 import { BuddyService } from '../services/BuddyService'
 import { ListService } from '../services/ListService'
@@ -254,9 +253,7 @@ export function ChatPage() {
         </div>
       </div>
 
-      <div className="relative h-[4.25rem] shrink-0">
-        <BottomNav />
-      </div>
+      <div className="h-[4.25rem] shrink-0" aria-hidden />
     </div>
   )
 }

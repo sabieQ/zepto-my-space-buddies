@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { BottomNav } from '../components/BottomNav'
 import { BrandLogo } from '../components/BrandLogo'
 import { BuddyService } from '../services/BuddyService'
 import { ProductService } from '../services/ProductService'
@@ -189,8 +188,6 @@ export function BuddiesPage() {
       >
         <span className="material-symbols-outlined filled text-[28px]">chat_bubble</span>
       </button>
-
-      <BottomNav />
     </div>
   )
 }

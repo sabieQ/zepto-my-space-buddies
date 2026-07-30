@@ -1,5 +1,4 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { BottomNav } from '../components/BottomNav'
 import { BrandLogo } from '../components/BrandLogo'
 import { ListService } from '../services/ListService'
 import { RecommendationService } from '../services/RecommendationService'
@@ -277,14 +276,12 @@ export function ListPage() {
         )}
       </main>
 
-      <div className="absolute right-0 bottom-16 left-0 z-40 px-margin-page pb-2">
+      <div className="absolute right-0 bottom-[4.25rem] left-0 z-40 px-margin-page pb-2">
         <button className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-zepto-pink font-headline-sm text-headline-sm text-surface-white shadow-xl">
           Add {products.length} Items to Cart • ₹{total}
           <span className="material-symbols-outlined">chevron_right</span>
         </button>
       </div>
-
-      <BottomNav />
     </div>
   )
 }

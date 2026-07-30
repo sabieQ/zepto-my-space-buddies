@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { BottomNav } from '../components/BottomNav'
 import { BrandLogo } from '../components/BrandLogo'
 import { ListService } from '../services/ListService'
 
@@ -92,8 +91,6 @@ export function PersonalListsPage() {
           })}
         </div>
       </main>
-
-      <BottomNav />
     </div>
   )
 }

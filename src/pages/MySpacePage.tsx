@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { BottomNav } from '../components/BottomNav'
 import { BrandLogo } from '../components/BrandLogo'
 import { ListService } from '../services/ListService'
 import { ProductService } from '../services/ProductService'
@@ -189,8 +188,6 @@ export function MySpacePage() {
         <span className="material-symbols-outlined">add_task</span>
         <span className="font-label-bold text-label-bold">New List</span>
       </button>
-
-      <BottomNav />
     </div>
   )
 }

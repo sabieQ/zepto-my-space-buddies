@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import { BottomNav } from '../components/BottomNav'
 import { BrandLogo } from '../components/BrandLogo'
 import { useState } from 'react'
 
@@ -197,8 +196,6 @@ export function SettingsPage() {
           </div>
         </section>
       </main>
-
-      <BottomNav />
     </div>
   )
 }

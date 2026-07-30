@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { BottomNav } from '../components/BottomNav'
 import { BrandLogo } from '../components/BrandLogo'
 import { ProductService } from '../services/ProductService'
 
@@ -161,8 +160,6 @@ export function HomePage() {
           </Link>
         ))}
       </div>
-
-      <BottomNav highlightNew />
     </div>
   )
 }
