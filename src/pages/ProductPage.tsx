@@ -52,8 +52,11 @@ export function ProductPage() {
     const list = personalLists.find((l) => l.id === listId)
     const result = addProductToList(listId, product.id)
     setListOpen(false)
-    if (result.ok && list) setToast(`Added to ${list.name}`)
-    else if (result.reason === 'duplicate') setToast('Already in this list')
+    if (result.ok) {
+      if (list) setToast(`Added to ${list.name}`)
+    } else if (result.reason === 'duplicate') {
+      setToast('Already in this list')
+    }
   }
 
   return (
