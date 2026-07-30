@@ -1,4 +1,5 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { BottomNav } from '../components/BottomNav'
 import { BrandLogo } from '../components/BrandLogo'
 import { BuddyService } from '../services/BuddyService'
 import { ListService } from '../services/ListService'
@@ -221,7 +222,7 @@ export function ChatPage() {
         })}
       </main>
 
-      <div className="z-50 shrink-0 border-t border-neutral-gray-200 bg-surface-white px-4 pt-3 pb-6">
+      <div className="z-40 shrink-0 border-t border-neutral-gray-200 bg-surface-white px-4 pt-3 pb-3">
         <div className="mb-3 flex gap-2 overflow-x-auto pb-1 no-scrollbar">
           {['Share Products', 'Share Lists', 'Split Bill'].map((label, i) => (
             <button
@@ -251,6 +252,10 @@ export function ChatPage() {
             <span className="material-symbols-outlined filled">send</span>
           </button>
         </div>
+      </div>
+
+      <div className="relative h-[4.25rem] shrink-0">
+        <BottomNav />
       </div>
     </div>
   )
