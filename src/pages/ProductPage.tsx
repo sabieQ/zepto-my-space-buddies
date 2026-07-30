@@ -42,15 +42,17 @@ export function ProductPage() {
   const personalLists = getPersonalLists()
 
   const handleShare = (buddyId: string) => {
+    const buddy = buddies.find((b) => b.id === buddyId)
     const ok = shareProduct(buddyId, product.id)
     setShareOpen(false)
-    if (ok) setToast('Shared')
+    if (ok && buddy) setToast(`Shared with ${buddy.name}`)
   }
 
   const handleAddToList = (listId: string) => {
+    const list = personalLists.find((l) => l.id === listId)
     const result = addProductToList(listId, product.id)
     setListOpen(false)
-    if (result.ok) setToast('Added')
+    if (result.ok && list) setToast(`Added to ${list.name}`)
     else if (result.reason === 'duplicate') setToast('Already in this list')
   }
 
