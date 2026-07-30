@@ -9,9 +9,7 @@ export function ListPage() {
   const { getList, getListProducts } = useDemoStore()
   const list = getList(id ?? '')
   const products = getListProducts(id ?? '')
-  const recs = list?.missionId
-    ? RecommendationService.getRecommendations(list.missionId, list.productIds)
-    : null
+  const recs = list ? RecommendationService.getRecommendationsForList(list) : null
 
   if (!list) {
     return (
