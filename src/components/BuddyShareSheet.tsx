@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import type { Buddy } from '../types'
 
 type BuddyShareSheetProps = {
@@ -13,7 +15,15 @@ export function BuddyShareSheet({
   onSelect,
   onClose,
 }: BuddyShareSheetProps) {
-  return (
+  const [host, setHost] = useState<HTMLElement | null>(null)
+
+  useEffect(() => {
+    setHost(document.getElementById('phone-frame'))
+  }, [])
+
+  if (!host) return null
+
+  return createPortal(
     <div className="absolute inset-0 z-[70] flex flex-col justify-end bg-black/40">
       <button
         type="button"
@@ -21,7 +31,7 @@ export function BuddyShareSheet({
         aria-label="Close"
         onClick={onClose}
       />
-      <div className="relative z-10 max-h-[55%] overflow-hidden rounded-t-2xl bg-surface-white pb-4 shadow-xl">
+      <div className="relative z-10 mb-[4.25rem] max-h-[50%] overflow-hidden rounded-t-2xl bg-surface-white pb-4 shadow-xl">
         <div className="flex items-center justify-between border-b border-neutral-gray-100 px-4 py-3">
           <h3 className="font-headline-sm text-headline-sm text-primary">{title}</h3>
           <button type="button" onClick={onClose}>
@@ -56,6 +66,7 @@ export function BuddyShareSheet({
           ))}
         </ul>
       </div>
-    </div>
+    </div>,
+    host,
   )
 }
