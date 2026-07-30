@@ -213,7 +213,11 @@ export function ProductPage() {
                     <div>
                       <p className="font-label-bold text-body-md text-primary">{b.name}</p>
                       <p className="font-label-subtext text-label-subtext text-on-surface-variant">
-                        {b.status === 'online' ? 'Online' : 'Offline'}
+                        {b.isGroup
+                          ? 'Group chat'
+                          : b.status === 'online'
+                            ? 'Online'
+                            : 'Offline'}
                       </p>
                     </div>
                   </button>

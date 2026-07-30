@@ -53,10 +53,7 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
     [buddies],
   )
 
-  const getShareableBuddies = useCallback(
-    () => buddies.filter((b) => !b.isGroup),
-    [buddies],
-  )
+  const getShareableBuddies = useCallback(() => buddies, [buddies])
 
   const getMessages = useCallback(
     (buddyId: string) => messages[buddyId] ?? [],
@@ -70,7 +67,7 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
     let shared = false
     setBuddies((prev) => {
       const buddy = prev.find((b) => b.id === buddyId)
-      if (!buddy || buddy.isGroup) return prev
+      if (!buddy) return prev
       shared = true
       return prev.map((b) =>
         b.id === buddyId
