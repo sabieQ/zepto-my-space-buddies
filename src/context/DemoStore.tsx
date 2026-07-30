@@ -19,8 +19,11 @@ type DemoStoreValue = {
   getBuddy: (id: string) => Buddy | undefined
   getShareableBuddies: () => Buddy[]
   getMessages: (buddyId: string) => Message[]
+  sendTextMessage: (buddyId: string, text: string) => boolean
   shareProduct: (buddyId: string, productId: string) => boolean
+  shareProductsToChat: (buddyId: string, productIds: string[]) => number
   shareList: (buddyId: string, listId: string) => Buddy | null
+  splitBill: (buddyId: string) => { ok: true; perPerson: number; total: number; members: number } | { ok: false; reason: string }
   getList: (id: string) => ShoppingList | undefined
   getPersonalLists: () => ShoppingList[]
   getSharedLists: () => ShoppingList[]
@@ -70,6 +73,41 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
     [messages],
   )
 
+  const touchBuddyPreview = useCallback((buddyId: string, lastMessage: string) => {
+    setBuddies((prev) =>
+      prev.map((b) =>
+        b.id === buddyId
+          ? { ...b, lastMessage, lastMessageTime: 'Just now', unread: 0 }
+          : b,
+      ),
+    )
+  }, [])
+
+  const sendTextMessage = useCallback(
+    (buddyId: string, text: string) => {
+      const trimmed = text.trim()
+      if (!trimmed) return false
+      const buddy = buddies.find((b) => b.id === buddyId)
+      if (!buddy) return false
+
+      const msg: Message = {
+        id: `text-${Date.now()}`,
+        type: 'text',
+        from: 'me',
+        text: trimmed,
+        time: formatTimeNow(),
+      }
+
+      setMessages((prev) => ({
+        ...prev,
+        [buddyId]: [...(prev[buddyId] ?? []), msg],
+      }))
+      touchBuddyPreview(buddyId, trimmed)
+      return true
+    },
+    [buddies, touchBuddyPreview],
+  )
+
   const shareProduct = useCallback((buddyId: string, productId: string) => {
     const product = ProductService.getProduct(productId)
     if (!product) return false
@@ -109,6 +147,40 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
     return true
   }, [])
 
+  const shareProductsToChat = useCallback(
+    (buddyId: string, productIds: string[]) => {
+      const buddy = buddies.find((b) => b.id === buddyId)
+      if (!buddy) return 0
+
+      const unique = [...new Set(productIds)].filter((id) =>
+        Boolean(ProductService.getProduct(id)),
+      )
+      if (unique.length === 0) return 0
+
+      const now = formatTimeNow()
+      const newMsgs: Message[] = unique.map((productId, i) => ({
+        id: `share-${productId}-${Date.now()}-${i}`,
+        type: 'product' as const,
+        from: 'me',
+        productId,
+        time: now,
+      }))
+
+      setMessages((prev) => ({
+        ...prev,
+        [buddyId]: [...(prev[buddyId] ?? []), ...newMsgs],
+      }))
+
+      const lastName = ProductService.getProduct(unique[unique.length - 1])?.name ?? 'products'
+      touchBuddyPreview(
+        buddyId,
+        unique.length === 1 ? `Shared ${lastName}` : `Shared ${unique.length} products`,
+      )
+      return unique.length
+    },
+    [buddies, touchBuddyPreview],
+  )
+
   const shareList = useCallback(
     (buddyId: string, listId: string): Buddy | null => {
       const list = lists.find((l) => l.id === listId)
@@ -144,6 +216,44 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       return buddy
     },
     [lists, buddies],
+  )
+
+  const splitBill = useCallback(
+    (buddyId: string) => {
+      const buddy = buddies.find((b) => b.id === buddyId)
+      if (!buddy) return { ok: false as const, reason: 'not_found' }
+
+      const chatMessages = messages[buddyId] ?? []
+      let total = 0
+      for (const msg of chatMessages) {
+        if (msg.type !== 'product') continue
+        const product = ProductService.getProduct(msg.productId)
+        if (product) total += product.price
+      }
+
+      if (total <= 0) return { ok: false as const, reason: 'no_products' }
+
+      const members = buddy.memberCount ?? (buddy.isGroup ? 4 : 2)
+      const perPerson = Math.ceil(total / members)
+      const text = `Here's your share of the bill: ₹${perPerson}, Buddy :)`
+
+      const msg: Message = {
+        id: `split-${Date.now()}`,
+        type: 'text',
+        from: 'me',
+        text,
+        time: formatTimeNow(),
+      }
+
+      setMessages((prev) => ({
+        ...prev,
+        [buddyId]: [...(prev[buddyId] ?? []), msg],
+      }))
+      touchBuddyPreview(buddyId, text)
+
+      return { ok: true as const, perPerson, total, members }
+    },
+    [buddies, messages, touchBuddyPreview],
   )
 
   const getList = useCallback(
@@ -238,8 +348,11 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       getBuddy,
       getShareableBuddies,
       getMessages,
+      sendTextMessage,
       shareProduct,
+      shareProductsToChat,
       shareList,
+      splitBill,
       getList,
       getPersonalLists,
       getSharedLists,
@@ -254,8 +367,11 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       getBuddy,
       getShareableBuddies,
       getMessages,
+      sendTextMessage,
       shareProduct,
+      shareProductsToChat,
       shareList,
+      splitBill,
       getList,
       getPersonalLists,
       getSharedLists,

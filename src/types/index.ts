@@ -48,6 +48,8 @@ export interface Buddy {
   unread: number
   functional: boolean
   isGroup?: boolean
+  /** People in the chat including you. Defaults to 2 for 1:1. */
+  memberCount?: number
 }
 
 export type Message =
