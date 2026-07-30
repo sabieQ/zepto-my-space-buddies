@@ -20,6 +20,7 @@ type DemoStoreValue = {
   getShareableBuddies: () => Buddy[]
   getMessages: (buddyId: string) => Message[]
   shareProduct: (buddyId: string, productId: string) => boolean
+  shareList: (buddyId: string, listId: string) => Buddy | null
   getList: (id: string) => ShoppingList | undefined
   getPersonalLists: () => ShoppingList[]
   getSharedLists: () => ShoppingList[]
@@ -99,6 +100,43 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
 
     return true
   }, [])
+
+  const shareList = useCallback(
+    (buddyId: string, listId: string): Buddy | null => {
+      const list = lists.find((l) => l.id === listId)
+      const buddy = buddies.find((b) => b.id === buddyId)
+      if (!list || !buddy) return null
+
+      const msg: Message = {
+        id: `share-list-${listId}-${Date.now()}`,
+        type: 'list',
+        from: 'me',
+        listId,
+        time: formatTimeNow(),
+      }
+
+      setMessages((prev) => ({
+        ...prev,
+        [buddyId]: [...(prev[buddyId] ?? []), msg],
+      }))
+
+      setBuddies((prev) =>
+        prev.map((b) =>
+          b.id === buddyId
+            ? {
+                ...b,
+                lastMessage: `Shared ${list.name}`,
+                lastMessageTime: 'Just now',
+                unread: 0,
+              }
+            : b,
+        ),
+      )
+
+      return buddy
+    },
+    [lists, buddies],
+  )
 
   const getList = useCallback(
     (id: string) => lists.find((l) => l.id === id),
@@ -193,6 +231,7 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       getShareableBuddies,
       getMessages,
       shareProduct,
+      shareList,
       getList,
       getPersonalLists,
       getSharedLists,
@@ -206,6 +245,7 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       getShareableBuddies,
       getMessages,
       shareProduct,
+      shareList,
       getList,
       getPersonalLists,
       getSharedLists,

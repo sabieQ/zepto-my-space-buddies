@@ -1,15 +1,22 @@
+import { useCallback, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
+import { BuddyShareSheet } from '../components/BuddyShareSheet'
+import { Toast } from '../components/Toast'
 import { useDemoStore } from '../context/DemoStore'
 import { RecommendationService } from '../services/RecommendationService'
 
 export function ListPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const { getList, getListProducts } = useDemoStore()
+  const { getList, getListProducts, getShareableBuddies, shareList } = useDemoStore()
   const list = getList(id ?? '')
   const products = getListProducts(id ?? '')
   const recs = list ? RecommendationService.getRecommendationsForList(list) : null
+
+  const [shareOpen, setShareOpen] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
+  const clearToast = useCallback(() => setToast(null), [])
 
   if (!list) {
     return (
@@ -26,9 +33,16 @@ export function ListPage() {
   }
 
   const total = products.reduce((sum, p) => sum + p.price, 0)
+  const buddies = getShareableBuddies()
+
+  const handleShare = (buddyId: string) => {
+    const buddy = shareList(buddyId, list.id)
+    setShareOpen(false)
+    if (buddy) setToast(`Shared with ${buddy.name}`)
+  }
 
   return (
-    <div className="min-h-full bg-neutral-gray-100 pb-40 font-body-md text-on-surface antialiased">
+    <div className="relative min-h-full bg-neutral-gray-100 pb-40 font-body-md text-on-surface antialiased">
       <header className="sticky top-0 z-40 flex items-center justify-between bg-surface-white px-margin-page py-stack-md">
         <div className="flex items-center gap-stack-md">
           <button
@@ -41,10 +55,18 @@ export function ListPage() {
           <h1 className="font-headline-md text-headline-md text-primary">{list.name}</h1>
         </div>
         <div className="flex items-center gap-stack-md">
-          <button className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-gray-100">
-            <span className="material-symbols-outlined text-on-surface">share</span>
+          <button
+            type="button"
+            onClick={() => setShareOpen(true)}
+            aria-label="Share list"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-white shadow-md ring-2 ring-secondary/30"
+          >
+            <span className="material-symbols-outlined">share</span>
           </button>
-          <button className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-gray-100">
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-gray-100"
+          >
             <span className="material-symbols-outlined text-on-surface">edit</span>
           </button>
         </div>
@@ -281,6 +303,17 @@ export function ListPage() {
           <span className="material-symbols-outlined">chevron_right</span>
         </button>
       </div>
+
+      {shareOpen && (
+        <BuddyShareSheet
+          buddies={buddies}
+          title="Share list with Buddy"
+          onSelect={handleShare}
+          onClose={() => setShareOpen(false)}
+        />
+      )}
+
+      {toast && <Toast message={toast} onDone={clearToast} />}
     </div>
   )
 }
