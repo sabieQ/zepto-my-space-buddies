@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
-import { ListService } from '../services/ListService'
+import { useDemoStore } from '../context/DemoStore'
 
 const AVATARS = [
   'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop',
@@ -10,7 +10,8 @@ const AVATARS = [
 
 export function SharedListsPage() {
   const navigate = useNavigate()
-  const shared = ListService.getSharedLists()
+  const { getSharedLists } = useDemoStore()
+  const shared = getSharedLists()
 
   return (
     <div className="min-h-full bg-neutral-gray-100 pb-20 font-body-md text-on-surface">

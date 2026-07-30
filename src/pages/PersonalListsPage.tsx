@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
-import { ListService } from '../services/ListService'
+import { useDemoStore } from '../context/DemoStore'
 
 const LIST_META: Record<
   string,
@@ -22,7 +22,8 @@ const LIST_META: Record<
 
 export function PersonalListsPage() {
   const navigate = useNavigate()
-  const personal = ListService.getPersonalLists()
+  const { getPersonalLists } = useDemoStore()
+  const personal = getPersonalLists()
 
   return (
     <div className="min-h-full bg-neutral-gray-100 pb-20 font-body-md text-on-surface">

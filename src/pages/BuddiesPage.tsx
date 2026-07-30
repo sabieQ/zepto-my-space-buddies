@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
-import { BuddyService } from '../services/BuddyService'
+import { useDemoStore } from '../context/DemoStore'
 import { ProductService } from '../services/ProductService'
 
 export function BuddiesPage() {
   const navigate = useNavigate()
-  const buddies = BuddyService.getBuddies()
+  const { buddies } = useDemoStore()
   const popular = ProductService.getProductsByIds(['wireless-earbuds', 'daily-moisturizer'])
 
   return (

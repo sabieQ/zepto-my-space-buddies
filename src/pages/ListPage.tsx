@@ -1,13 +1,14 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
-import { ListService } from '../services/ListService'
+import { useDemoStore } from '../context/DemoStore'
 import { RecommendationService } from '../services/RecommendationService'
 
 export function ListPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const list = ListService.getList(id ?? '')
-  const products = ListService.getListProducts(id ?? '')
+  const { getList, getListProducts } = useDemoStore()
+  const list = getList(id ?? '')
+  const products = getListProducts(id ?? '')
   const recs = list?.missionId
     ? RecommendationService.getRecommendations(list.missionId, list.productIds)
     : null

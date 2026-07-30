@@ -1,11 +1,26 @@
+import { useCallback, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
+import { Toast } from '../components/Toast'
+import { useDemoStore } from '../context/DemoStore'
 import { ProductService } from '../services/ProductService'
 
 export function ProductPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const product = ProductService.getProduct(id ?? '')
+  const {
+    getShareableBuddies,
+    shareProduct,
+    getPersonalLists,
+    addProductToList,
+  } = useDemoStore()
+
+  const [shareOpen, setShareOpen] = useState(false)
+  const [listOpen, setListOpen] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
+
+  const clearToast = useCallback(() => setToast(null), [])
 
   if (!product) {
     return (
@@ -22,8 +37,24 @@ export function ProductPage() {
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4)
 
+  const buddies = getShareableBuddies()
+  const personalLists = getPersonalLists()
+
+  const handleShare = (buddyId: string) => {
+    const ok = shareProduct(buddyId, product.id)
+    setShareOpen(false)
+    if (ok) setToast('Shared')
+  }
+
+  const handleAddToList = (listId: string) => {
+    const result = addProductToList(listId, product.id)
+    setListOpen(false)
+    if (result.ok) setToast('Added')
+    else if (result.reason === 'duplicate') setToast('Already in this list')
+  }
+
   return (
-    <div className="flex h-full flex-col overflow-hidden bg-neutral-gray-100 font-body-md text-on-surface">
+    <div className="relative flex h-full flex-col overflow-hidden bg-neutral-gray-100 font-body-md text-on-surface">
       <header className="z-40 flex shrink-0 items-center justify-between bg-surface-white px-margin-page py-stack-md">
         <button
           onClick={() => navigate(-1)}
@@ -76,6 +107,15 @@ export function ProductPage() {
               )}
             </div>
 
+            <button
+              type="button"
+              onClick={() => setListOpen(true)}
+              className="mt-3 flex items-center gap-2 font-label-bold text-label-bold text-secondary"
+            >
+              <span className="material-symbols-outlined text-[20px]">playlist_add</span>
+              Add to List
+            </button>
+
             <p className="mt-4 font-body-md text-body-md text-on-surface-variant">
               {product.description}
             </p>
@@ -114,19 +154,117 @@ export function ProductPage() {
       </div>
 
       <div className="z-40 shrink-0 border-t border-neutral-gray-200 bg-surface-white p-margin-page">
-        <div className="flex gap-3">
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-secondary py-3.5 font-headline-sm text-secondary">
-            <span className="material-symbols-outlined">add</span>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border-2 border-secondary py-3.5 font-headline-sm text-secondary"
+          >
+            <span className="material-symbols-outlined text-[20px]">add</span>
             Add to Cart
           </button>
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-secondary py-3.5 font-headline-sm text-white">
-            <span className="material-symbols-outlined">shopping_bag</span>
+          <button
+            type="button"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-secondary py-3.5 font-headline-sm text-white"
+          >
+            <span className="material-symbols-outlined text-[20px]">shopping_bag</span>
             Buy Now
+          </button>
+          <button
+            type="button"
+            onClick={() => setShareOpen(true)}
+            className="flex w-[4.5rem] shrink-0 flex-col items-center justify-center gap-0.5 rounded-xl border-2 border-primary/20 bg-zepto-purple-light py-2 font-label-bold text-[11px] text-primary"
+          >
+            <span className="material-symbols-outlined text-[22px]">share</span>
+            Share
           </button>
         </div>
       </div>
 
       <div className="h-[4.25rem] shrink-0" aria-hidden />
+
+      {shareOpen && (
+        <div className="absolute inset-0 z-[70] flex flex-col justify-end bg-black/40">
+          <button
+            type="button"
+            className="absolute inset-0 cursor-default"
+            aria-label="Close"
+            onClick={() => setShareOpen(false)}
+          />
+          <div className="relative z-10 max-h-[55%] overflow-hidden rounded-t-2xl bg-surface-white pb-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-neutral-gray-100 px-4 py-3">
+              <h3 className="font-headline-sm text-headline-sm text-primary">Share with Buddy</h3>
+              <button type="button" onClick={() => setShareOpen(false)}>
+                <span className="material-symbols-outlined text-on-surface-variant">close</span>
+              </button>
+            </div>
+            <ul className="overflow-y-auto px-2 py-2">
+              {buddies.map((b) => (
+                <li key={b.id}>
+                  <button
+                    type="button"
+                    onClick={() => handleShare(b.id)}
+                    className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left hover:bg-neutral-gray-100"
+                  >
+                    <img
+                      src={b.avatar}
+                      alt={b.name}
+                      className="h-11 w-11 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="font-label-bold text-body-md text-primary">{b.name}</p>
+                      <p className="font-label-subtext text-label-subtext text-on-surface-variant">
+                        {b.status === 'online' ? 'Online' : 'Offline'}
+                      </p>
+                    </div>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      {listOpen && (
+        <div className="absolute inset-0 z-[70] flex flex-col justify-end bg-black/40">
+          <button
+            type="button"
+            className="absolute inset-0 cursor-default"
+            aria-label="Close"
+            onClick={() => setListOpen(false)}
+          />
+          <div className="relative z-10 max-h-[55%] overflow-hidden rounded-t-2xl bg-surface-white pb-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-neutral-gray-100 px-4 py-3">
+              <h3 className="font-headline-sm text-headline-sm text-primary">Add to List</h3>
+              <button type="button" onClick={() => setListOpen(false)}>
+                <span className="material-symbols-outlined text-on-surface-variant">close</span>
+              </button>
+            </div>
+            <ul className="overflow-y-auto px-2 py-2">
+              {personalLists.map((list) => (
+                <li key={list.id}>
+                  <button
+                    type="button"
+                    onClick={() => handleAddToList(list.id)}
+                    className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left hover:bg-neutral-gray-100"
+                  >
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-zepto-purple-light text-primary">
+                      <span className="material-symbols-outlined">checklist</span>
+                    </div>
+                    <div>
+                      <p className="font-label-bold text-body-md text-primary">{list.name}</p>
+                      <p className="font-label-subtext text-label-subtext text-on-surface-variant">
+                        {list.itemCount} items
+                      </p>
+                    </div>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      {toast && <Toast message={toast} onDone={clearToast} />}
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
-import { BuddyService } from '../services/BuddyService'
-import { ListService } from '../services/ListService'
+import { useDemoStore } from '../context/DemoStore'
 import { ProductService } from '../services/ProductService'
 import type { Message } from '../types'
 
@@ -13,8 +12,9 @@ function senderLabel(msg: Message, isGroup: boolean) {
 export function ChatPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const buddy = BuddyService.getBuddy(id ?? '')
-  const messages = BuddyService.getMessages(id ?? '')
+  const { getBuddy, getMessages, getList } = useDemoStore()
+  const buddy = getBuddy(id ?? '')
+  const messages = getMessages(id ?? '')
   const isGroup = Boolean(buddy?.isGroup)
 
   if (!buddy) {
@@ -160,7 +160,7 @@ export function ChatPage() {
           }
 
           if (msg.type === 'list') {
-            const list = ListService.getList(msg.listId)
+            const list = getList(msg.listId)
             if (!list) return null
             const listIcon = list.id === 'weekend-party' ? 'celebration' : 'checklist'
             return (

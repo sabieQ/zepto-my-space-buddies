@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { BrandLogo } from '../components/BrandLogo'
-import { ListService } from '../services/ListService'
+import { useDemoStore } from '../context/DemoStore'
 import { ProductService } from '../services/ProductService'
 
 export function MySpacePage() {
-  const personalCount = ListService.getPersonalLists().length
+  const { getPersonalLists } = useDemoStore()
+  const personalCount = getPersonalLists().length
   const suggested = ProductService.getProductsByIds([
     'gentle-face-wash',
     'food-storage-containers',
